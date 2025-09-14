@@ -86,10 +86,6 @@ sections:
           icon: "presentation-chart-bar"
           icon_pack: "hero"
           description: "Asesoría, guionado y armado para presentaciones memorables."
-        - name: "Murales institucionales"
-          icon: "rectangle-group"
-          icon_pack: "hero"
-          description: "Diseño y realización de murales para espacios educativos y culturales."
     design:
       columns: 3
 
