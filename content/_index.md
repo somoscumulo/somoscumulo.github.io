@@ -13,7 +13,7 @@ sections:
     content:
       title: ""  # dejamos vacío y componemos con HTML en 'text'
       text: |
-        <img src="/media/cumulo.png" alt="Cúmulo"
+        <img src="/assets/media/cumulo.png" alt="Cúmulo"
              class="mx-auto h-20 md:h-24 mb-3" loading="eager">
         <p class="text-center text-lg md:text-xl font-semibold text-[#3F393B]">
           agencia y productora de contenidos educativos
