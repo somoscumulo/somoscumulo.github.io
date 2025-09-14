@@ -7,15 +7,17 @@ design:
 
 sections:
   # ======================
-  # HERO (fondo oscuro + CTA)
+  # HERO (angosto, logo centrado, fondo #FCF1B1, texto oscuro)
   # ======================
   - block: hero
     content:
-      title: "Contenidos educativos que inspiran y enseñan"
+      title: ""  # dejamos vacío y componemos con HTML en 'text'
       text: |
-        Somos **Cúmulo**, una agencia de contenidos educativos que diseña y produce recursos para la enseñanza y el aprendizaje en diversos formatos y plataformas.
-        Trabajamos acompañando a docentes y organizaciones para fortalecer sus propuestas de formación, seleccionar los formatos más adecuados, estructurar guiones para clases y crear materiales visuales, audiovisuales y escritos que enriquezcan sus iniciativas.
-        Desde comunicación, cine, artes visuales y diseño gráfico, integramos disciplinas para **dar vida a proyectos educativos innovadores, creativos y accesibles**.
+        <img src="/media/cumulo.png" alt="Cúmulo"
+             class="mx-auto h-20 md:h-24 mb-3" loading="eager">
+        <p class="text-center text-lg md:text-xl font-semibold text-[#3F393B]">
+          agencia y productora de contenidos educativos
+        </p>
       primary_action:
         text: "Trabajemos en conjunto"
         url: "mailto:somoscumulo@gmail.com?subject=Quiero%20trabajar%20con%20C%C3%BAmulo"
@@ -24,28 +26,28 @@ sections:
         url: "#portfolio"
     design:
       spacing:
-        padding: ["6rem", 0, "4rem", 0]
-      css_style: "background-color:#3F393B;"
-      text_color_light: true
+        padding: ["2rem", 0, "2rem", 0]  # más angosto
+      css_style: "background-color:#FCF1B1;color:#3F393B;"
+      text_color_light: false
 
   # ======================
-  # QUIÉNES SOMOS (fondo claro + imagen opcional)
+  # QUÉ HACEMOS (imagen a la par + texto)
   # ======================
   - block: cta-image-paragraph
-    id: somos
+    id: que-hacemos
     content:
       items:
-        - title: "Quiénes somos"
+        - title: "Qué hacemos"
           text: |
-            Somos Cúmulo, una agencia de contenidos educativos que diseña y produce recursos para la enseñanza y el aprendizaje en diversos formatos y plataformas.
+            Diseñamos y producimos recursos para la enseñanza y el aprendizaje en diversos formatos y plataformas.
             Trabajamos acompañando a docentes y organizaciones para fortalecer sus propuestas de formación, seleccionar los formatos más adecuados para cada contenido, estructurar guiones para clases y crear materiales visuales, audiovisuales y escritos que enriquezcan sus iniciativas y las acerquen a sus estudiantes.
             Desde nuestra experiencia en comunicación, cine, artes visuales y diseño gráfico, ofrecemos un enfoque que integra diversas disciplinas para dar vida a proyectos educativos innovadores, creativos y accesibles.
-          image: "cumulo-equipo.jpg" # opcional: subí a assets/media/cumulo-equipo.jpg
+          image: "cumuloilus-07.png"   # subir a assets/media/
           button:
             text: "Escribinos"
             url: "mailto:somoscumulo@gmail.com"
     design:
-      css_style: "background-color:#FCF1B1;color:#3F393B;"
+      css_style: "background-color:#FFFFFF;color:#3F393B;"
 
   # ======================
   # SERVICIOS (grid 3x)
@@ -109,24 +111,7 @@ sections:
       css_class: "bg-gray-50 dark:bg-gray-900"
 
   # ======================
-  # TESTIMONIOS
-  # ======================
-  - block: testimonials
-    content:
-      title: "Testimonios"
-      items:
-        - name: "Nombre de cliente"
-          role: "Institución/Área"
-          text: "Trabajar con Cúmulo nos permitió transformar contenidos complejos en piezas claras y atractivas."
-        - name: "Nombre de cliente"
-          role: "Programa/Proyecto"
-          text: "Excelente acompañamiento creativo y pedagógico. Elevó la calidad de nuestras propuestas."
-    design:
-      spacing:
-        padding: ["2rem", 0, "2rem", 0]
-
-  # ======================
-  # LOGOS (logo cloud simple con HTML dentro del bloque)
+  # LOGOS (fondo oscuro para asegurar contraste)
   # ======================
   - block: cta-card
     id: logos
@@ -142,7 +127,7 @@ sections:
         </div>
     design:
       card:
-        css_style: "background-color:#FFFFFF;color:#3F393B;"  # fondo blanco, texto legible
+        css_style: "background-color:#3F393B;color:#FCF1B1;"  # ← fondo oscuro + texto claro
 
   # ======================
   # CTA FINAL (azul marca + redes)
