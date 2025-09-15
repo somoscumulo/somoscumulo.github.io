@@ -6,6 +6,9 @@ design:
   spacing: "3rem"
 
 sections:
+  # ======================
+  # HERO (angosto, logo centrado, fondo #FCF1B1, texto oscuro)
+  # ======================
   - block: hero
     content:
       title: ""
@@ -29,23 +32,32 @@ sections:
         color: "#FCF1B1"
       text_color_light: false
 
-  - block: cta-image-paragraph
+  # ======================
+  # QUÉ HACEMOS (reemplazo seguro del cta-image-paragraph)
+  # ======================
+  - block: cta-card
     id: que-hacemos
     content:
-      items:
-        - title: "Qué hacemos"
-          text: |
-            Diseñamos y producimos recursos para la enseñanza y el aprendizaje en diversos formatos y plataformas.
-            Trabajamos acompañando a docentes y organizaciones para fortalecer sus propuestas de formación, seleccionar los formatos más adecuados para cada contenido, estructurar guiones para clases y crear materiales visuales, audiovisuales y escritos que enriquezcan sus iniciativas y las acerquen a sus estudiantes.
-            Desde nuestra experiencia en comunicación, cine, artes visuales y diseño gráfico, ofrecemos un enfoque que integra diversas disciplinas para dar vida a proyectos educativos innovadores, creativos y accesibles.
-          image: "logo1.jpg"
-          button:
-            text: "Escribinos"
-            url: "mailto:somoscumulo@gmail.com"
+      title: "Qué hacemos"
+      text: |
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div>
+            <p>Diseñamos y producimos recursos para la enseñanza y el aprendizaje en diversos formatos y plataformas.</p>
+            <p class="mt-3">Trabajamos acompañando a docentes y organizaciones para fortalecer sus propuestas de formación, seleccionar los formatos más adecuados para cada contenido, estructurar guiones para clases y crear materiales visuales, audiovisuales y escritos que enriquezcan sus iniciativas y las acerquen a sus estudiantes.</p>
+            <p class="mt-3">Desde nuestra experiencia en comunicación, cine, artes visuales y diseño gráfico, ofrecemos un enfoque que integra diversas disciplinas para dar vida a proyectos educativos innovadores, creativos y accesibles.</p>
+            <a class="btn btn-primary mt-4 inline-block" href="mailto:somoscumulo@gmail.com">Escribinos</a>
+          </div>
+          <div class="flex justify-center md:justify-end">
+            <img src="/media/logo1.jpg" alt="Cúmulo" class="max-h-64 w-auto rounded-lg shadow-sm" loading="lazy">
+          </div>
+        </div>
     design:
-      background:
-        color: "#FFFFFF"
+      card:
+        css_class: "bg-white text-[#3F393B]"
 
+  # ======================
+  # SERVICIOS (grid 3x)
+  # ======================
   - block: features
     id: servicios
     content:
@@ -87,21 +99,27 @@ sections:
     design:
       columns: 3
 
+  # ======================
+  # LOGOS (fondo oscuro para contraste) — usa logo1–logo4.jpg
+  # ======================
   - block: cta-card
     id: logos
     content:
       title: "Organizaciones que confían en Cúmulo"
       text: |
-        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;justify-items:center;align-items:center;">
-          <img src="/media/logo1.jpg" alt="Logo 1" style="max-height:48px;opacity:0.9;" loading="lazy">
-          <img src="/media/logo2.jpg" alt="Logo 2" style="max-height:48px;opacity:0.9;" loading="lazy">
-          <img src="/media/logo3.jpg" alt="Logo 3" style="max-height:48px;opacity:0.9;" loading="lazy">
-          <img src="/media/logo4.jpg" alt="Logo 4" style="max-height:48px;opacity:0.9;" loading="lazy">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 items-center justify-items-center">
+          <img src="/media/logo1.jpg" alt="Logo 1" class="max-h-12 opacity-90" loading="lazy">
+          <img src="/media/logo2.jpg" alt="Logo 2" class="max-h-12 opacity-90" loading="lazy">
+          <img src="/media/logo3.jpg" alt="Logo 3" class="max-h-12 opacity-90" loading="lazy">
+          <img src="/media/logo4.jpg" alt="Logo 4" class="max-h-12 opacity-90" loading="lazy">
         </div>
     design:
       card:
         css_class: "bg-gray-900 text-gray-100"
 
+  # ======================
+  # CTA FINAL (azul marca + redes)
+  # ======================
   - block: cta-card
     id: contacto
     content:
