@@ -11,13 +11,14 @@ sections:
   # ======================
   - block: hero
     content:
-      title: ""
+      title: ""  # componemos el hero con HTML simple debajo
       text: |
-        <img src="/media/cumulo.png" alt="Cúmulo"
-             class="mx-auto h-20 md:h-24 mb-3" loading="eager">
-        <p class="text-center text-lg md:text-xl font-semibold text-[#3F393B]">
-          agencia y productora de contenidos educativos
-        </p>
+        <div class="text-center">
+          <img src="/media/cumulo.png" alt="Cúmulo" class="mx-auto h-20 md:h-24 mb-3" loading="eager">
+          <p class="text-lg md:text-xl font-semibold" style="color:#3F393B;">
+            agencia y productora de contenidos educativos
+          </p>
+        </div>
       primary_action:
         text: "Trabajemos en conjunto"
         url: "mailto:somoscumulo@gmail.com?subject=Quiero%20trabajar%20con%20C%C3%BAmulo"
@@ -26,8 +27,9 @@ sections:
         url: "#portfolio"
     design:
       spacing:
-        padding: ["2rem", 0, "2rem", 0]
-      css_style: "background-color:#FCF1B1;color:#3F393B;"
+        padding: ["2rem", 0, "2rem", 0]  # más angosto
+      background:
+        color: "#FCF1B1"
       text_color_light: false
 
   # ======================
@@ -42,15 +44,16 @@ sections:
             Diseñamos y producimos recursos para la enseñanza y el aprendizaje en diversos formatos y plataformas.
             Trabajamos acompañando a docentes y organizaciones para fortalecer sus propuestas de formación, seleccionar los formatos más adecuados para cada contenido, estructurar guiones para clases y crear materiales visuales, audiovisuales y escritos que enriquezcan sus iniciativas y las acerquen a sus estudiantes.
             Desde nuestra experiencia en comunicación, cine, artes visuales y diseño gráfico, ofrecemos un enfoque que integra diversas disciplinas para dar vida a proyectos educativos innovadores, creativos y accesibles.
-          image: "logo1.jpg"     # ← imagen existente en assets/media/
+          image: "logo1.jpg"   # ← EXISTE en assets/media/
           button:
             text: "Escribinos"
             url: "mailto:somoscumulo@gmail.com"
     design:
-      css_style: "background-color:#FFFFFF;color:#3F393B;"
+      background:
+        color: "#FFFFFF"
 
   # ======================
-  # SERVICIOS (grid 3x)
+  # SERVICIOS (grid 3x, claves conservadoras)
   # ======================
   - block: features
     id: servicios
@@ -61,40 +64,40 @@ sections:
         - name: "Diseño de propuestas de formación"
           icon: "sparkles"
           icon_pack: "hero"
-          description: "Asesoría y acompañamiento para planificar formaciones efectivas y medibles."
+          text: "Asesoría y acompañamiento para planificar formaciones efectivas y medibles."
         - name: "Guiones para clases en video"
           icon: "document-text"
           icon_pack: "hero"
-          description: "Estructura, storyboard y narrativa pensada para captar y mantener la atención."
+          text: "Estructura, storyboard y narrativa pensada para captar y mantener la atención."
         - name: "Videos educativos"
           icon: "video-camera"
           icon_pack: "hero"
-          description: "Producción integral: pre, rodaje y post con foco pedagógico."
+          text: "Producción integral: pre, rodaje y post con foco pedagógico."
         - name: "Videos institucionales"
           icon: "building-office"
           icon_pack: "hero"
-          description: "Piezas claras, inspiradoras y alineadas a tu identidad."
+          text: "Piezas claras, inspiradoras y alineadas a tu identidad."
         - name: "Corrección y diseño editorial"
           icon: "pencil-square"
           icon_pack: "hero"
-          description: "Textos, fichas y materiales de lectura con tono y diseño consistentes."
+          text: "Textos, fichas y materiales de lectura con tono y diseño consistentes."
         - name: "Ilustración y comunicación visual"
           icon: "paint-brush"
           icon_pack: "hero"
-          description: "Gráficas y recursos visuales que explican ideas complejas."
+          text: "Gráficas y recursos visuales que explican ideas complejas."
         - name: "Presentaciones efectivas"
           icon: "presentation-chart-bar"
           icon_pack: "hero"
-          description: "Asesoría, guionado y armado para presentaciones memorables."
+          text: "Asesoría, guionado y armado para presentaciones memorables."
         - name: "Murales institucionales"
           icon: "rectangle-group"
           icon_pack: "hero"
-          description: "Diseño y realización de murales para espacios educativos y culturales."
+          text: "Diseño y realización de murales para espacios educativos y culturales."
     design:
       columns: 3
 
   # ======================
-  # TRABAJOS (colección automática desde content/project/)
+  # TRABAJOS (colección) — si aún no hay proyectos, no rompe
   # ======================
   - block: collection
     id: portfolio
@@ -102,8 +105,7 @@ sections:
       title: "Trabajos realizados"
       text: "Una selección de proyectos recientes."
       filters:
-        folders:
-          - "project"   # crea tus proyectos en content/project/<proyecto>/_index.md
+        folders: ["project"]   # crea tus proyectos en content/project/<proyecto>/_index.md
       count: 6
       sort_by: "date"
       view: "card"
@@ -111,7 +113,7 @@ sections:
       css_class: "bg-gray-50 dark:bg-gray-900"
 
   # ======================
-  # LOGOS (fondo oscuro para asegurar contraste) — usa logo1–logo4.jpg
+  # LOGOS (fondo oscuro para contraste) — usa logo1–logo4.jpg
   # ======================
   - block: cta-card
     id: logos
@@ -126,6 +128,7 @@ sections:
         </div>
     design:
       card:
+        css_class: ""
         css_style: "background-color:#3F393B;color:#FCF1B1;"
 
   # ======================
