@@ -11,9 +11,9 @@ sections:
   # ======================
   - block: hero
     content:
-      title: ""  # dejamos vacío y componemos con HTML en 'text'
+      title: ""
       text: |
-        <img src="assets/media/cumulo.png" alt="Cúmulo"
+        <img src="/media/cumulo.png" alt="Cúmulo"
              class="mx-auto h-20 md:h-24 mb-3" loading="eager">
         <p class="text-center text-lg md:text-xl font-semibold text-[#3F393B]">
           agencia y productora de contenidos educativos
@@ -26,12 +26,12 @@ sections:
         url: "#portfolio"
     design:
       spacing:
-        padding: ["2rem", 0, "2rem", 0]  # más angosto
+        padding: ["2rem", 0, "2rem", 0]
       css_style: "background-color:#FCF1B1;color:#3F393B;"
       text_color_light: false
 
   # ======================
-  # QUÉ HACEMOS (imagen a la par + texto)
+  # QUÉ HACEMOS (imagen + texto) — usa logo1.jpg que ya existe
   # ======================
   - block: cta-image-paragraph
     id: que-hacemos
@@ -42,7 +42,7 @@ sections:
             Diseñamos y producimos recursos para la enseñanza y el aprendizaje en diversos formatos y plataformas.
             Trabajamos acompañando a docentes y organizaciones para fortalecer sus propuestas de formación, seleccionar los formatos más adecuados para cada contenido, estructurar guiones para clases y crear materiales visuales, audiovisuales y escritos que enriquezcan sus iniciativas y las acerquen a sus estudiantes.
             Desde nuestra experiencia en comunicación, cine, artes visuales y diseño gráfico, ofrecemos un enfoque que integra diversas disciplinas para dar vida a proyectos educativos innovadores, creativos y accesibles.
-          image: "cumuloilus-07.png"   # subir a assets/media/
+          image: "logo1.jpg"     # ← imagen existente en assets/media/
           button:
             text: "Escribinos"
             url: "mailto:somoscumulo@gmail.com"
@@ -86,6 +86,10 @@ sections:
           icon: "presentation-chart-bar"
           icon_pack: "hero"
           description: "Asesoría, guionado y armado para presentaciones memorables."
+        - name: "Murales institucionales"
+          icon: "rectangle-group"
+          icon_pack: "hero"
+          description: "Diseño y realización de murales para espacios educativos y culturales."
     design:
       columns: 3
 
@@ -107,23 +111,22 @@ sections:
       css_class: "bg-gray-50 dark:bg-gray-900"
 
   # ======================
-  # LOGOS (fondo oscuro para asegurar contraste)
+  # LOGOS (fondo oscuro para asegurar contraste) — usa logo1–logo4.jpg
   # ======================
   - block: cta-card
     id: logos
     content:
       title: "Organizaciones que confían en Cúmulo"
       text: |
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 items-center justify-items-center">
-          <img src="/media/logos/cumulo/logo1.png" alt="Logo 1" class="max-h-12 opacity-90" loading="lazy">
-          <img src="/media/logos/cumulo/logo2.png" alt="Logo 2" class="max-h-12 opacity-90" loading="lazy">
-          <img src="/media/logos/cumulo/logo3.png" alt="Logo 3" class="max-h-12 opacity-90" loading="lazy">
-          <img src="/media/logos/cumulo/logo4.png" alt="Logo 4" class="max-h-12 opacity-90" loading="lazy">
-          <img src="/media/logos/cumulo/logo5.png" alt="Logo 5" class="max-h-12 opacity-90" loading="lazy">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 items-center justify-items-center">
+          <img src="/media/logo1.jpg" alt="Logo 1" class="max-h-12 opacity-90" loading="lazy">
+          <img src="/media/logo2.jpg" alt="Logo 2" class="max-h-12 opacity-90" loading="lazy">
+          <img src="/media/logo3.jpg" alt="Logo 3" class="max-h-12 opacity-90" loading="lazy">
+          <img src="/media/logo4.jpg" alt="Logo 4" class="max-h-12 opacity-90" loading="lazy">
         </div>
     design:
       card:
-        css_style: "background-color:#3F393B;color:#FCF1B1;"  # ← fondo oscuro + texto claro
+        css_style: "background-color:#3F393B;color:#FCF1B1;"
 
   # ======================
   # CTA FINAL (azul marca + redes)
