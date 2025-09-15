@@ -6,13 +6,14 @@ design:
   spacing: "3rem"
 
 sections:
-  # ======================
-  # HERO (angosto, logo centrado, fondo #FCF1B1, texto oscuro)
-  # ======================
   - block: hero
     content:
-      title: ""  # componemos el hero con HTML simple debajo
-      text: Cúmulo. Agencia y productora de contenidos educativos
+      title: ""
+      text: |
+        <div class="text-center">
+          <img src="/media/cumulo.png" alt="Cúmulo" class="mx-auto h-20 md:h-24 mb-3" loading="eager">
+          <p class="text-lg md:text-xl font-semibold" style="color:#3F393B;">
+            agencia y productora de contenidos educativos
           </p>
         </div>
       primary_action:
@@ -20,17 +21,14 @@ sections:
         url: "mailto:somoscumulo@gmail.com?subject=Quiero%20trabajar%20con%20C%C3%BAmulo"
       secondary_action:
         text: "Ver trabajos"
-        url: "#portfolio"
+        url: "#que-hacemos"
     design:
       spacing:
-        padding: ["2rem", 0, "2rem", 0]  # más angosto
+        padding: ["2rem", 0, "2rem", 0]
       background:
         color: "#FCF1B1"
       text_color_light: false
 
-  # ======================
-  # QUÉ HACEMOS (imagen + texto) — usa logo1.jpg que ya existe
-  # ======================
   - block: cta-image-paragraph
     id: que-hacemos
     content:
@@ -40,7 +38,7 @@ sections:
             Diseñamos y producimos recursos para la enseñanza y el aprendizaje en diversos formatos y plataformas.
             Trabajamos acompañando a docentes y organizaciones para fortalecer sus propuestas de formación, seleccionar los formatos más adecuados para cada contenido, estructurar guiones para clases y crear materiales visuales, audiovisuales y escritos que enriquezcan sus iniciativas y las acerquen a sus estudiantes.
             Desde nuestra experiencia en comunicación, cine, artes visuales y diseño gráfico, ofrecemos un enfoque que integra diversas disciplinas para dar vida a proyectos educativos innovadores, creativos y accesibles.
-          image: "logo1.jpg"   # ← EXISTE en assets/media/
+          image: "logo1.jpg"
           button:
             text: "Escribinos"
             url: "mailto:somoscumulo@gmail.com"
@@ -48,9 +46,6 @@ sections:
       background:
         color: "#FFFFFF"
 
-  # ======================
-  # SERVICIOS (grid 3x, claves conservadoras)
-  # ======================
   - block: features
     id: servicios
     content:
@@ -92,44 +87,21 @@ sections:
     design:
       columns: 3
 
-  # ======================
-  # TRABAJOS (colección) — si aún no hay proyectos, no rompe
-  # ======================
-  - block: collection
-    id: portfolio
-    content:
-      title: "Trabajos realizados"
-      text: "Una selección de proyectos recientes."
-      filters:
-        folders: ["project"]   # crea tus proyectos en content/project/<proyecto>/_index.md
-      count: 6
-      sort_by: "date"
-      view: "card"
-    design:
-      css_class: "bg-gray-50 dark:bg-gray-900"
-
-  # ======================
-  # LOGOS (fondo oscuro para contraste) — usa logo1–logo4.jpg
-  # ======================
   - block: cta-card
     id: logos
     content:
       title: "Organizaciones que confían en Cúmulo"
       text: |
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 items-center justify-items-center">
-          <img src="/media/logo1.jpg" alt="Logo 1" class="max-h-12 opacity-90" loading="lazy">
-          <img src="/media/logo2.jpg" alt="Logo 2" class="max-h-12 opacity-90" loading="lazy">
-          <img src="/media/logo3.jpg" alt="Logo 3" class="max-h-12 opacity-90" loading="lazy">
-          <img src="/media/logo4.jpg" alt="Logo 4" class="max-h-12 opacity-90" loading="lazy">
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;justify-items:center;align-items:center;">
+          <img src="/media/logo1.jpg" alt="Logo 1" style="max-height:48px;opacity:0.9;" loading="lazy">
+          <img src="/media/logo2.jpg" alt="Logo 2" style="max-height:48px;opacity:0.9;" loading="lazy">
+          <img src="/media/logo3.jpg" alt="Logo 3" style="max-height:48px;opacity:0.9;" loading="lazy">
+          <img src="/media/logo4.jpg" alt="Logo 4" style="max-height:48px;opacity:0.9;" loading="lazy">
         </div>
     design:
       card:
-        css_class: ""
-        css_style: "background-color:#3F393B;color:#FCF1B1;"
+        css_class: "bg-gray-900 text-gray-100"
 
-  # ======================
-  # CTA FINAL (azul marca + redes)
-  # ======================
   - block: cta-card
     id: contacto
     content:
@@ -142,5 +114,5 @@ sections:
         url: "mailto:somoscumulo@gmail.com?subject=Contacto%20desde%20la%20web"
     design:
       card:
-        css_style: "background-color:#3E6FBA;color:#FFFFFF;"
+        css_class: "bg-blue-700 text-white"
 ---
