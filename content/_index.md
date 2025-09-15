@@ -104,10 +104,10 @@ sections:
       title: "Organizaciones que confían en Cúmulo"
       text: |
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 items-center justify-items-center">
-          <img src="/media/logo1.jpg" alt="Logo 1" class="max-h-12 opacity-90" loading="lazy">
-          <img src="/media/logo2.jpg" alt="Logo 2" class="max-h-12 opacity-90" loading="lazy">
-          <img src="/media/logo3.jpg" alt="Logo 3" class="max-h-12 opacity-90" loading="lazy">
-          <img src="/media/logo4.jpg" alt="Logo 4" class="max-h-12 opacity-90" loading="lazy">
+          <img src="/media/logo1.png" alt="Logo 1" class="max-h-12 opacity-90" loading="lazy">
+          <img src="/media/logo2.png" alt="Logo 2" class="max-h-12 opacity-90" loading="lazy">
+          <img src="/media/logo3.png" alt="Logo 3" class="max-h-12 opacity-90" loading="lazy">
+          <img src="/media/logo4.png" alt="Logo 4" class="max-h-12 opacity-90" loading="lazy">
         </div>
     design:
       card:
