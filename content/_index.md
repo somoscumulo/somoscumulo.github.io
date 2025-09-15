@@ -6,15 +6,12 @@ design:
   spacing: "3rem"
 
 sections:
-  # ======================
-  # HERO (angosto, logo centrado, fondo #FCF1B1, texto oscuro)
-  # ======================
   - block: hero
     content:
       title: ""
       text: |
         <div class="text-center">
-          <img src="/media/cumulo.png" alt="Cúmulo" class="mx-auto h-20 md:h-24 mb-3" loading="eager">
+          <img src="/media/cumulo.png?v=2" alt="Cúmulo" class="mx-auto h-20 md:h-24 mb-3" loading="eager">
           <p class="text-lg md:text-xl font-semibold" style="color:#3F393B;">
             agencia y productora de contenidos educativos
           </p>
@@ -32,9 +29,7 @@ sections:
         color: "#FCF1B1"
       text_color_light: false
 
-  # ======================
-  # QUÉ HACEMOS (reemplazo seguro del cta-image-paragraph)
-  # ======================
+  # Reemplazo seguro del cta-image-paragraph
   - block: cta-card
     id: que-hacemos
     content:
@@ -48,16 +43,13 @@ sections:
             <a class="btn btn-primary mt-4 inline-block" href="mailto:somoscumulo@gmail.com">Escribinos</a>
           </div>
           <div class="flex justify-center md:justify-end">
-            <img src="/media/logo1.jpg" alt="Cúmulo" class="max-h-64 w-auto rounded-lg shadow-sm" loading="lazy">
+            <img src="/media/logo1.jpg?v=2" alt="Cúmulo" class="max-h-64 w-auto rounded-lg shadow-sm" loading="lazy">
           </div>
         </div>
     design:
       card:
         css_class: "bg-white text-[#3F393B]"
 
-  # ======================
-  # SERVICIOS (grid 3x)
-  # ======================
   - block: features
     id: servicios
     content:
@@ -92,30 +84,28 @@ sections:
           icon: "presentation-chart-bar"
           icon_pack: "hero"
           text: "Asesoría, guionado y armado para presentaciones memorables."
+        - name: "Murales institucionales"
+          icon: "rectangle-group"
+          icon_pack: "hero"
+          text: "Diseño y realización de murales para espacios educativos y culturales."
     design:
       columns: 3
 
-  # ======================
-  # LOGOS (fondo oscuro para contraste) — usa logo1–logo4.jpg
-  # ======================
   - block: cta-card
     id: logos
     content:
       title: "Organizaciones que confían en Cúmulo"
       text: |
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 items-center justify-items-center">
-          <img src="/media/logo1.png" alt="Logo 1" class="max-h-12 opacity-90" loading="lazy">
-          <img src="/media/logo2.png" alt="Logo 2" class="max-h-12 opacity-90" loading="lazy">
-          <img src="/media/logo3.png" alt="Logo 3" class="max-h-12 opacity-90" loading="lazy">
-          <img src="/media/logo4.png" alt="Logo 4" class="max-h-12 opacity-90" loading="lazy">
+          <img src="/media/logo1.jpg?v=2" alt="Logo 1" class="max-h-12 opacity-90" loading="lazy">
+          <img src="/media/logo2.jpg?v=2" alt="Logo 2" class="max-h-12 opacity-90" loading="lazy">
+          <img src="/media/logo3.jpg?v=2" alt="Logo 3" class="max-h-12 opacity-90" loading="lazy">
+          <img src="/media/logo4.jpg?v=2" alt="Logo 4" class="max-h-12 opacity-90" loading="lazy">
         </div>
     design:
       card:
         css_class: "bg-gray-900 text-gray-100"
 
-  # ======================
-  # CTA FINAL (azul marca + redes)
-  # ======================
   - block: cta-card
     id: contacto
     content:
