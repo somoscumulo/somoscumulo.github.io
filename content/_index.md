@@ -12,11 +12,7 @@ sections:
   - block: hero
     content:
       title: ""  # componemos el hero con HTML simple debajo
-      text: |
-        <div class="text-center">
-          <img src="/media/cumulo.png" alt="Cúmulo" class="mx-auto h-20 md:h-24 mb-3" loading="eager">
-          <p class="text-lg md:text-xl font-semibold" style="color:#3F393B;">
-            agencia y productora de contenidos educativos
+      text: Cúmulo. Agencia y productora de contenidos educativos
           </p>
         </div>
       primary_action:
