@@ -7,46 +7,41 @@ image:
   alt_text: "Cúmulo — Agencia y productora de contenidos educativos"
 
 sections:
-  # Banner full ancho con fondo + imagen
+  # cta-image-paragraph (reemplaza banner + que-hacemos)
   - block: markdown
-    id: banner
+    id: cta-image-paragraph
     content:
       text: |
-        <div class="w-full py-12 md:py-16" style="background:#FCF1B1;">
+        <section class="w-full py-12 md:py-16" style="background:#FCF1B1;">
           <div class="container mx-auto px-4 md:px-6">
-            <div class="grid md:grid-cols-2 gap-8 items-center">
-              <div>
-                <p class="uppercase tracking-wide font-semibold mb-2" style="color:#3E6FBA;">Agencia & productora</p>
-                <h1 class="text-3xl md:text-4xl font-bold leading-tight" style="color:#3F393B;">Contenidos para la educación y la ciencia</h1>
-                <p class="mt-4 text-lg md:text-xl" style="color:#3F393B;">Imaginamos, diseñamos y producimos recursos claros, visuales y accesibles para enseñar y aprender.</p>
-                <div class="mt-6 flex gap-3">
-                  <a class="btn btn-primary" href="/contact">Contacto</a>
-                  <a class="btn btn-outline" href="#servicios" style="border-color:#3E6FBA;color:#3E6FBA;">Servicios</a>
-                </div>
-              </div>
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+              
+              <!-- Imagen / logo -->
               <div class="text-center">
                 <img src="/media/cumulo-equipo.jpg" alt="Cúmulo — equipo" class="rounded-2xl shadow-lg mx-auto" />
               </div>
+
+              <!-- Texto -->
+              <div>
+                <h1 class="text-3xl md:text-4xl font-bold leading-tight" style="color:#3F393B;">
+                  Agencia y productora de contenidos para la educación y la ciencia
+                </h1>
+                <div class="prose md:prose-lg max-w-none mt-4" style="color:#3F393B;">
+                  <p>
+                    Diseñamos y producimos recursos para la <strong>enseñanza y el aprendizaje</strong> en diversos formatos y plataformas.
+                    Acompañamos a <strong>docentes y organizaciones</strong> para fortalecer sus propuestas, elegir el formato adecuado para cada contenido,
+                    <strong>estructurar guiones</strong> de clases y crear materiales <strong>visuales, audiovisuales y escritos</strong> que acerquen sus iniciativas a las y los estudiantes.
+                  </p>
+                </div>
+              </div>
+
             </div>
           </div>
-        </div>
+        </section>
     design:
       full_width: true
 
-  # Qué hacemos
-  - block: markdown
-    id: que-hacemos
-    content:
-      title: "Qué hacemos"
-      text: |
-        Diseñamos y producimos recursos para la **enseñanza y el aprendizaje** en diversos formatos y plataformas.
-        Acompañamos a **docentes y organizaciones** para fortalecer sus propuestas, elegir el formato adecuado para cada contenido,
-        **estructurar guiones** de clases y crear materiales **visuales, audiovisuales y escritos** que acerquen sus iniciativas a las y los estudiantes.
-    design:
-      background:
-        color: ""
-
-  # CTA intermedio (usa tu bloque cta)
+  # CTA intermedio (requiere que tengas el partial cta creado)
   - block: cta
     id: cta-inicio
     content:
@@ -77,7 +72,7 @@ sections:
     design:
       columns: "2"
 
-  # Acompañamiento pedagógico (con color de acento suave)
+  # Acompañamiento pedagógico
   - block: markdown
     id: acompanamiento
     content:
@@ -89,11 +84,11 @@ sections:
         Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto tenga **coherencia**.
         
         <div class="mt-4">
-          <a class="btn btn-primary" href="/contact">Conversemos tu proyecto</a>
+          <a class="btn btn-primary" href="/contact" style="background:#3E6FBA;border-color:#3E6FBA;">Conversemos tu proyecto</a>
         </div>
     design:
       background:
-        color: "#FFF8E0"  # derivado del amarillo de la paleta
+        color: "#FFF8E0"
 
   # Métricas / Stats
   - block: stats
@@ -103,11 +98,8 @@ sections:
       items:
         - statistic: "170+"
           description: "clases en formato video"
-    design:
-      background:
-        color: ""
 
-  # Testimonios (caja con rosa claro)
+  # Testimonios
   - block: testimonials
     id: testimonios
     content:
@@ -152,7 +144,7 @@ sections:
       card:
         style: "image"
 
-  # CTA final (usa tu bloque cta)
+  # CTA final
   - block: cta
     id: cta-final
     content:
