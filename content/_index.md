@@ -53,7 +53,7 @@ sections:
       items:
         - title: "Acompañamiento y asesoramiento pedagógico"
           text: "Nos involucramos desde el <strong>inicio</strong>: ideación, lenguajes, formatos y experiencias de aprendizaje. ¿Qué conviene contar en <strong>video</strong> y qué en <strong>material escrito</strong>? ¿La propuesta combina materiales e <strong>instancias sincrónicas</strong>? ¿Cómo articularlas sin repetir contenidos? Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto tenga <strong>coherencia</strong>."
-          image: "/media/cumuloilus-08.png"
+          image: "/cumuloilus-08.png"
           image_alt: "Ilustración Cúmulo"
           image_style: "max-width:80%"
     design:
