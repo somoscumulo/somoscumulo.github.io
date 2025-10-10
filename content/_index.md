@@ -2,6 +2,10 @@
 title: "Cúmulo"
 type: landing
 
+image:
+  filename: images/og-cumulo.jpg
+  alt_text: "Cúmulo — Agencia y productora de contenidos educativos"
+
 sections:
 
   # 1) CTA image + paragraph (fondo amarillo, logo reducido 30%)
@@ -11,7 +15,7 @@ sections:
       items:
         - title: "Agencia y productora de contenidos para la educación y la ciencia"
           text: "Diseñamos y producimos recursos para la <strong>enseñanza y el aprendizaje</strong> en diversos formatos y plataformas. Acompañamos a <strong>docentes y organizaciones</strong> para fortalecer sus propuestas, elegir el formato adecuado para cada contenido, <strong>estructurar guiones</strong> de clases y crear materiales <strong>visuales, audiovisuales y escritos</strong> que acerquen sus iniciativas a las y los estudiantes."
-          image: "cumulo.png" 
+          image: "cumulo.png"           # archivo en assets/media/
           image_alt: "Logotipo Cúmulo"
           image_style: "max-width:70%"
           button:
@@ -51,14 +55,14 @@ sections:
       items:
         - title: "<span style='color:#FFFFFF'>Acompañamiento y asesoramiento pedagógico</span>"
           text: "<span style='color:#FFFFFF'>Nos involucramos desde el <strong>inicio</strong>: ideación, lenguajes, formatos y experiencias de aprendizaje. ¿Qué conviene contar en <strong>video</strong> y qué en <strong>material escrito</strong>? ¿La propuesta combina materiales e <strong>instancias sincrónicas</strong>? ¿Cómo articularlas sin repetir contenidos? Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto tenga <strong>coherencia</strong>.</span>"
-          image: "cumuloilus-08.png"
+          image: "cumuloilus-08.png"    # archivo en assets/media/
           image_alt: "Ilustración Cúmulo"
           image_style: "max-width:80%"
     design:
       background:
         color: "#3E6FBA"
 
-  # 4) Métricas / Stats (menos margen)
+  # 4) Métricas / Stats
   - block: stats
     id: metricas
     content:
@@ -72,9 +76,9 @@ sections:
           description: "propuestas de formación acompañadas"
     design:
       spacing:
-        padding: ["6px","0","4px","0"]   # menos espacio
+        padding: ["6px","0","4px","0"]
 
-  # 4.5) People (requiere partial hbx/blocks/people/block.html)
+  # 4.5) Quiénes somos (people)
   - block: people
     id: people
     content:
@@ -84,12 +88,13 @@ sections:
           name: "Julián"
         - slug: "cielo"
           name: "Cielo"
+      # Para cada autor, asegurá /media/authors/<slug>/avatar.jpg
     design:
       columns: 2
       spacing:
-        padding: ["4px","0","4px","0"]   # muy poco espacio para pegarse a métricas/testimonios
+        padding: ["4px","0","4px","0"]
 
-  # 5) Testimonios (menos margen)
+  # 5) Testimonios
   - block: testimonials
     id: testimonios
     content:
@@ -106,7 +111,7 @@ sections:
       spacing:
         padding: ["4px","0","6px","0"]
 
-  # 6) Organizaciones que confían — logos inline (usar /media/logos/)
+  # 6) Organizaciones que confían — logos inline
   - block: markdown
     id: aliados
     content:
@@ -122,6 +127,7 @@ sections:
       spacing:
         padding: ["6px","0","8px","0"]
 
+  # 7) CTA final — usar cta-card (no markdown)
   - block: cta-card
     id: cta-final
     content:
@@ -129,12 +135,17 @@ sections:
       text: "Contanos tu idea y te ayudamos a convertirla en un recorrido claro para tus estudiantes."
       button:
         text: "Conversemos"
-        url: "mailto:somoscumulo@gmail.com?subject=Quiero%trabajr%20con%20Cumulo"
+        url: "/contact"
     design:
-      card:
-        css_class: "shadow-sm"
-        css_style: "background-color:#F4A26D;color:#FFFFFF;"
-  # 8) CSS puntual al final y sin ocupar espacio visual
+      align: center
+      background:
+        color: "#F4A26D"
+      container:
+        max_width: "1280px"
+      spacing:
+        padding: ["36px","0","36px","0"]
+
+  # 8) CSS puntual al final (no ocupa espacio)
   - block: markdown
     id: style-fixes
     content:
