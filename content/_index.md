@@ -14,7 +14,7 @@ sections:
       items:
         - title: "Agencia y productora de contenidos para la educación y la ciencia"
           text: "Diseñamos y producimos recursos para la <strong>enseñanza y el aprendizaje</strong> en diversos formatos y plataformas. Acompañamos a <strong>docentes y organizaciones</strong> para fortalecer sus propuestas, elegir el formato adecuado para cada contenido, <strong>estructurar guiones</strong> de clases y crear materiales <strong>visuales, audiovisuales y escritos</strong> que acerquen sus iniciativas a las y los estudiantes."
-          image: "/media/cumulo.png"
+          image: "/cumulo.png"
           image_alt: "Logotipo Cúmulo"
           # achicar ~30%
           image_style: "max-width:70%"
