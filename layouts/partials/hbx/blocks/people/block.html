@@ -3,7 +3,6 @@
 {{ $authors := .block.content.authors }}
 {{ $cols := (or .block.design.columns 4) }}
 
-{{/* Spacing opcional */}}
 {{ $pad := "8px 0" }}
 {{ with .block.design.spacing.padding }}
   {{ $top := index . 0 | default "8px" }}
@@ -21,8 +20,8 @@
       {{ range $authors }}
         {{ $slug := .slug }}
         {{ $name := .name }}
-        {{/* Sirve si el archivo existe en assets/media/ o static/media/ */}}
         {{ $avatar := printf "/media/authors/%s/avatar.jpg" $slug }}
+
         <div class="text-center">
           <div class="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden mx-auto shadow">
             <img src="{{ $avatar }}" alt="{{ $name }}" class="w-full h-full object-cover" loading="lazy" />
