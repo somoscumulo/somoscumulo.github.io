@@ -8,6 +8,16 @@ image:
 
 sections:
 
+  # CSS puntual para reducir márgenes en títulos
+  - block: markdown
+    id: style-fixes
+    content:
+      text: |
+        <style>
+          #metricas h2, #testimonios h2, #aliados h2, #people h2 {
+            margin-top: 0.25rem; margin-bottom: 0.25rem;
+          }
+        </style>
 
   # 1) CTA image + paragraph (fondo amarillo, logo reducido 30%)
   - block: cta-image-paragraph
@@ -16,9 +26,9 @@ sections:
       items:
         - title: "Agencia y productora de contenidos para la educación y la ciencia"
           text: "Diseñamos y producimos recursos para la <strong>enseñanza y el aprendizaje</strong> en diversos formatos y plataformas. Acompañamos a <strong>docentes y organizaciones</strong> para fortalecer sus propuestas, elegir el formato adecuado para cada contenido, <strong>estructurar guiones</strong> de clases y crear materiales <strong>visuales, audiovisuales y escritos</strong> que acerquen sus iniciativas a las y los estudiantes."
-          image: "/media/cumulo.png"
+          image: "cumulo.png"           # <— solo nombre de archivo (en assets/media/)
           image_alt: "Logotipo Cúmulo"
-          image_style: "max-width:70%"   # ~30% más chico
+          image_style: "max-width:70%"  # ~30% más chico
           button:
             text: "Conversemos"
             url: "/#cta-final"
@@ -56,7 +66,7 @@ sections:
       items:
         - title: "<span style='color:#FFFFFF'>Acompañamiento y asesoramiento pedagógico</span>"
           text: "<span style='color:#FFFFFF'>Nos involucramos desde el <strong>inicio</strong>: ideación, lenguajes, formatos y experiencias de aprendizaje. ¿Qué conviene contar en <strong>video</strong> y qué en <strong>material escrito</strong>? ¿La propuesta combina materiales e <strong>instancias sincrónicas</strong>? ¿Cómo articularlas sin repetir contenidos? Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto tenga <strong>coherencia</strong>.</span>"
-          image: "/media/cumuloilus-08.png"
+          image: "cumuloilus-08.png"    # <— solo nombre de archivo (en assets/media/)
           image_alt: "Ilustración Cúmulo"
           image_style: "max-width:80%"
     design:
@@ -79,6 +89,7 @@ sections:
       spacing:
         padding: ["8px","0","8px","0"]
 
+  # 4.5) People (usa avatars en /media/authors/<slug>/avatar.jpg)
   - block: people
     id: people
     content:
@@ -88,14 +99,10 @@ sections:
           name: "Julián"
         - slug: "cielo"
           name: "Cielo"
-        # Agregá más perfiles copiando el formato:
-        # - slug: "otro-slug"
-        #   name: "Nombre"
     design:
-      columns: 2                # 2–4 columnas según prefieras
+      columns: 2
       spacing:
-        padding: ["8px","0","8px","0"]  # menos margen sup/inf
-
+        padding: ["8px","0","8px","0"]
 
   # 5) Testimonios (menos margen)
   - block: testimonials
@@ -114,22 +121,23 @@ sections:
       spacing:
         padding: ["8px","0","8px","0"]
 
-  # 6) Organizaciones que confían — logos inline
+  # 6) Organizaciones que confían — logos inline (usar /media/logos/)
   - block: markdown
     id: aliados
     content:
       title: "Organizaciones que confían en Cúmulo"
       text: |
         <div class="mt-2 flex flex-wrap items-center gap-4">
-          <img src="/logo1.jpg" alt="Logo 1" style="height:36px;width:auto" />
-          <img src="/logo2.jpg" alt="Logo 2" style="height:36px;width:auto" />
-          <img src="/logo3.jpg" alt="Logo 3" style="height:36px;width:auto" />
-          <img src="/logo4.jpg" alt="Logo 4" style="height:36px;width:auto" />
+          <img src="/media/logos/logo1.jpg" alt="Logo 1" style="height:36px;width:auto" />
+          <img src="/media/logos/logo2.jpg" alt="Logo 2" style="height:36px;width:auto" />
+          <img src="/media/logos/logo3.jpg" alt="Logo 3" style="height:36px;width:auto" />
+          <img src="/media/logos/logo4.jpg" alt="Logo 4" style="height:36px;width:auto" />
         </div>
     design:
       spacing:
         padding: ["8px","0","8px","0"]
 
+  # 7) CTA final (bloque cta real)
   - block: cta
     id: cta-final
     content:
@@ -143,18 +151,7 @@ sections:
       background:
         color: "#F4A26D"
       container:
-        max_width: "1280px"   # opcional
+        max_width: "1280px"
       spacing:
-        padding: ["40px","0","40px","0"]  # py-10 aprox
-
-
-          # CSS puntual para reducir margen en títulos de secciones pedidas
-  - block: markdown
-    id: style-fixes
-    content:
-      text: |
-        <style>
-          /* reduce espaciado de títulos */
-          #metricas h2, #testimonios h2, #aliados h2, #people h2 { margin-top: 0.25rem; margin-bottom: 0.25rem; }
-        </style>
+        padding: ["40px","0","40px","0"]
 ---
