@@ -2,7 +2,6 @@
 title: "Cúmulo"
 type: landing
 
-# Opcional: imagen social
 image:
   filename: images/og-cumulo.jpg
   alt_text: "Cúmulo — Agencia y productora de contenidos educativos"
@@ -19,13 +18,10 @@ sections:
       secondary_action:
         text: "Servicios"
         url: "#servicios"
-      # Opcional: imagen del logo en hero
       image:
         filename: images/logo-cumulo.svg
         alt_text: "Logotipo de Cúmulo"
     design:
-      background:
-        color: ""
       align: left
       spacing:
         padding: ["60px","0","40px","0"]
@@ -46,16 +42,12 @@ sections:
       items:
         - name: "Clases en formato video"
           description: "Ponemos a disposición todas las posibilidades del lenguaje audiovisual para diseñar clases que transformen la experiencia de tus estudiantes."
-          icon: "video"
         - name: "Videos animados"
           description: "Explicaciones claras con motion graphics, rotulación y recursos visuales que facilitan la comprensión."
-          icon: "sparkles"
         - name: "Facilitación visual para pósters científicos"
           description: "Síntesis visual, jerarquía de información y diagramación para comunicar resultados con impacto."
-          icon: "presentation-chart-bar"
         - name: "Ilustraciones para presentaciones y contenidos educativos"
           description: "Ilustraciones conceptuales y funcionales para clases, guías y presentaciones."
-          icon: "paintbrush"
     design:
       columns: "2"
 
@@ -69,7 +61,7 @@ sections:
         ¿La propuesta combina materiales y **instancias sincrónicas**? ¿Cómo articularlas sin repetir contenidos?
         Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto tenga **coherencia**.
 
-        [Conversemos tu proyecto](/contact){.btn .btn-primary}
+        <a class="btn btn-primary" href="/contact">Conversemos tu proyecto</a>
 
   - block: stats
     id: metricas
@@ -78,11 +70,6 @@ sections:
       items:
         - statistic: "170+"
           description: "clases en formato video"
-        # Podés sumar más:
-        # - statistic: "X+"
-        #   description: "organizaciones acompañadas"
-        # - statistic: "Y"
-        #   description: "años de experiencia en e-learning"
 
   - block: testimonials
     id: testimonios
@@ -96,16 +83,12 @@ sections:
             No se limitan a entregar lo que pedimos: buscan que todo quede claro, atractivo y realmente útil para el usuario.
             Nos encanta que propongan mejoras de manera constante y que se pongan manos a la obra para lograr un producto cada vez mejor.
             La cercanía, la rapidez de respuesta y la dedicación para asegurarse de que todo quede perfecto hacen que trabajar juntos sea siempre un gusto."
-      # Opcional: avatar
-      # avatar:
-      #   filename: images/testimonios/estefania.jpg
 
   - block: collection
     id: aliados
     content:
       title: "Organizaciones que confían en Cúmulo"
       text: "Algunas de las organizaciones con las que colaboramos."
-      # Modo simple de logos como 'cards' estático:
       items:
         - title: "Fundación Empretec"
           image:
@@ -126,14 +109,5 @@ sections:
     design:
       columns: "4"
       card:
-        style: "image" # muestra solo logos
-
-  - block: cta
-    id: cta-final
-    content:
-      title: "¿Vemos tu proyecto?"
-      text: "Contanos tu idea y diseñamos el mejor formato para tus objetivos."
-      button:
-        text: "Escribinos"
-        url: "/contact"
+        style: "image"
 ---
