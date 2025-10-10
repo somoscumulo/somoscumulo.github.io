@@ -7,6 +7,16 @@ image:
   alt_text: "Cúmulo — Agencia y productora de contenidos educativos"
 
 sections:
+  # CSS puntual para reducir margen en títulos de secciones pedidas
+  - block: markdown
+    id: style-fixes
+    content:
+      text: |
+        <style>
+          /* reduce espaciado de títulos de estas secciones */
+          #metricas h2, #testimonios h2, #aliados h2 { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+        </style>
+
   # 1) CTA image + paragraph (fondo amarillo, logo reducido 30%)
   - block: cta-image-paragraph
     id: solutions
@@ -16,7 +26,7 @@ sections:
           text: "Diseñamos y producimos recursos para la <strong>enseñanza y el aprendizaje</strong> en diversos formatos y plataformas. Acompañamos a <strong>docentes y organizaciones</strong> para fortalecer sus propuestas, elegir el formato adecuado para cada contenido, <strong>estructurar guiones</strong> de clases y crear materiales <strong>visuales, audiovisuales y escritos</strong> que acerquen sus iniciativas a las y los estudiantes."
           image: "/cumulo.png"
           image_alt: "Logotipo Cúmulo"
-          image_style: "max-width:70%"   # ~30% más chico
+          image_style: "max-width:60%"   # ~30% más chico
           button:
             text: "Conversemos"
             url: "/#cta-final"
@@ -47,7 +57,7 @@ sections:
       spacing:
         padding: ["16px","0","8px","0"]
 
-  # 3) Acompañamiento y asesoramiento pedagógico (cta-image-paragraph con fondo azul y texto blanco, sin botón)
+  # 3) Acompañamiento (cta-image-paragraph, fondo azul, texto blanco, sin botón)
   - block: cta-image-paragraph
     id: acompanamiento
     content:
@@ -61,7 +71,7 @@ sections:
       background:
         color: "#3E6FBA"
 
-  # 4) Métricas / Stats (título con menos margen)
+  # 4) Métricas / Stats (menos margen)
   - block: stats
     id: metricas
     content:
@@ -77,7 +87,7 @@ sections:
       spacing:
         padding: ["8px","0","8px","0"]
 
-  # 5) Testimonios (menos espacio)
+  # 5) Testimonios (menos margen)
   - block: testimonials
     id: testimonios
     content:
@@ -94,30 +104,30 @@ sections:
       spacing:
         padding: ["8px","0","8px","0"]
 
-  # 6) Organizaciones que confían — logos inline (menos margen en título)
+  # 6) Organizaciones que confían — logos inline (asegurate de moverlos a static/media/logos/)
   - block: markdown
     id: aliados
     content:
       title: "Organizaciones que confían en Cúmulo"
       text: |
         <div class="mt-2 flex flex-wrap items-center gap-4">
-          <img src="/logo1.jpg" alt="Logo 1" style="height:36px;width:auto" />
-          <img src="/logo2.jpg" alt="Logo 2" style="height:36px;width:auto" />
-          <img src="/logo3.jpg" alt="Logo 3" style="height:36px;width:auto" />
-          <img src="/logo4.jpg" alt="Logo 4" style="height:36px;width:auto" />
+          <img src="/media/logos/logo1.jpg" alt="Logo 1" style="height:36px;width:auto" />
+          <img src="/media/logos/logo2.jpg" alt="Logo 2" style="height:36px;width:auto" />
+          <img src="/media/logos/logo3.jpg" alt="Logo 3" style="height:36px;width:auto" />
+          <img src="/media/logos/logo4.jpg" alt="Logo 4" style="height:36px;width:auto" />
         </div>
     design:
       spacing:
         padding: ["8px","0","8px","0"]
 
-  # 7) CTA final (más ancho, botón)
+  # 7) CTA final — más ancho y con botón
   - block: markdown
     id: cta-final
     content:
       text: |
         <section class="py-10">
           <div class="w-full">
-            <div class="rounded-2xl p-10 text-center shadow-md mx-auto" style="max-width:1200px;background:#F4A26D;">
+            <div class="rounded-2xl p-10 text-center shadow-md mx-auto" style="max-width:1280px;background:#F4A26D;">
               <h2 class="text-2xl md:text-3xl font-semibold mb-2" style="color:#3F393B;">¿Arrancamos?</h2>
               <p class="text-lg md:text-xl mb-5" style="color:#3F393B;">Contanos tu idea y te ayudamos a convertirla en un recorrido claro para tus estudiantes.</p>
               <a href="/contact" class="btn btn-primary">Conversemos</a>
