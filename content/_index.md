@@ -2,82 +2,138 @@
 title: "Cúmulo"
 type: landing
 
-design:
-  spacing: "3rem"
+# Opcional: imagen social
+image:
+  filename: images/og-cumulo.jpg
+  alt_text: "Cúmulo — Agencia y productora de contenidos educativos"
 
 sections:
-  # ======================
-  # HERO corto (logo centrado + tagline)
-  # ======================
   - block: hero
+    id: hero
     content:
-      title: ""
-      text: |
-        <img src="/media/cumulo.png" alt="Cúmulo" class="mx-auto mb-4 max-h-24" loading="eager">
-        <p class="text-center text-lg md:text-xl font-semibold text-gray-900">
-          agencia y productora de contenidos educativos
-        </p>
+      title: "Cúmulo"
+      text: "Agencia y productora de contenidos para la educación y la ciencia."
       primary_action:
-        text: "Trabajemos en conjunto"
-        url: "mailto:somoscumulo@gmail.com?subject=Quiero%20trabajar%20con%20C%C3%BAmulo"
+        text: "Contacto"
+        url: "/contact"
       secondary_action:
-        text: "Ver trabajos"
-        url: "#portfolio"
+        text: "Servicios"
+        url: "#servicios"
+      # Opcional: imagen del logo en hero
+      image:
+        filename: images/logo-cumulo.svg
+        alt_text: "Logotipo de Cúmulo"
     design:
+      background:
+        color: ""
+      align: left
       spacing:
-        padding: ["2rem", 0, "2rem", 0]   # hero más bajo/angosto
-      css_style: "background-color:#FCF1B1;"
-      # Texto oscuro sobre fondo claro (no activar text_color_light)
+        padding: ["60px","0","40px","0"]
 
-  # ======================
-  # QUÉ HACEMOS (imagen + texto)
-  # ======================
-  - block: cta-image-paragraph
+  - block: markdown
     id: que-hacemos
     content:
-      items:
-        - title: "Qué hacemos"
-          text: |
-            Diseñamos y producimos recursos para la enseñanza y el aprendizaje en diversos formatos y plataformas.  
-            Trabajamos acompañando a docentes y organizaciones para fortalecer sus propuestas de formación, seleccionar los formatos más adecuados para cada contenido, estructurar guiones para clases y crear materiales visuales, audiovisuales y escritos que enriquezcan sus iniciativas y las acerquen a sus estudiantes.
-          image: "cumuloilus-09.png"  # colocar el archivo en assets/media/cumuloilus-09.png
-          button:
-            text: "Escribinos"
-            url: "mailto:somoscumulo@gmail.com"
-    design:
-      css_style: "color:#3F393B;"   # texto legible
+      title: "Qué hacemos"
+      text: |
+        Diseñamos y producimos recursos para la **enseñanza y el aprendizaje** en diversos formatos y plataformas.
+        Acompañamos a **docentes y organizaciones** para fortalecer sus propuestas, elegir el formato adecuado para cada contenido,
+        **estructurar guiones** de clases y crear materiales **visuales, audiovisuales y escritos** que acerquen sus iniciativas a las y los estudiantes.
 
-  # ======================
-  # LOGOS (banda oscura para alto contraste)
-  # ======================
-  - block: cta-card
-    id: logos
+  - block: features
+    id: servicios
+    content:
+      title: "Nuestros servicios"
+      items:
+        - name: "Formación en lenguaje audiovisual"
+          description: "Talleres y asesorías para planificar y producir contenidos educativos con criterios narrativos y técnicos."
+          icon: "video"
+        - name: "Videos animados"
+          description: "Explicaciones claras con motion graphics, rotulación y recursos visuales que facilitan la comprensión."
+          icon: "sparkles"
+        - name: "Facilitación visual para pósters científicos"
+          description: "Síntesis visual, jerarquía de información y diagramación para comunicar resultados con impacto."
+          icon: "presentation-chart-bar"
+        - name: "Ilustraciones para presentaciones y contenidos educativos"
+          description: "Ilustraciones conceptuales y funcionales para clases, guías y presentaciones."
+          icon: "paintbrush"
+    design:
+      columns: "2"
+
+  - block: markdown
+    id: acompanamiento
+    content:
+      title: "Acompañamiento y asesoramiento pedagógico"
+      text: |
+        Nos involucramos desde el **inicio**: ideación, lenguajes, formatos y experiencias de aprendizaje.
+        ¿Qué conviene contar en **video** y qué en **material escrito**?  
+        ¿La propuesta combina materiales y **instancias sincrónicas**? ¿Cómo articularlas sin repetir contenidos?
+        Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto tenga **coherencia**.
+
+        [Conversemos tu proyecto](/contact){.btn .btn-primary}
+
+  - block: stats
+    id: metricas
+    content:
+      title: "Métricas"
+      items:
+        - statistic: "170+"
+          description: "clases en formato video"
+        # Podés sumar más:
+        # - statistic: "X+"
+        #   description: "organizaciones acompañadas"
+        # - statistic: "Y"
+        #   description: "años de experiencia en e-learning"
+
+  - block: testimonials
+    id: testimonios
+    content:
+      title: "Testimonios"
+      items:
+        - name: "Estefanía Michlig"
+          role: "Fundación Empretec"
+          text: >
+            "Lo que más valoramos es la calidad de los videos y el enorme compromiso con el que trabajan.
+            No se limitan a entregar lo que pedimos: buscan que todo quede claro, atractivo y realmente útil para el usuario.
+            Nos encanta que propongan mejoras de manera constante y que se pongan manos a la obra para lograr un producto cada vez mejor.
+            La cercanía, la rapidez de respuesta y la dedicación para asegurarse de que todo quede perfecto hacen que trabajar juntos sea siempre un gusto."
+      # Opcional: avatar
+      # avatar:
+      #   filename: images/testimonios/estefania.jpg
+
+  - block: collection
+    id: aliados
     content:
       title: "Organizaciones que confían en Cúmulo"
-      text: |
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 items-center justify-items-center mt-4">
-          <img src="/media/logo1.jpg" alt="Logo 1" class="max-h-12 opacity-95" loading="lazy">
-          <img src="/media/logo2.jpg" alt="Logo 2" class="max-h-12 opacity-95" loading="lazy">
-          <img src="/media/logo3.jpg" alt="Logo 3" class="max-h-12 opacity-95" loading="lazy">
-          <img src="/media/logo4.jpg" alt="Logo 4" class="max-h-12 opacity-95" loading="lazy">
-        </div>
+      text: "Algunas de las organizaciones con las que colaboramos."
+      # Modo simple de logos como 'cards' estático:
+      items:
+        - title: "Fundación Empretec"
+          image:
+            filename: images/logos/empretec.png
+            alt_text: "Fundación Empretec"
+        - title: "Capacitar (Min. Des. Productivo)"
+          image:
+            filename: images/logos/capacitar.png
+            alt_text: "Capacitar"
+        - title: "Banco Nación"
+          image:
+            filename: images/logos/bna.png
+            alt_text: "Banco Nación"
+        - title: "Academia Bancor"
+          image:
+            filename: images/logos/bancor.png
+            alt_text: "Academia Bancor"
     design:
+      columns: "4"
       card:
-        css_style: "background-color:#3F393B;color:#FCF1B1;"  # fondo oscuro, texto claro
-      spacing:
-        padding: ["2rem", "0", "2rem", "0"]
+        style: "image" # muestra solo logos
 
-  # (Opcional) Portfolio si ya tenés proyectos en content/project/
-  - block: collection
-    id: portfolio
+  - block: cta
+    id: cta-final
     content:
-      title: "Trabajos"
-      text: "Una selección de proyectos recientes."
-      filters:
-        folders: ["project"]
-      count: 6
-      sort_by: "date"
-      view: "card"
-    design:
-      css_class: "bg-gray-50 dark:bg-gray-900"
+      title: "¿Vemos tu proyecto?"
+      text: "Contanos tu idea y diseñamos el mejor formato para tus objetivos."
+      button:
+        text: "Escribinos"
+        url: "/contact"
 ---
