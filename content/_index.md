@@ -2,22 +2,7 @@
 title: "Cúmulo"
 type: landing
 
-image:
-  filename: images/og-cumulo.jpg
-  alt_text: "Cúmulo — Agencia y productora de contenidos educativos"
-
 sections:
-
-  # CSS puntual para reducir márgenes en títulos
-  - block: markdown
-    id: style-fixes
-    content:
-      text: |
-        <style>
-          #metricas h2, #testimonios h2, #aliados h2, #people h2 {
-            margin-top: 0.25rem; margin-bottom: 0.25rem;
-          }
-        </style>
 
   # 1) CTA image + paragraph (fondo amarillo, logo reducido 30%)
   - block: cta-image-paragraph
@@ -26,9 +11,9 @@ sections:
       items:
         - title: "Agencia y productora de contenidos para la educación y la ciencia"
           text: "Diseñamos y producimos recursos para la <strong>enseñanza y el aprendizaje</strong> en diversos formatos y plataformas. Acompañamos a <strong>docentes y organizaciones</strong> para fortalecer sus propuestas, elegir el formato adecuado para cada contenido, <strong>estructurar guiones</strong> de clases y crear materiales <strong>visuales, audiovisuales y escritos</strong> que acerquen sus iniciativas a las y los estudiantes."
-          image: "cumulo.png"           # <— solo nombre de archivo (en assets/media/)
+          image: "cumulo.png" 
           image_alt: "Logotipo Cúmulo"
-          image_style: "max-width:70%"  # ~30% más chico
+          image_style: "max-width:70%"
           button:
             text: "Conversemos"
             url: "/#cta-final"
@@ -57,7 +42,7 @@ sections:
     design:
       columns: "2"
       spacing:
-        padding: ["16px","0","8px","0"]
+        padding: ["12px","0","6px","0"]
 
   # 3) Acompañamiento (cta-image-paragraph, fondo azul, texto blanco, sin botón)
   - block: cta-image-paragraph
@@ -66,7 +51,7 @@ sections:
       items:
         - title: "<span style='color:#FFFFFF'>Acompañamiento y asesoramiento pedagógico</span>"
           text: "<span style='color:#FFFFFF'>Nos involucramos desde el <strong>inicio</strong>: ideación, lenguajes, formatos y experiencias de aprendizaje. ¿Qué conviene contar en <strong>video</strong> y qué en <strong>material escrito</strong>? ¿La propuesta combina materiales e <strong>instancias sincrónicas</strong>? ¿Cómo articularlas sin repetir contenidos? Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto tenga <strong>coherencia</strong>.</span>"
-          image: "cumuloilus-08.png"    # <— solo nombre de archivo (en assets/media/)
+          image: "cumuloilus-08.png"
           image_alt: "Ilustración Cúmulo"
           image_style: "max-width:80%"
     design:
@@ -87,22 +72,22 @@ sections:
           description: "propuestas de formación acompañadas"
     design:
       spacing:
-        padding: ["8px","0","8px","0"]
+        padding: ["6px","0","4px","0"]   # menos espacio
 
-  # 4.5) People (usa avatars en /media/authors/<slug>/avatar.jpg)
+  # 4.5) People (requiere partial hbx/blocks/people/block.html)
   - block: people
     id: people
     content:
       title: "Quiénes somos"
       authors:
-        - slug: "admin"
+        - slug: "julian"
           name: "Julián"
         - slug: "cielo"
           name: "Cielo"
     design:
       columns: 2
       spacing:
-        padding: ["8px","0","8px","0"]
+        padding: ["4px","0","4px","0"]   # muy poco espacio para pegarse a métricas/testimonios
 
   # 5) Testimonios (menos margen)
   - block: testimonials
@@ -119,7 +104,7 @@ sections:
             La **cercanía**, la **rapidez de respuesta** y la **dedicación** para asegurarse de que todo quede perfecto hacen que trabajar juntos sea siempre un gusto.
     design:
       spacing:
-        padding: ["8px","0","8px","0"]
+        padding: ["4px","0","6px","0"]
 
   # 6) Organizaciones que confían — logos inline (usar /media/logos/)
   - block: markdown
@@ -135,9 +120,9 @@ sections:
         </div>
     design:
       spacing:
-        padding: ["8px","0","8px","0"]
+        padding: ["6px","0","8px","0"]
 
-  # 7) CTA final (bloque cta real)
+  # 7) CTA final (bloque cta real con contenido visible)
   - block: cta
     id: cta-final
     content:
@@ -153,5 +138,19 @@ sections:
       container:
         max_width: "1280px"
       spacing:
-        padding: ["40px","0","40px","0"]
+        padding: ["36px","0","36px","0"]
+
+  # 8) CSS puntual al final y sin ocupar espacio visual
+  - block: markdown
+    id: style-fixes
+    content:
+      text: |
+        <style>
+          #metricas h2, #testimonios h2, #aliados h2, #people h2 {
+            margin-top: 0.25rem; margin-bottom: 0.25rem;
+          }
+        </style>
+    design:
+      spacing:
+        padding: ["0","0","0","0"]
 ---
