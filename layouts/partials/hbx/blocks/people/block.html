@@ -1,13 +1,14 @@
-{{/* hbx/blocks/people/block.html */}}
+{{/* hbx/blocks/people/block.html — soporta avatars desde content/authors/<slug>/avatar.* o fallback a /media/authors/<slug>/avatar.jpg */}}
 {{ $title := .block.content.title }}
 {{ $authors := .block.content.authors }}
 {{ $cols := (or .block.design.columns 4) }}
 
+{{/* Spacing opcional */}}
 {{ $pad := "8px 0" }}
 {{ with .block.design.spacing.padding }}
   {{ $top := index . 0 | default "8px" }}
-  {{ $bottom := index . 2 | default "8px" }}
-  {{ $pad = printf "%s 0 %s 0" $top $bottom }}
+  {{ $bot := index . 2 | default "8px" }}
+  {{ $pad = printf "%s 0 %s 0" $top $bot }}
 {{ end }}
 
 <section id="{{ .block.id }}" style="padding: {{ $pad }};">
@@ -20,11 +21,21 @@
       {{ range $authors }}
         {{ $slug := .slug }}
         {{ $name := .name }}
-        {{ $avatar := printf "/media/authors/%s/avatar.jpg" $slug }}
+
+        {{/* 1) Intentar obtener la página del autor: content/authors/<slug> */}}
+        {{ $authorPage := site.GetPage (printf "authors/%s" $slug) }}
+        {{ $img := nil }}
+        {{ if $authorPage }}
+          {{/* 2) Buscar un resource llamado avatar.* (avatar.jpg/png/webp) en esa carpeta */}}
+          {{ $img = or ($authorPage.Resources.GetMatch "avatar.*") ($authorPage.Resources.GetMatch "**/avatar.*") }}
+        {{ end }}
+
+        {{/* 3) Si no hay resource, usar fallback estático bajo /media/authors/<slug>/avatar.jpg */}}
+        {{ $src := cond $img $img.RelPermalink (printf "/media/authors/%s/avatar.jpg" $slug) }}
 
         <div class="text-center">
           <div class="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden mx-auto shadow">
-            <img src="{{ $avatar }}" alt="{{ $name }}" class="w-full h-full object-cover" loading="lazy" />
+            <img src="{{ $src }}" alt="{{ $name }}" class="w-full h-full object-cover" loading="lazy" />
           </div>
           <div class="mt-2 font-medium">{{ $name }}</div>
         </div>
