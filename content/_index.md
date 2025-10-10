@@ -16,8 +16,7 @@ sections:
           text: "Diseñamos y producimos recursos para la <strong>enseñanza y el aprendizaje</strong> en diversos formatos y plataformas. Acompañamos a <strong>docentes y organizaciones</strong> para fortalecer sus propuestas, elegir el formato adecuado para cada contenido, <strong>estructurar guiones</strong> de clases y crear materiales <strong>visuales, audiovisuales y escritos</strong> que acerquen sus iniciativas a las y los estudiantes."
           image: "/cumulo.png"
           image_alt: "Logotipo Cúmulo"
-          # achicar ~30%
-          image_style: "max-width:70%"
+          image_style: "max-width:70%"   # ~30% más chico
           button:
             text: "Conversemos"
             url: "/#cta-final"
@@ -45,22 +44,24 @@ sections:
           description: "Corrección de textos y diseño editorial para materiales de lectura e interactivos."
     design:
       columns: "2"
+      spacing:
+        padding: ["16px","0","8px","0"]
 
-  # 3) Acompañamiento y asesoramiento pedagógico (como cta-image-paragraph, sin botón)
+  # 3) Acompañamiento y asesoramiento pedagógico (cta-image-paragraph con fondo azul y texto blanco, sin botón)
   - block: cta-image-paragraph
     id: acompanamiento
     content:
       items:
-        - title: "Acompañamiento y asesoramiento pedagógico"
-          text: "Nos involucramos desde el <strong>inicio</strong>: ideación, lenguajes, formatos y experiencias de aprendizaje. ¿Qué conviene contar en <strong>video</strong> y qué en <strong>material escrito</strong>? ¿La propuesta combina materiales e <strong>instancias sincrónicas</strong>? ¿Cómo articularlas sin repetir contenidos? Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto tenga <strong>coherencia</strong>."
+        - title: "<span style='color:#FFFFFF'>Acompañamiento y asesoramiento pedagógico</span>"
+          text: "<span style='color:#FFFFFF'>Nos involucramos desde el <strong>inicio</strong>: ideación, lenguajes, formatos y experiencias de aprendizaje. ¿Qué conviene contar en <strong>video</strong> y qué en <strong>material escrito</strong>? ¿La propuesta combina materiales e <strong>instancias sincrónicas</strong>? ¿Cómo articularlas sin repetir contenidos? Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto tenga <strong>coherencia</strong>.</span>"
           image: "/cumuloilus-08.png"
           image_alt: "Ilustración Cúmulo"
           image_style: "max-width:80%"
     design:
       background:
-        color: "#FFF8E0"
+        color: "#3E6FBA"
 
-  # 4) Métricas / Stats
+  # 4) Métricas / Stats (título con menos margen)
   - block: stats
     id: metricas
     content:
@@ -68,6 +69,13 @@ sections:
       items:
         - statistic: "170+"
           description: "clases en formato video"
+        - statistic: "40+"
+          description: "docentes trabajaron con Cúmulo"
+        - statistic: "10"
+          description: "propuestas de formación acompañadas"
+    design:
+      spacing:
+        padding: ["8px","0","8px","0"]
 
   # 5) Testimonios (menos espacio)
   - block: testimonials
@@ -86,29 +94,32 @@ sections:
       spacing:
         padding: ["8px","0","8px","0"]
 
-  # 6) Organizaciones que confían — logos inline (asegurado que se vean)
+  # 6) Organizaciones que confían — logos inline (menos margen en título)
   - block: markdown
     id: aliados
     content:
       title: "Organizaciones que confían en Cúmulo"
       text: |
         <div class="mt-2 flex flex-wrap items-center gap-4">
-          <img src="/media/logo1.jpg" alt="Logo 1" style="height:36px;width:auto" />
-          <img src="/media/logo2.jpg" alt="Logo 2" style="height:36px;width:auto" />
-          <img src="/media/logo3.jpg" alt="Logo 3" style="height:36px;width:auto" />
-          <img src="/media/logo4.jpg" alt="Logo 4" style="height:36px;width:auto" />
+          <img src="/logo1.jpg" alt="Logo 1" style="height:36px;width:auto" />
+          <img src="/logo2.jpg" alt="Logo 2" style="height:36px;width:auto" />
+          <img src="/logo3.jpg" alt="Logo 3" style="height:36px;width:auto" />
+          <img src="/logo4.jpg" alt="Logo 4" style="height:36px;width:auto" />
         </div>
+    design:
+      spacing:
+        padding: ["8px","0","8px","0"]
 
-  # 7) CTA final (markdown card con fondo de color, no depende de partial)
+  # 7) CTA final (más ancho, botón)
   - block: markdown
     id: cta-final
     content:
       text: |
-        <section class="py-8">
-          <div class="container mx-auto px-4 md:px-6">
-            <div class="rounded-2xl p-8 text-center shadow-md" style="background:#F4A26D;">
+        <section class="py-10">
+          <div class="w-full">
+            <div class="rounded-2xl p-10 text-center shadow-md mx-auto" style="max-width:1200px;background:#F4A26D;">
               <h2 class="text-2xl md:text-3xl font-semibold mb-2" style="color:#3F393B;">¿Arrancamos?</h2>
-              <p class="text-lg md:text-xl mb-4" style="color:#3F393B;">Contanos tu idea y te ayudamos a convertirla en un recorrido claro para tus estudiantes.</p>
+              <p class="text-lg md:text-xl mb-5" style="color:#3F393B;">Contanos tu idea y te ayudamos a convertirla en un recorrido claro para tus estudiantes.</p>
               <a href="/contact" class="btn btn-primary">Conversemos</a>
             </div>
           </div>
