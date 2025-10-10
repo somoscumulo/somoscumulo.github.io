@@ -29,6 +29,7 @@ highlight_name: true
 
 ---
 
-Chien Shiung Wu is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include
-distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops
-self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+Soy Julián, fundador, director y productor de contenidos audiovisuales en Cúmulo.
+Licenciado en Comunicación Social (orientación Institucional), desde 2020 trabajo de forma independiente en producción audiovisual para e-learning: videos educativos, tutoriales y clases junto a distintas organizaciones y en múltiples plataformas. En 2025 armamos equipo y lanzamos este proyecto colectivo para poner en juego lo aprendido y proyectarlo hacia nuevas formas de enseñar y aprender.
+Hoy también formo parte de MetaDocencia, una organización que construye capacidades locales para transformar la ciencia global—haciendo crecer el conocimiento en red, desde América Latina hacia el mundo.
+Antes, entre 2017 y 2022, integré la Oficina de Comunicación Institucional de FCE-UNC, donde planifiqué y gestioné redes sociales y coordiné el Nodo Audiovisual: realizamos 300+ videos y, de paso, encontré nuevas búsquedas, intereses y desafíos.
