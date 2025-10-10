@@ -44,8 +44,8 @@ sections:
     content:
       title: "Nuestros servicios"
       items:
-        - name: "Formación en lenguaje audiovisual"
-          description: "Talleres y asesorías para planificar y producir contenidos educativos con criterios narrativos y técnicos."
+        - name: "Clases en formato video"
+          description: "Ponemos a disposición todas las posibilidades del lenguaje audiovisual para diseñar clases que transformen la experiencia de tus estudiantes."
           icon: "video"
         - name: "Videos animados"
           description: "Explicaciones claras con motion graphics, rotulación y recursos visuales que facilitan la comprensión."
