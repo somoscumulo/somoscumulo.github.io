@@ -79,22 +79,22 @@ sections:
       spacing:
         padding: ["8px","0","8px","0"]
 
-- block: people
-  id: people
-  content:
-    title: "Quiénes somos"
-    authors:
-      - slug: "admin"
-        name: "Julián"
-      - slug: "cielo"
-        name: "Cielo"
-      # Agregá más perfiles copiando el formato:
-      # - slug: "otro-slug"
-      #   name: "Nombre"
-  design:
-    columns: 2                # 2–4 columnas según prefieras
-    spacing:
-      padding: ["8px","0","8px","0"]  # menos margen sup/inf
+  - block: people
+    id: people
+    content:
+      title: "Quiénes somos"
+      authors:
+        - slug: "admin"
+          name: "Julián"
+        - slug: "cielo"
+          name: "Cielo"
+        # Agregá más perfiles copiando el formato:
+        # - slug: "otro-slug"
+        #   name: "Nombre"
+    design:
+      columns: 2                # 2–4 columnas según prefieras
+      spacing:
+        padding: ["8px","0","8px","0"]  # menos margen sup/inf
 
 
   # 5) Testimonios (menos margen)
