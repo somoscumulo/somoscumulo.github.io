@@ -1,0 +1,5 @@
+/* reduce margen de títulos en secciones específicas */
+#metricas h2, #testimonios h2, #aliados h2 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
