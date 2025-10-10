@@ -122,24 +122,18 @@ sections:
       spacing:
         padding: ["6px","0","8px","0"]
 
-  # 7) CTA final (bloque cta real con contenido visible)
-  - block: cta
+  - block: cta-card
     id: cta-final
     content:
       title: "¿Arrancamos?"
       text: "Contanos tu idea y te ayudamos a convertirla en un recorrido claro para tus estudiantes."
       button:
         text: "Conversemos"
-        url: "/contact"
+        url: "mailto:somoscumulo@gmail.com?subject=Quiero%trabajr%20con%20Cumulo"
     design:
-      align: center
-      background:
-        color: "#F4A26D"
-      container:
-        max_width: "1280px"
-      spacing:
-        padding: ["36px","0","36px","0"]
-
+      card:
+        css_class: "shadow-sm"
+        css_style: "background-color:#F4A26D;color:#FFFFFF;"
   # 8) CSS puntual al final y sin ocupar espacio visual
   - block: markdown
     id: style-fixes
