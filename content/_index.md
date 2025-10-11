@@ -118,7 +118,7 @@ sections:
       title: "Organizaciones que confían en Cúmulo"
       text: |
         <div class="mt-2 flex flex-wrap items-center gap-4">
-          <img src="/media/logos/logo1.jpg" alt="Logo 1" style="height:36px;width:auto" />
+          <img src="https://somoscumulo.github.io/img/logo1.jpgg" alt="Logo 1" style="height:36px;width:auto" />
           <img src="/media/logos/logo2.jpg" alt="Logo 2" style="height:36px;width:auto" />
           <img src="/media/logos/logo3.jpg" alt="Logo 3" style="height:36px;width:auto" />
           <img src="/media/logos/logo4.jpg" alt="Logo 4" style="height:36px;width:auto" />
