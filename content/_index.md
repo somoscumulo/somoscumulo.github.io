@@ -77,6 +77,7 @@ sections:
       spacing:
         padding: ["6px","0","2px","0"]   # compacto
 
+ # 4.5) Quiénes somos (avatars y nombres linkean a /authors/<slug>/)
   - block: markdown
     id: quienes-somos
     content:
@@ -84,23 +85,25 @@ sections:
       text: |
         <div class="grid grid-cols-2 gap-8 items-start">
           <!-- Julián -->
-          <div class="text-center">
+          <a href="/authors/julian/" class="text-center group" aria-label="Ir al perfil de Julián">
             <div class="rounded-full overflow-hidden mx-auto shadow w-28 h-28 md:w-32 md:h-32 flex items-center justify-center">
               {{< author_avatar slug="julian" alt="Julián" >}}
             </div>
-            <div class="mt-2 font-medium">Julián</div>
-          </div>
+            <div class="mt-2 font-medium group-hover:underline">Julián</div>
+          </a>
+  
           <!-- Cielo -->
-          <div class="text-center">
+          <a href="/authors/cielo/" class="text-center group" aria-label="Ir al perfil de Cielo">
             <div class="rounded-full overflow-hidden mx-auto shadow w-28 h-28 md:w-32 md:h-32 flex items-center justify-center">
               {{< author_avatar slug="cielo" alt="Cielo" >}}
             </div>
-            <div class="mt-2 font-medium">Cielo</div>
-          </div>
+            <div class="mt-2 font-medium group-hover:underline">Cielo</div>
+          </a>
         </div>
     design:
       spacing:
         padding: ["2px","0","2px","0"]
+
 
 
   - block: markdown
