@@ -77,23 +77,32 @@ sections:
       spacing:
         padding: ["6px","0","2px","0"]   # compacto
 
-  # 4.5) Quiénes somos (people)
-  - block: people
-    id: people
+# 4.5) Quiénes somos (markdown con HTML, solo Julián y Cielo)
+  - block: markdown
+    id: quienes-somos
     content:
       title: "Quiénes somos"
-      authors:
-        - slug: "julian"
-          name: "Julián"
-        - slug: "cielo"
-          name: "Cielo"
-      # Para más autores, copiá el formato:
-      # - slug: "otro-slug"
-      #   name: "Nombre"
+      text: |
+        <div class="grid grid-cols-2 gap-8 items-start">
+          <!-- Julián -->
+          <div class="text-center">
+            <div class="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden mx-auto shadow">
+              <img src="/media/authors/julian/avatar.jpg" alt="Julián" class="w-full h-full object-cover" loading="lazy" />
+            </div>
+            <div class="mt-2 font-medium">Julián</div>
+          </div>
+          <!-- Cielo -->
+          <div class="text-center">
+            <div class="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden mx-auto shadow">
+              <img src="/media/authors/cielo/avatar.jpg" alt="Cielo" class="w-full h-full object-cover" loading="lazy" />
+            </div>
+            <div class="mt-2 font-medium">Cielo</div>
+          </div>
+        </div>
     design:
-      columns: 2
       spacing:
         padding: ["2px","0","2px","0"]
+
 
   # 5) Testimonios (SIN título)
   - block: testimonials
