@@ -1,0 +1,14 @@
+{{/* Uso: {{< author_avatar slug="julian" alt="Julián" class="w-28 h-28 md:w-32 md:h-32" >}} */}}
+{{ $slug := .Get "slug" }}
+{{ $alt  := or (.Get "alt") $slug }}
+{{ $cls  := or (.Get "class") "w-28 h-28 md:w-32 md:h-32" }}
+
+{{ $p := site.GetPage (printf "authors/%s" $slug) }}
+{{ $img := cond $p (or ($p.Resources.GetMatch "avatar.*") ($p.Resources.GetMatch "**/avatar.*")) nil }}
+
+{{ if $img }}
+  <img src="{{ $img.RelPermalink }}" alt="{{ $alt }}" class="w-full h-full object-cover" loading="lazy" />
+{{ else }}
+  {{/* Fallback: si no hay resource, buscar en /static/media/authors/<slug>/avatar.jpg */}}
+  <img src="/media/authors/{{ $slug }}/avatar.jpg" alt="{{ $alt }}" class="w-full h-full object-cover" loading="lazy" />
+{{ end }}
