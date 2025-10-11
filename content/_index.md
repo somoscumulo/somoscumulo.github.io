@@ -120,7 +120,7 @@ sections:
           <img src="https://somoscumulo.github.io/img/logo1.jpg" alt="Logo 1" style="height:70px;width:auto" />
           <img src="https://somoscumulo.github.io/img/logo2.jpg" alt="Logo 2" style="height:70px;width:auto" />
           <img src="https://somoscumulo.github.io/img/logo3.jpg" alt="Logo 3" style="height:70px;width:auto" />
-          <img src="https://somoscumulo.github.io/img/logo4.jpg" alt="Logo 4" style="height:70px;width:auto" />
+          <img src="https://somoscumulo.github.io/img/logo4.png" alt="Logo 4" style="height:70px;width:auto" />
         </div>
     design:
       spacing:
