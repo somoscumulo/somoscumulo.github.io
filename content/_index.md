@@ -117,10 +117,10 @@ sections:
       text: |
         <div class="mt-2 flex flex-wrap items-center gap-4">
           <!-- Sugerencia: usá una ruta local /media/logos/logo1.jpg para evitar CORS/404 -->
-          <img src="https://somoscumulo.github.io/img/logo1.jpg" alt="Logo 1" style="height:70px;width:auto" />
+          <img src="https://somoscumulo.github.io/img/logo1.jpg" alt="Logo 1" style="height:60px;width:auto" />
           <img src="https://somoscumulo.github.io/img/logo2.jpg" alt="Logo 2" style="height:70px;width:auto" />
           <img src="https://somoscumulo.github.io/img/logo3.jpg" alt="Logo 3" style="height:70px;width:auto" />
-          <img src="https://somoscumulo.github.io/img/logo4.png" alt="Logo 4" style="height:70px;width:auto" />
+          <img src="https://somoscumulo.github.io/img/logo4.png" alt="Logo 4" style="height:40px;width:auto" />
         </div>
     design:
       spacing:
