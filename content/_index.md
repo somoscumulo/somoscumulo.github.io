@@ -8,7 +8,7 @@ image:
 
 sections:
 
-  # 1) CTA image + paragraph (fondo amarillo, logo reducido 30%)
+  # 1) CTA image + paragraph (fondo amarillo, logo reducido ~30%)
   - block: cta-image-paragraph
     id: solutions
     content:
@@ -75,7 +75,7 @@ sections:
           description: "propuestas de formación acompañadas"
     design:
       spacing:
-        padding: ["6px","0","2px","0"]   # compactado
+        padding: ["6px","0","2px","0"]   # compacto
 
   # 4.5) Quiénes somos (people)
   - block: people
@@ -87,7 +87,9 @@ sections:
           name: "Julián"
         - slug: "cielo"
           name: "Cielo"
-      # Si agregás más autores, copiá el bloque de arriba
+      # Para más autores, copiá el formato:
+      # - slug: "otro-slug"
+      #   name: "Nombre"
     design:
       columns: 2
       spacing:
@@ -109,24 +111,28 @@ sections:
       spacing:
         padding: ["2px","0","6px","0"]
 
-  # 6) Organizaciones que confían — logos inline
+  # 6) Organizaciones que confían — logos en una sola línea (ancho total)
   - block: markdown
     id: aliados
     content:
       title: "Organizaciones que confían en Cúmulo"
       text: |
-        <div class="mt-2 flex flex-wrap items-center gap-4">
-          <!-- Sugerencia: usá una ruta local /media/logos/logo1.jpg para evitar CORS/404 -->
-          <img src="https://somoscumulo.github.io/img/logo1.jpg" alt="Logo 1" style="height:50px;width:auto" />
-          <img src="https://somoscumulo.github.io/img/logo2.jpg" alt="Logo 2" style="height:60px;width:auto" />
-          <img src="https://somoscumulo.github.io/img/logo3.jpg" alt="Logo 3" style="height:65px;width:auto" />
-          <img src="https://somoscumulo.github.io/img/logo4.png" alt="Logo 4" style="height:45px;width:auto" />
+        <!-- Contenedor full-width y fila sin wrap -->
+        <div style="max-width:100%;width:100%;padding-left:0;padding-right:0;">
+          <div class="flex items-center gap-6 flex-nowrap justify-center" style="width:100%;max-width:100%;overflow-x:auto;">
+            <!-- Reemplazá las rutas por las tuyas locales si preferís (/media/logos/...) -->
+            <img src="https://somoscumulo.github.io/img/logo1.jpg" alt="Logo 1" style="height:70px;width:auto;flex:0 0 auto;" />
+            <img src="https://somoscumulo.github.io/img/logo2.jpg" alt="Logo 2" style="height:70px;width:auto;flex:0 0 auto;" />
+            <img src="https://somoscumulo.github.io/img/logo3.jpg" alt="Logo 3" style="height:70px;width:auto;flex:0 0 auto;" />
+            <img src="https://somoscumulo.github.io/img/logo4.png" alt="Logo 4" style="height:70px;width:auto;flex:0 0 auto;" />
+            <!-- Agregá más logos si querés, todos quedarán en una fila -->
+          </div>
         </div>
     design:
       spacing:
         padding: ["6px","0","8px","0"]
 
-  # 7) CTA final — si usás cta-card, asegurate de tener el partial; de lo contrario, usá 'cta'
+  # 7) CTA final — cta-card (usa design.card.* como el ejemplo que te funciona)
   - block: cta-card
     id: cta-final
     content:
@@ -139,8 +145,7 @@ sections:
     design:
       card:
         css_class: "shadow-sm"
-        css_style: "background-color:#F4A26D;color:#3F393B;text-align:center;"
-
+        css_style: "background-color:#F4A26D;color:#3F393B;text-align:center; padding: 2.5rem; border-radius: 1rem;"
 
   # 8) CSS puntual al final (no ocupa espacio)
   - block: markdown
@@ -148,7 +153,7 @@ sections:
     content:
       text: |
         <style>
-          /* Si en algún momento volvés a poner títulos, se mantiene el margen reducido: */
+          /* si volvés a poner títulos, mantenemos el margen reducido */
           #metricas h2, #testimonios h2, #aliados h2, #people h2 {
             margin-top: 0.25rem; margin-bottom: 0.25rem;
           }
