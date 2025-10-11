@@ -77,7 +77,6 @@ sections:
       spacing:
         padding: ["6px","0","2px","0"]   # compacto
 
-# 4.5) Quiénes somos (markdown usando shortcode para Page Resources)
   - block: markdown
     id: quienes-somos
     content:
@@ -86,15 +85,14 @@ sections:
         <div class="grid grid-cols-2 gap-8 items-start">
           <!-- Julián -->
           <div class="text-center">
-            <div class="rounded-full overflow-hidden mx-auto shadow w-28 h-28 md:w-32 md:h-32">
+            <div class="rounded-full overflow-hidden mx-auto shadow w-28 h-28 md:w-32 md:h-32 flex items-center justify-center">
               {{< author_avatar slug="julian" alt="Julián" >}}
             </div>
             <div class="mt-2 font-medium">Julián</div>
           </div>
-  
           <!-- Cielo -->
           <div class="text-center">
-            <div class="rounded-full overflow-hidden mx-auto shadow w-28 h-28 md:w-32 md:h-32">
+            <div class="rounded-full overflow-hidden mx-auto shadow w-28 h-28 md:w-32 md:h-32 flex items-center justify-center">
               {{< author_avatar slug="cielo" alt="Cielo" >}}
             </div>
             <div class="mt-2 font-medium">Cielo</div>
@@ -104,39 +102,17 @@ sections:
       spacing:
         padding: ["2px","0","2px","0"]
 
-# 6) Organizaciones que confían — grid responsiva (sin scroll)
+
   - block: markdown
     id: aliados
     content:
       title: "Organizaciones que confían en Cúmulo"
       text: |
-        <div class="w-full" style="max-width:100%;">
-          <!-- Grid responsiva: columnas auto-fit, logos “anchos” y sin overflow -->
-          <div style="
-            display:grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 24px 32px;
-            align-items:center;">
-            
-            <div class="flex items-center justify-center">
-              <img src="https://somoscumulo.github.io/img/logo1.jpg" alt="Logo 1" style="max-width: 220px; width: 100%; height:auto;" />
-            </div>
-            <div class="flex items-center justify-center">
-              <img src="https://somoscumulo.github.io/img/logo2.jpg" alt="Logo 2" style="max-width: 220px; width: 100%; height:auto;" />
-            </div>
-            <div class="flex items-center justify-center">
-              <img src="https://somoscumulo.github.io/img/logo3.jpg" alt="Logo 3" style="max-width: 220px; width: 100%; height:auto;" />
-            </div>
-            <div class="flex items-center justify-center">
-              <img src="https://somoscumulo.github.io/img/logo4.png" alt="Logo 4" style="max-width: 220px; width: 100%; height:auto;" />
-            </div>
-  
-            <!-- Agregá más logos repitiendo el bloque <div>...</div> -->
-          </div>
-        </div>
+        {{< logos_grid >}}
     design:
       spacing:
         padding: ["6px","0","8px","0"]
+
 
   # 5) Testimonios (SIN título)
   - block: testimonials
