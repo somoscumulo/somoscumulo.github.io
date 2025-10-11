@@ -7,8 +7,13 @@
 {{ $img := cond $p (or ($p.Resources.GetMatch "avatar.*") ($p.Resources.GetMatch "**/avatar.*")) nil }}
 
 {{ if $img }}
-  <img src="{{ $img.RelPermalink }}" alt="{{ $alt }}" class="w-full h-full object-cover" loading="lazy" />
+  <img src="{{ $img.RelPermalink }}" alt="{{ $alt }}"
+       class="w-full h-full object-cover object-center block"
+       style="object-position:center center;"
+       loading="lazy" />
 {{ else }}
-  {{/* Fallback: si no hay resource, buscar en /static/media/authors/<slug>/avatar.jpg */}}
-  <img src="/media/authors/{{ $slug }}/avatar.jpg" alt="{{ $alt }}" class="w-full h-full object-cover" loading="lazy" />
+  <img src="/media/authors/{{ $slug }}/avatar.jpg" alt="{{ $alt }}"
+       class="w-full h-full object-cover object-center block"
+       style="object-position:center center;"
+       loading="lazy" />
 {{ end }}
