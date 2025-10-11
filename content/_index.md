@@ -120,26 +120,41 @@ sections:
       spacing:
         padding: ["2px","0","6px","0"]
 
-  # 6) Organizaciones que confían — logos en una sola línea (ancho total)
+# 6) Organizaciones que confían — grid responsiva (sin scroll)
   - block: markdown
     id: aliados
     content:
       title: "Organizaciones que confían en Cúmulo"
       text: |
-        <!-- Contenedor full-width y fila sin wrap -->
-        <div style="max-width:100%;width:100%;padding-left:0;padding-right:0;">
-          <div class="flex items-center gap-6 flex-nowrap justify-center" style="width:100%;max-width:100%;overflow-x:auto;">
-            <!-- Reemplazá las rutas por las tuyas locales si preferís (/media/logos/...) -->
-            <img src="https://somoscumulo.github.io/img/logo1.jpg" alt="Logo 1" style="height:70px;width:auto;flex:0 0 auto;" />
-            <img src="https://somoscumulo.github.io/img/logo2.jpg" alt="Logo 2" style="height:70px;width:auto;flex:0 0 auto;" />
-            <img src="https://somoscumulo.github.io/img/logo3.jpg" alt="Logo 3" style="height:70px;width:auto;flex:0 0 auto;" />
-            <img src="https://somoscumulo.github.io/img/logo4.png" alt="Logo 4" style="height:70px;width:auto;flex:0 0 auto;" />
-            <!-- Agregá más logos si querés, todos quedarán en una fila -->
+        <div class="w-full" style="max-width:100%;">
+          <!-- Grid responsiva: columnas auto-fit, logos “anchos” y sin overflow -->
+          <div style="
+            display:grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 24px 32px;
+            align-items:center;">
+            
+            <!-- Usá rutas locales si podés: /media/logos/... -->
+            <div class="flex items-center justify-center">
+              <img src="https://somoscumulo.github.io/img/logo1.jpg" alt="Logo 1" style="max-width: 220px; width: 100%; height:auto;" />
+            </div>
+            <div class="flex items-center justify-center">
+              <img src="https://somoscumulo.github.io/img/logo2.jpg" alt="Logo 2" style="max-width: 220px; width: 100%; height:auto;" />
+            </div>
+            <div class="flex items-center justify-center">
+              <img src="https://somoscumulo.github.io/img/logo3.jpg" alt="Logo 3" style="max-width: 220px; width: 100%; height:auto;" />
+            </div>
+            <div class="flex items-center justify-center">
+              <img src="https://somoscumulo.github.io/img/logo4.png" alt="Logo 4" style="max-width: 220px; width: 100%; height:auto;" />
+            </div>
+  
+            <!-- Agregá más logos repitiendo el bloque <div>...</div> -->
           </div>
         </div>
     design:
       spacing:
         padding: ["6px","0","8px","0"]
+
 
   # 7) CTA final — cta-card (usa design.card.* como el ejemplo que te funciona)
   - block: cta-card
