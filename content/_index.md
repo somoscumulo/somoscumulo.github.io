@@ -62,11 +62,10 @@ sections:
       background:
         color: "#3E6FBA"
 
-  # 4) Métricas / Stats
+  # 4) Métricas / Stats (SIN título)
   - block: stats
     id: metricas
     content:
-      title: "Métricas"
       items:
         - statistic: "170+"
           description: "clases en formato video"
@@ -76,7 +75,7 @@ sections:
           description: "propuestas de formación acompañadas"
     design:
       spacing:
-        padding: ["6px","0","4px","0"]
+        padding: ["6px","0","2px","0"]   # compactado
 
   # 4.5) Quiénes somos (people)
   - block: people
@@ -88,17 +87,16 @@ sections:
           name: "Julián"
         - slug: "cielo"
           name: "Cielo"
-      # Para cada autor, asegurá /media/authors/<slug>/avatar.jpg
+      # Si agregás más autores, copiá el bloque de arriba
     design:
       columns: 2
       spacing:
-        padding: ["4px","0","4px","0"]
+        padding: ["2px","0","2px","0"]
 
-  # 5) Testimonios
+  # 5) Testimonios (SIN título)
   - block: testimonials
     id: testimonios
     content:
-      title: "Testimonios"
       items:
         - name: "Estefanía Michlig"
           role: "Fundación Empretec"
@@ -109,7 +107,7 @@ sections:
             La **cercanía**, la **rapidez de respuesta** y la **dedicación** para asegurarse de que todo quede perfecto hacen que trabajar juntos sea siempre un gusto.
     design:
       spacing:
-        padding: ["4px","0","6px","0"]
+        padding: ["2px","0","6px","0"]
 
   # 6) Organizaciones que confían — logos inline
   - block: markdown
@@ -118,16 +116,17 @@ sections:
       title: "Organizaciones que confían en Cúmulo"
       text: |
         <div class="mt-2 flex flex-wrap items-center gap-4">
-          <img src="https://somoscumulo.github.io/img/logo1.jpgg" alt="Logo 1" style="height:36px;width:auto" />
-          <img src="/media/logos/logo2.jpg" alt="Logo 2" style="height:36px;width:auto" />
-          <img src="/media/logos/logo3.jpg" alt="Logo 3" style="height:36px;width:auto" />
-          <img src="/media/logos/logo4.jpg" alt="Logo 4" style="height:36px;width:auto" />
+          <!-- Sugerencia: usá una ruta local /media/logos/logo1.jpg para evitar CORS/404 -->
+          <img src="https://somoscumulo.github.io/img/logo1.jpg" alt="Logo 1" style="height:36px;width:auto" />
+          <img src="https://somoscumulo.github.io/img/logo2.jpg" alt="Logo 2" style="height:36px;width:auto" />
+          <img src="https://somoscumulo.github.io/img/logo3.jpg" alt="Logo 3" style="height:36px;width:auto" />
+          <img src="https://somoscumulo.github.io/img/logo4.jpg" alt="Logo 4" style="height:36px;width:auto" />
         </div>
     design:
       spacing:
         padding: ["6px","0","8px","0"]
 
-  # 7) CTA final — usar cta-card (no markdown)
+  # 7) CTA final — si usás cta-card, asegurate de tener el partial; de lo contrario, usá 'cta'
   - block: cta-card
     id: cta-final
     content:
@@ -151,6 +150,7 @@ sections:
     content:
       text: |
         <style>
+          /* Si en algún momento volvés a poner títulos, se mantiene el margen reducido: */
           #metricas h2, #testimonios h2, #aliados h2, #people h2 {
             margin-top: 0.25rem; margin-bottom: 0.25rem;
           }
