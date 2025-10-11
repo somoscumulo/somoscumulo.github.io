@@ -77,7 +77,7 @@ sections:
       spacing:
         padding: ["6px","0","2px","0"]   # compacto
 
-# 4.5) Quiénes somos (markdown con HTML, solo Julián y Cielo)
+# 4.5) Quiénes somos (markdown usando shortcode para Page Resources)
   - block: markdown
     id: quienes-somos
     content:
@@ -86,15 +86,16 @@ sections:
         <div class="grid grid-cols-2 gap-8 items-start">
           <!-- Julián -->
           <div class="text-center">
-            <div class="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden mx-auto shadow">
-              <img src="/media/authors/julian/avatar.jpg" alt="Julián" class="w-full h-full object-cover" loading="lazy" />
+            <div class="rounded-full overflow-hidden mx-auto shadow w-28 h-28 md:w-32 md:h-32">
+              {{< author_avatar slug="julian" alt="Julián" >}}
             </div>
             <div class="mt-2 font-medium">Julián</div>
           </div>
+  
           <!-- Cielo -->
           <div class="text-center">
-            <div class="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden mx-auto shadow">
-              <img src="/media/authors/cielo/avatar.jpg" alt="Cielo" class="w-full h-full object-cover" loading="lazy" />
+            <div class="rounded-full overflow-hidden mx-auto shadow w-28 h-28 md:w-32 md:h-32">
+              {{< author_avatar slug="cielo" alt="Cielo" >}}
             </div>
             <div class="mt-2 font-medium">Cielo</div>
           </div>
@@ -102,23 +103,6 @@ sections:
     design:
       spacing:
         padding: ["2px","0","2px","0"]
-
-
-  # 5) Testimonios (SIN título)
-  - block: testimonials
-    id: testimonios
-    content:
-      items:
-        - name: "Estefanía Michlig"
-          role: "Fundación Empretec"
-          text: >
-            Lo que más valoramos es la **calidad** de los videos y el enorme **compromiso** con el que trabajan.
-            No se limitan a entregar lo que pedimos: buscan que todo quede **claro, atractivo y realmente útil** para el usuario.
-            Nos encanta que propongan mejoras de manera constante y que se pongan manos a la obra para lograr un producto cada vez mejor.
-            La **cercanía**, la **rapidez de respuesta** y la **dedicación** para asegurarse de que todo quede perfecto hacen que trabajar juntos sea siempre un gusto.
-    design:
-      spacing:
-        padding: ["2px","0","6px","0"]
 
 # 6) Organizaciones que confían — grid responsiva (sin scroll)
   - block: markdown
@@ -134,7 +118,6 @@ sections:
             gap: 24px 32px;
             align-items:center;">
             
-            <!-- Usá rutas locales si podés: /media/logos/... -->
             <div class="flex items-center justify-center">
               <img src="https://somoscumulo.github.io/img/logo1.jpg" alt="Logo 1" style="max-width: 220px; width: 100%; height:auto;" />
             </div>
@@ -155,7 +138,22 @@ sections:
       spacing:
         padding: ["6px","0","8px","0"]
 
-
+  # 5) Testimonios (SIN título)
+  - block: testimonials
+    id: testimonios
+    content:
+      items:
+        - name: "Estefanía Michlig"
+          role: "Fundación Empretec"
+          text: >
+            Lo que más valoramos es la **calidad** de los videos y el enorme **compromiso** con el que trabajan.
+            No se limitan a entregar lo que pedimos: buscan que todo quede **claro, atractivo y realmente útil** para el usuario.
+            Nos encanta que propongan mejoras de manera constante y que se pongan manos a la obra para lograr un producto cada vez mejor.
+            La **cercanía**, la **rapidez de respuesta** y la **dedicación** para asegurarse de que todo quede perfecto hacen que trabajar juntos sea siempre un gusto.
+    design:
+      spacing:
+        padding: ["2px","0","6px","0"]
+    
   # 7) CTA final — cta-card (usa design.card.* como el ejemplo que te funciona)
   - block: cta-card
     id: cta-final
