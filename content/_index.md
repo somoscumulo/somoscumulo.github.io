@@ -117,10 +117,10 @@ sections:
       text: |
         <div class="mt-2 flex flex-wrap items-center gap-4">
           <!-- Sugerencia: usá una ruta local /media/logos/logo1.jpg para evitar CORS/404 -->
-          <img src="https://somoscumulo.github.io/img/logo1.jpg" alt="Logo 1" style="height:60px;width:auto" />
-          <img src="https://somoscumulo.github.io/img/logo2.jpg" alt="Logo 2" style="height:70px;width:auto" />
-          <img src="https://somoscumulo.github.io/img/logo3.jpg" alt="Logo 3" style="height:70px;width:auto" />
-          <img src="https://somoscumulo.github.io/img/logo4.png" alt="Logo 4" style="height:40px;width:auto" />
+          <img src="https://somoscumulo.github.io/img/logo1.jpg" alt="Logo 1" style="height:50px;width:auto" />
+          <img src="https://somoscumulo.github.io/img/logo2.jpg" alt="Logo 2" style="height:60px;width:auto" />
+          <img src="https://somoscumulo.github.io/img/logo3.jpg" alt="Logo 3" style="height:65px;width:auto" />
+          <img src="https://somoscumulo.github.io/img/logo4.png" alt="Logo 4" style="height:45px;width:auto" />
         </div>
     design:
       spacing:
@@ -131,18 +131,16 @@ sections:
     id: cta-final
     content:
       title: "¿Arrancamos?"
-      text: "Contanos tu idea y te ayudamos a convertirla en un recorrido claro para tus estudiantes."
+      text: |
+        Contanos tu idea y te ayudamos a convertirla en un recorrido claro para tus estudiantes.
       button:
         text: "Conversemos"
         url: "/contact"
     design:
-      align: center
-      background:
-        color: "#F4A26D"
-      container:
-        max_width: "1280px"
-      spacing:
-        padding: ["36px","0","36px","0"]
+      card:
+        css_class: "shadow-sm"
+        css_style: "background-color:#F4A26D;color:#3F393B;text-align:center;"
+
 
   # 8) CSS puntual al final (no ocupa espacio)
   - block: markdown
