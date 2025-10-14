@@ -31,20 +31,17 @@ sections:
     content:
       title: "Nuestros servicios"
       items:
-        - name: "Clases en formato video"
-          description: "Ponemos a disposición todas las posibilidades del lenguaje audiovisual para diseñar clases que transformen la experiencia de tus estudiantes."
-        - name: "Videos institucionales"
-          description: "Acompañamos en el guionado y llevamos adelante la producción y edición de videos para presentar tu organización."
-        - name: "Ilustración original para presentaciones"
-          description: "Creamos ilustraciones a medida que fortalecen la comunicación visual de tus presentaciones. Definimos objetivos y estilo junto al equipo."
-        - name: "Facilitación visual para pósters científicos"
-          description: "Diseñamos e ilustramos pósters que combinan claridad conceptual y coherencia visual. Organizamos la información y destacamos aportes clave."
-        - name: "Paquete de ilustraciones (banco de imágenes)"
-          description: "Desarrollamos un banco de ilustraciones originales adaptable a múltiples formatos. Definimos líneas estéticas y temáticas de tu proyecto."
-        - name: "Materiales escritos e interactivos"
-          description: "Corrección de textos y diseño editorial para materiales de lectura e interactivos."
+        - name: "Producción de videos educativos"
+          description: "Creamos clases en video que convierten el contenido en experiencias de aprendizaje. Desde la ideación y el guion hasta la producción y la edición, integramos recursos audiovisuales en múltiples formatos para comunicar con claridad e impacto."
+        - name: "Ilustración científica y facilitación visual"
+          description: "Desarrollamos recursos visuales que complementan materiales en proyectos de formación e investigación, para que cada imagen refuerce el contenido y mejore la experiencia de aprendizaje.
+Trabajamos en distintos formatos: presentaciones para clases o eventos, pósters científicos, materiales de lectura, entre otros."
+        - name: "Acompañamiento en el diseño pedagógico"
+          description: "Antes de producir contenidos, ofrecemos asesoramiento para diseñar la propuesta según el perfil de las y los estudiantes y los temas a desarrollar.
+Nos involucramos desde el inicio en la ideación y en la selección de formatos, recursos y modalidades del contenido a producir.
+Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto mantenga coherencia."
     design:
-      columns: "2"
+      columns: "3"
       spacing:
         padding: ["12px","0","6px","0"]
 
