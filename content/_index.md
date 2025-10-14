@@ -25,41 +25,35 @@ sections:
       background:
         color: "#FCF1B1"
 
-  # 2) Servicios (features)
+  # 2) Servicios (features) — con imagen arriba de cada título
   - block: features
     id: servicios
     content:
       title: "Nuestros servicios"
       items:
-        - name: "Producción de videos educativos"
-          description: "Creamos clases en video que convierten el contenido en experiencias de aprendizaje. Desde la ideación y el guion hasta la producción y la edición, integramos recursos audiovisuales en múltiples formatos para comunicar con claridad e impacto."
-        - name: "Ilustración científica y facilitación visual"
-          description: "Desarrollamos recursos visuales que complementan materiales en proyectos de formación e investigación, para que cada imagen refuerce el contenido y mejore la experiencia de aprendizaje.
-Trabajamos en distintos formatos: presentaciones para clases o eventos, pósters científicos, materiales de lectura, entre otros."
-        - name: "Acompañamiento en el diseño pedagógico"
-          description: "Antes de producir contenidos, ofrecemos asesoramiento para diseñar la propuesta según el perfil de las y los estudiantes y los temas a desarrollar.
-Nos involucramos desde el inicio en la ideación y en la selección de formatos, recursos y modalidades del contenido a producir.
-Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto mantenga coherencia."
+        - image: "cumuloilus-08.png"
+          image_alt: "Ilustración Cúmulo"
+          image_style: "max-height:64px;margin:0 auto 8px auto;display:block;"
+          name: "Producción de videos educativos"
+          description: "Diseñamos clases en video que convierten el contenido en experiencias de aprendizaje. Desde la ideación y el guion hasta la producción y la edición, integramos recursos audiovisuales en múltiples formatos para comunicar con claridad e impacto."
+        - image: "cumuloilus-08.png"
+          image_alt: "Ilustración Cúmulo"
+          image_style: "max-height:64px;margin:0 auto 8px auto;display:block;"
+          name: "Ilustración científica y facilitación visual"
+          description: "Desarrollamos recursos visuales que complementan materiales en proyectos de formación e investigación, para que cada imagen refuerce el contenido y mejore la experiencia de aprendizaje. Trabajamos en distintos formatos: presentaciones para clases o eventos, pósters científicos, materiales de lectura, entre otros."
+        - image: "cumuloilus-08.png"
+          image_alt: "Ilustración Cúmulo"
+          image_style: "max-height:64px;margin:0 auto 8px auto;display:block;"
+          name: "Acompañamiento en el diseño pedagógico"
+          description: "Antes de producir contenidos, ofrecemos asesoramiento para diseñar la propuesta según el perfil de las y los estudiantes y los temas a desarrollar. Nos involucramos desde el inicio en la ideación y en la selección de formatos, recursos y modalidades del contenido a producir. Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto mantenga coherencia."
     design:
       columns: "3"
       spacing:
         padding: ["12px","0","6px","0"]
 
-  # 3) Acompañamiento (cta-image-paragraph, fondo azul, texto blanco, sin botón)
-  - block: cta-image-paragraph
-    id: acompanamiento
-    content:
-      items:
-        - title: "<span style='color:#FFFFFF'>Acompañamiento y asesoramiento pedagógico</span>"
-          text: "<span style='color:#FFFFFF'>Nos involucramos desde el <strong>inicio</strong>: ideación, lenguajes, formatos y experiencias de aprendizaje. ¿Qué conviene contar en <strong>video</strong> y qué en <strong>material escrito</strong>? ¿La propuesta combina materiales e <strong>instancias sincrónicas</strong>? ¿Cómo articularlas sin repetir contenidos? Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto tenga <strong>coherencia</strong>.</span>"
-          image: "cumuloilus-08.png"    # archivo en assets/media/
-          image_alt: "Ilustración Cúmulo"
-          image_style: "max-width:80%"
-    design:
-      background:
-        color: "#3E6FBA"
+  # (El bloque cta-image-paragraph de Acompañamiento fue eliminado)
 
-  # 4) Métricas / Stats (SIN título)
+  # 4) Métricas / Stats (SIN título) — fondo celeste y letra blanca
   - block: stats
     id: metricas
     content:
@@ -71,10 +65,12 @@ Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto mante
         - statistic: "10"
           description: "propuestas de formación acompañadas"
     design:
+      background:
+        color: "#3E6FBA"
       spacing:
-        padding: ["6px","0","2px","0"]   # compacto
+        padding: ["12px","0","12px","0"]
 
- # 4.5) Quiénes somos (avatars y nombres linkean a /authors/<slug>/)
+  # 4.5) Quiénes somos (avatars y nombres linkean a /authors/<slug>/)
   - block: markdown
     id: quienes-somos
     content:
@@ -101,8 +97,7 @@ Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto mante
       spacing:
         padding: ["2px","0","2px","0"]
 
-
-
+  # 5) Organizaciones que confían — shortcode de grilla
   - block: markdown
     id: aliados
     content:
@@ -113,8 +108,7 @@ Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto mante
       spacing:
         padding: ["6px","0","8px","0"]
 
-
-  # 5) Testimonios (SIN título)
+  # 6) Testimonios (SIN título)
   - block: testimonials
     id: testimonios
     content:
@@ -129,7 +123,7 @@ Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto mante
     design:
       spacing:
         padding: ["2px","0","6px","0"]
-    
+
   # 7) CTA final — cta-card (usa design.card.* como el ejemplo que te funciona)
   - block: cta-card
     id: cta-final
@@ -151,10 +145,10 @@ Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto mante
     content:
       text: |
         <style>
-          /* si volvés a poner títulos, mantenemos el margen reducido */
-          #metricas h2, #testimonios h2, #aliados h2, #people h2 {
-            margin-top: 0.25rem; margin-bottom: 0.25rem;
-          }
+          /* Métricas en blanco sobre #3E6FBA */
+          #metricas, #metricas * { color:#FFFFFF !important; }
+          /* Si volvés a poner títulos, mantenemos el margen reducido */
+          #metricas h2, #testimonios h2, #aliados h2, #people h2 { margin-top: 0.25rem; margin-bottom: 0.25rem; }
         </style>
     design:
       spacing:
