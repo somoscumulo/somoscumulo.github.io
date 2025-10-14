@@ -41,7 +41,7 @@ sections:
           image_style: "max-height:64px;margin:0 auto 8px auto;display:block;"
           name: "Ilustración científica y facilitación visual"
           description: "Desarrollamos recursos visuales que complementan materiales en proyectos de formación e investigación, para que cada imagen refuerce el contenido y mejore la experiencia de aprendizaje. Trabajamos en distintos formatos: presentaciones para clases o eventos, pósters científicos, materiales de lectura, entre otros."
-        - image: "cumuloilus-08.png"
+        - image: "cumuloilus-09.png"
           image_alt: "Ilustración Cúmulo"
           image_style: "max-height:64px;margin:0 auto 8px auto;display:block;"
           name: "Acompañamiento en el diseño pedagógico"
