@@ -31,27 +31,21 @@ sections:
     content:
       title: "Nuestros servicios"
       items:
-        - image: "/img/cumuloilus-08.png"
-          image_alt: "Ilustración Cúmulo"
-          image_style: "max-height:64px;margin:0 auto 8px;display:block;"
+        - icon: "cumuloilus-08"  # busca assets/media/icons/hero/cumuloilus-08.svg
           name: "Producción de videos educativos"
           description: |
             Diseñamos clases en video que convierten el contenido en experiencias de aprendizaje.
   
             De la ideación y el guion a la producción y edición, integramos recursos audiovisuales en múltiples formatos para comunicar con claridad e impacto.
   
-        - image: "/img/cumuloilus-08.png"
-          image_alt: "Ilustración Cúmulo"
-          image_style: "max-height:64px;margin:0 auto 8px;display:block;"
+        - icon: "cumuloilus-08"
           name: "Ilustración científica y facilitación visual"
           description: |
             Desarrollamos recursos visuales que complementan materiales en proyectos de formación e investigación.
   
             Presentaciones para clases o eventos, pósters científicos y materiales de lectura, entre otros.
   
-        - image: "/img/cumuloilus-08.png"
-          image_alt: "Ilustración Cúmulo"
-          image_style: "max-height:64px;margin:0 auto 8px;display:block;"
+        - icon: "cumuloilus-08"
           name: "Acompañamiento en el diseño pedagógico"
           description: |
             Asesoramiento previo para diseñar la propuesta según el perfil estudiantil y los temas a desarrollar.
@@ -61,6 +55,7 @@ sections:
       columns: "3"
       spacing:
         padding: ["12px","0","6px","0"]
+
 
   # 3) Métricas / Stats (SIN título) — fondo celeste y letra blanca
   - block: stats
