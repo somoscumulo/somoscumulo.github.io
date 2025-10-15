@@ -1,81 +1,68 @@
-{{- /* Override robusto del bloque "features".
-     - Soporta contexto como dict {"page","block"} o como bloque directo (.)
-     - Soporta .image por ítem (rutas /media/... o assets/media/<file>)
-     - Renderiza .description con RenderString para respetar párrafos
+{{- /* Override robusto para "features"
+     - Acepta image como:
+       1) Ruta absoluta (/img/..., /media/...)
+       2) assets/media/<file> o assets/img/<file> (resources.Get)
+       3) Fallback: /img/<file>
 */ -}}
 
 {{- $ctx := . -}}
 {{- $ctxType := printf "%T" $ctx -}}
-
-{{- /* Defaults */ -}}
 {{- $page := $.Page -}}
 {{- $block := $ctx -}}
 
-{{- /* Si es un map, intentar leer "page" y "block" */ -}}
 {{- if or (eq $ctxType "map[string]interface {}") (eq $ctxType "map[string]any") -}}
-  {{- with index $ctx "page" -}}
-    {{- $page = . -}}
-  {{- end -}}
-  {{- with index $ctx "block" -}}
-    {{- $block = . -}}
-  {{- end -}}
+  {{- with index $ctx "page" -}} {{- $page = . -}} {{- end -}}
+  {{- with index $ctx "block" -}} {{- $block = . -}} {{- end -}}
 {{- end -}}
 
-{{- /* Verificar que $block parezca un bloque (tenga .content o .design) */ -}}
 {{- $isMap := or (eq (printf "%T" $block) "map[string]interface {}") (eq (printf "%T" $block) "map[string]any") -}}
 {{- if not $isMap -}}
   <div class="container my-4 p-4 border border-red-300 text-red-600 rounded">
     (features) El contexto recibido no es un bloque válido.
   </div>
 {{- else -}}
-
 <section id="{{ with $block.id }}{{ . }}{{ end }}" class="section">
   <div class="container">
 
-    {{- with $block.content.title -}}
+    {{ with $block.content.title }}
       <h2 class="section-heading">{{ . | $page.RenderString }}</h2>
-    {{- end -}}
+    {{ end }}
 
-    {{- $cols := or $block.design.columns "3" -}}
+    {{ $cols := or $block.design.columns "3" }}
     <div class="grid md:grid-cols-{{ $cols }} gap-8">
-      {{- $items := $block.content.items -}}
-      {{- if not $items -}}
+      {{ $items := $block.content.items }}
+      {{ if not $items }}
         <div class="text-sm opacity-70">(features) No hay items para mostrar.</div>
-      {{- else -}}
-        {{- range $items -}}
+      {{ else }}
+        {{ range $items }}
           <div class="text-center">
+            {{ with .image }}
+              {{ $src := . }}
+              {{ if hasPrefix $src "/" }}
+                <img src="{{ $src }}" alt="{{ $.image_alt | default "" }}" style="{{ $.image_style | default "max-height:64px;margin:0 auto 8px;display:block;" }}">
+              {{ else }}
+                {{/* 1) assets/media/<file> */}}
+                {{ $asset := resources.Get (printf "media/%s" $src) }}
+                {{ if not $asset }}{{ $asset = resources.Get (printf "img/%s" $src) }}{{ end }}
+                {{ if $asset }}
+                  <img src="{{ $asset.RelPermalink }}" alt="{{ $.image_alt | default "" }}" style="{{ $.image_style | default "max-height:64px;margin:0 auto 8px;display:block;" }}">
+                {{ else }}
+                  {{/* 2) Fallback a /img/<file> (static/img) */}}
+                  <img src="{{ printf "/img/%s" $src }}" alt="{{ $.image_alt | default "" }}" style="{{ $.image_style | default "max-height:64px;margin:0 auto 8px;display:block;" }}">
+                {{ end }}
+              {{ end }}
+            {{ end }}
 
-            {{- with .image -}}
-              {{- $src := . -}}
-              {{- if hasPrefix $src "/" -}}
-                <img src="{{ $src }}"
-                     alt="{{ $.image_alt | default "" }}"
-                     style="{{ $.image_style | default "max-height:64px;margin:0 auto 8px;display:block;" }}">
-              {{- else -}}
-                {{- $asset := resources.Get (printf "media/%s" $src) -}}
-                {{- if $asset -}}
-                  <img src="{{ $asset.RelPermalink }}"
-                       alt="{{ $.image_alt | default "" }}"
-                       style="{{ $.image_style | default "max-height:64px;margin:0 auto 8px;display:block;" }}">
-                {{- else -}}
-                  <img src="/media/{{ $src }}"
-                       alt="{{ $.image_alt | default "" }}"
-                       style="{{ $.image_style | default "max-height:64px;margin:0 auto 8px;display:block;" }}">
-                {{- end -}}
-              {{- end -}}
-            {{- end -}}
-
-            {{- with .name -}}
+            {{ with .name }}
               <h3 class="text-lg font-semibold">{{ . | $page.RenderString }}</h3>
-            {{- end -}}
+            {{ end }}
 
-            {{- with .description -}}
+            {{ with .description }}
               <div class="mt-2 prose mx-auto">{{ . | $page.RenderString }}</div>
-            {{- end -}}
-
+            {{ end }}
           </div>
-        {{- end -}}
-      {{- end -}}
+        {{ end }}
+      {{ end }}
     </div>
 
   </div>
