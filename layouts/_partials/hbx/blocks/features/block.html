@@ -1,65 +1,31 @@
-{{- /* Override del bloque "features":
-     - Usa index . "page"/"block" para leer el dict
-     - Soporta .image por ítem (ruta /media/... o assets/media/<file>)
-     - Renderiza .description con RenderString (respeta párrafos)
-*/ -}}
+- block: features
+  id: servicios
+  content:
+    title: "Nuestros servicios"
+    items:
+      - image: "/media/cumuloilus-08.png"
+        image_alt: "Ilustración Cúmulo"
+        image_style: "max-height:64px;margin:0 auto 8px;display:block;"
+        name: "Producción de videos educativos"
+        description: |
+          Diseñamos clases en video que convierten el contenido en experiencias de aprendizaje.
 
-{{- $ctx := . -}}
-{{- $page := index $ctx "page" -}}
-{{- $block := index $ctx "block" -}}
+          De la ideación y el guion a la producción y edición, integramos recursos audiovisuales en múltiples formatos para comunicar con claridad e impacto.
+      - image: "/media/cumuloilus-08.png"
+        image_alt: "Ilustración Cúmulo"
+        image_style: "max-height:64px;margin:0 auto 8px;display:block;"
+        name: "Ilustración científica y facilitación visual"
+        description: |
+          Desarrollamos recursos visuales que complementan materiales en proyectos de formación e investigación.
 
-{{- if not $block -}}
-  <div class="container my-4 p-4 border border-red-300 text-red-600 rounded">
-    (features) Falta "block" en el contexto del partial override.
-  </div>
-{{- else -}}
-<section id="{{ with $block.id }}{{ . }}{{ end }}" class="section">
-  <div class="container">
-    {{ with $block.content.title }}
-      <h2 class="section-heading">{{ . | $page.RenderString }}</h2>
-    {{ end }}
+          Presentaciones para clases o eventos, pósters científicos y materiales de lectura, entre otros.
+      - image: "/media/cumuloilus-08.png"
+        image_alt: "Ilustración Cúmulo"
+        image_style: "max-height:64px;margin:0 auto 8px;display:block;"
+        name: "Acompañamiento en el diseño pedagógico"
+        description: |
+          Asesoramiento previo para diseñar la propuesta según el perfil estudiantil y los temas a desarrollar.
 
-    {{ $cols := or $block.design.columns "3" }}
-    <div class="grid md:grid-cols-{{ $cols }} gap-8">
-      {{ $items := $block.content.items }}
-      {{ if not $items }}
-        <div class="text-sm opacity-70">(features) No hay items para mostrar.</div>
-      {{ else }}
-        {{ range $items }}
-          <div class="text-center">
-            {{ with .image }}
-              {{ $src := . }}
-              {{ if hasPrefix $src "/" }}
-                <img src="{{ $src }}"
-                     alt="{{ $.image_alt | default "" }}"
-                     style="{{ $.image_style | default "max-height:64px;margin:0 auto 8px;display:block;" }}">
-              {{ else }}
-                {{ $asset := resources.Get (printf "media/%s" $src) }}
-                {{ if $asset }}
-                  <img src="{{ $asset.RelPermalink }}"
-                       alt="{{ $.image_alt | default "" }}"
-                       style="{{ $.image_style | default "max-height:64px;margin:0 auto 8px;display:block;" }}">
-                {{ else }}
-                  <img src="/media/{{ $src }}"
-                       alt="{{ $.image_alt | default "" }}"
-                       style="{{ $.image_style | default "max-height:64px;margin:0 auto 8px;display:block;" }}">
-                {{ end }}
-              {{ end }}
-            {{ end }}
-
-            {{ with .name }}
-              <h3 class="text-lg font-semibold">{{ . | $page.RenderString }}</h3>
-            {{ end }}
-
-            {{ with .description }}
-              <div class="mt-2 prose mx-auto">
-                {{ . | $page.RenderString }}
-              </div>
-            {{ end }}
-          </div>
-        {{ end }}
-      {{ end }}
-    </div>
-  </div>
-</section>
-{{- end -}}
+          Co-diseño de rutas claras para que cada pieza cumpla un rol y el conjunto mantenga coherencia.
+  design:
+    columns: "3"
