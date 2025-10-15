@@ -1,0 +1,49 @@
+{{/* Override local del bloque "features" para soportar image por ítem y párrafos */}}
+{{ $page := .page }}
+{{ $block := .block }}
+
+<section id="{{ with $block.id }}{{ . }}{{ end }}" class="section">
+  <div class="container">
+    {{ with $block.content.title }}
+      <h2 class="section-heading">{{ . | $page.RenderString }}</h2>
+    {{ end }}
+
+    {{ $cols := or $block.design.columns "3" }}
+    <div class="grid md:grid-cols-{{ $cols }} gap-8">
+
+      {{ range $block.content.items }}
+        <div class="text-center">
+
+          {{/* IMAGEN: acepta ruta absoluta (/media/...) o asset en assets/media/ */}}
+          {{ with .image }}
+            {{ $src := . }}
+            {{ if not (hasPrefix $src "/") }}
+              {{/* buscar en assets/media/ si no es absoluta */}}
+              {{ $asset := resources.Get (printf "media/%s" $src) }}
+              {{ if $asset }}
+                <img src="{{ $asset.RelPermalink }}" alt="{{ $.image_alt | default "" }}" style="{{ $.image_style | default "max-height:64px;margin:0 auto 8px;display:block;" }}">
+              {{ else }}
+                <img src="/media/{{ $src }}" alt="{{ $.image_alt | default "" }}" style="{{ $.image_style | default "max-height:64px;margin:0 auto 8px;display:block;" }}">
+              {{ end }}
+            {{ else }}
+              <img src="{{ $src }}" alt="{{ $.image_alt | default "" }}" style="{{ $.image_style | default "max-height:64px;margin:0 auto 8px;display:block;" }}">
+            {{ end }}
+          {{ end }}
+
+          {{ with .name }}
+            <h3 class="text-lg font-semibold">{{ . | $page.RenderString }}</h3>
+          {{ end }}
+
+          {{ with .description }}
+            <div class="mt-2 prose mx-auto">
+              {{/* Renderiza markdown con saltos de línea y párrafos */}}
+              {{ . | $page.RenderString }}
+            </div>
+          {{ end }}
+
+        </div>
+      {{ end }}
+
+    </div>
+  </div>
+</section>
