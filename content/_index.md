@@ -25,35 +25,41 @@ sections:
       background:
         color: "#FCF1B1"
 
-  # 2) Servicios — (markdown para asegurar imagen visible + párrafos en renglones)
+  # 2) Servicios (features)
   - block: features
     id: servicios
     content:
       title: "Nuestros servicios"
       items:
-        - icon: "cumuloilus-08"
-          name: "Producción de videos educativos"
-          description: |
-            Diseñamos clases en video que convierten el contenido en experiencias de aprendizaje.
-  
-            De la ideación y el guion a la producción y edición, integramos recursos audiovisuales en múltiples formatos para comunicar con claridad e impacto.
-        - icon: "cumuloilus-08"
-          name: "Ilustración científica y facilitación visual"
-          description: |
-            Desarrollamos recursos visuales que complementan materiales en proyectos de formación e investigación.
-  
-            Presentaciones para clases o eventos, pósters científicos y materiales de lectura, entre otros.
-        - icon: "cumuloilus-08"
-          name: "Acompañamiento en el diseño pedagógico"
-          description: |
-            Asesoramiento previo para diseñar la propuesta según el perfil estudiantil y los temas a desarrollar.
-  
-            Co-diseño de rutas claras para que cada pieza cumpla un rol y el conjunto mantenga coherencia.
+        - name: "Producción de videos educativos"
+          description: "Creamos clases en video que convierten el contenido en experiencias de aprendizaje. Desde la ideación y el guion hasta la producción y la edición, integramos recursos audiovisuales en múltiples formatos para comunicar con claridad e impacto."
+        - name: "Ilustración científica y facilitación visual"
+          description: "Desarrollamos recursos visuales que complementan materiales en proyectos de formación e investigación, para que cada imagen refuerce el contenido y mejore la experiencia de aprendizaje.
+Trabajamos en distintos formatos: presentaciones para clases o eventos, pósters científicos, materiales de lectura, entre otros."
+        - name: "Acompañamiento en el diseño pedagógico"
+          description: "Antes de producir contenidos, ofrecemos asesoramiento para diseñar la propuesta según el perfil de las y los estudiantes y los temas a desarrollar.
+Nos involucramos desde el inicio en la ideación y en la selección de formatos, recursos y modalidades del contenido a producir.
+Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto mantenga coherencia."
     design:
       columns: "3"
+      spacing:
+        padding: ["12px","0","6px","0"]
 
+  # 3) Acompañamiento (cta-image-paragraph, fondo azul, texto blanco, sin botón)
+  - block: cta-image-paragraph
+    id: acompanamiento
+    content:
+      items:
+        - title: "<span style='color:#FFFFFF'>Acompañamiento y asesoramiento pedagógico</span>"
+          text: "<span style='color:#FFFFFF'>Nos involucramos desde el <strong>inicio</strong>: ideación, lenguajes, formatos y experiencias de aprendizaje. ¿Qué conviene contar en <strong>video</strong> y qué en <strong>material escrito</strong>? ¿La propuesta combina materiales e <strong>instancias sincrónicas</strong>? ¿Cómo articularlas sin repetir contenidos? Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto tenga <strong>coherencia</strong>.</span>"
+          image: "cumuloilus-08.png"    # archivo en assets/media/
+          image_alt: "Ilustración Cúmulo"
+          image_style: "max-width:80%"
+    design:
+      background:
+        color: "#3E6FBA"
 
-  # 3) Métricas / Stats (SIN título) — fondo celeste y letra blanca
+  # 4) Métricas / Stats (SIN título)
   - block: stats
     id: metricas
     content:
@@ -65,12 +71,10 @@ sections:
         - statistic: "10"
           description: "propuestas de formación acompañadas"
     design:
-      background:
-        color: "#3E6FBA"
       spacing:
-        padding: ["12px","0","12px","0"]
+        padding: ["6px","0","2px","0"]   # compacto
 
-  # 4) Quiénes somos (avatars y nombres linkean a /authors/<slug>/)
+ # 4.5) Quiénes somos (avatars y nombres linkean a /authors/<slug>/)
   - block: markdown
     id: quienes-somos
     content:
@@ -84,7 +88,7 @@ sections:
             </div>
             <div class="mt-2 font-medium group-hover:underline">Julián</div>
           </a>
-
+  
           <!-- Cielo -->
           <a href="/authors/cielo/" class="text-center group" aria-label="Ir al perfil de Cielo">
             <div class="rounded-full overflow-hidden mx-auto shadow w-28 h-28 md:w-32 md:h-32 flex items-center justify-center">
@@ -97,27 +101,20 @@ sections:
       spacing:
         padding: ["2px","0","2px","0"]
 
-  # 5) Organizaciones que confían — tira horizontal en un renglón (scroll si no entra)
+
+
   - block: markdown
     id: aliados
     content:
       title: "Organizaciones que confían en Cúmulo"
       text: |
-        <div class="w-full" style="max-width:100%;overflow-x:auto;scroll-behavior:smooth;">
-          <div class="flex items-center gap-8 flex-nowrap py-2" style="min-width:max-content;">
-            <!-- Reemplazá con tus archivos locales en /static/media/logos/ -->
-            <img src="/media/logos/logo1.jpg" alt="Logo 1" style="height:64px;width:auto;flex:0 0 auto;">
-            <img src="/media/logos/logo2.jpg" alt="Logo 2" style="height:64px;width:auto;flex:0 0 auto;">
-            <img src="/media/logos/logo3.jpg" alt="Logo 3" style="height:64px;width:auto;flex:0 0 auto;">
-            <img src="/media/logos/logo4.png" alt="Logo 4" style="height:64px;width:auto;flex:0 0 auto;">
-            <!-- Agregá más logos repitiendo la línea de <img> -->
-          </div>
-        </div>
+        {{< logos_grid >}}
     design:
       spacing:
         padding: ["6px","0","8px","0"]
 
-  # 6) Testimonios (SIN título)
+
+  # 5) Testimonios (SIN título)
   - block: testimonials
     id: testimonios
     content:
@@ -132,8 +129,8 @@ sections:
     design:
       spacing:
         padding: ["2px","0","6px","0"]
-
-  # 7) CTA final — cta-card
+    
+  # 7) CTA final — cta-card (usa design.card.* como el ejemplo que te funciona)
   - block: cta-card
     id: cta-final
     content:
@@ -146,7 +143,7 @@ sections:
     design:
       card:
         css_class: "shadow-sm"
-        css_style: "background-color:#F4A26D;color:#3F393B;text-align:center;padding:2.5rem;border-radius:1rem;"
+        css_style: "background-color:#F4A26D;color:#3F393B;text-align:center; padding: 2.5rem; border-radius: 1rem;"
 
   # 8) CSS puntual al final (no ocupa espacio)
   - block: markdown
@@ -154,10 +151,10 @@ sections:
     content:
       text: |
         <style>
-          /* Métricas en blanco sobre #3E6FBA */
-          #metricas, #metricas * { color:#FFFFFF !important; }
-          /* Margen reducido en títulos si se usan */
-          #metricas h2, #testimonios h2, #aliados h2, #people h2 { margin-top: .25rem; margin-bottom: .25rem; }
+          /* si volvés a poner títulos, mantenemos el margen reducido */
+          #metricas h2, #testimonios h2, #aliados h2, #people h2 {
+            margin-top: 0.25rem; margin-bottom: 0.25rem;
+          }
         </style>
     design:
       spacing:
