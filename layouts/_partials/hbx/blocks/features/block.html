@@ -1,61 +1,64 @@
-{{- /* Override del bloque "features" para soportar:
-      - imagen por ítem (image) con rutas absolutas (/media/...) o assets (assets/media/...)
-      - descripciones multilínea (RenderString respeta párrafos)
+{{- /* Override del bloque "features":
+     - Usa index . "page"/"block" para leer el dict
+     - Soporta .image por ítem (ruta /media/... o assets/media/<file>)
+     - Renderiza .description con RenderString (respeta párrafos)
 */ -}}
-{{- $page := .page -}}
-{{- $block := .block -}}
+
+{{- $ctx := . -}}
+{{- $page := index $ctx "page" -}}
+{{- $block := index $ctx "block" -}}
 
 {{- if not $block -}}
   <div class="container my-4 p-4 border border-red-300 text-red-600 rounded">
-    (features) Falta .block en el partial override.
+    (features) Falta "block" en el contexto del partial override.
   </div>
 {{- else -}}
 <section id="{{ with $block.id }}{{ . }}{{ end }}" class="section">
   <div class="container">
-    {{- with $block.content.title -}}
+    {{ with $block.content.title }}
       <h2 class="section-heading">{{ . | $page.RenderString }}</h2>
-    {{- end -}}
+    {{ end }}
 
-    {{- $cols := or $block.design.columns "3" -}}
+    {{ $cols := or $block.design.columns "3" }}
     <div class="grid md:grid-cols-{{ $cols }} gap-8">
-      {{- $items := $block.content.items -}}
-      {{- if not $items -}}
+      {{ $items := $block.content.items }}
+      {{ if not $items }}
         <div class="text-sm opacity-70">(features) No hay items para mostrar.</div>
-      {{- else -}}
-        {{- range $items -}}
+      {{ else }}
+        {{ range $items }}
           <div class="text-center">
-            {{- with .image -}}
-              {{- $src := . -}}
-              {{- /* Si es absoluta (/media/...), úsala tal cual */ -}}
-              {{- if hasPrefix $src "/" -}}
+            {{ with .image }}
+              {{ $src := . }}
+              {{ if hasPrefix $src "/" }}
                 <img src="{{ $src }}"
                      alt="{{ $.image_alt | default "" }}"
                      style="{{ $.image_style | default "max-height:64px;margin:0 auto 8px;display:block;" }}">
-              {{- else -}}
-                {{- /* Primero intentamos assets/media/<file>; si no existe, caemos a /media/<file> */ -}}
-                {{- $asset := resources.Get (printf "media/%s" $src) -}}
-                {{- if $asset -}}
+              {{ else }}
+                {{ $asset := resources.Get (printf "media/%s" $src) }}
+                {{ if $asset }}
                   <img src="{{ $asset.RelPermalink }}"
                        alt="{{ $.image_alt | default "" }}"
                        style="{{ $.image_style | default "max-height:64px;margin:0 auto 8px;display:block;" }}">
-                {{- else -}}
+                {{ else }}
                   <img src="/media/{{ $src }}"
                        alt="{{ $.image_alt | default "" }}"
                        style="{{ $.image_style | default "max-height:64px;margin:0 auto 8px;display:block;" }}">
-                {{- end -}}
-              {{- end -}}
-            {{- end -}}
+                {{ end }}
+              {{ end }}
+            {{ end }}
 
-            {{- with .name -}}
+            {{ with .name }}
               <h3 class="text-lg font-semibold">{{ . | $page.RenderString }}</h3>
-            {{- end -}}
+            {{ end }}
 
-            {{- with .description -}}
-              <div class="mt-2 prose mx-auto">{{ . | $page.RenderString }}</div>
-            {{- end -}}
+            {{ with .description }}
+              <div class="mt-2 prose mx-auto">
+                {{ . | $page.RenderString }}
+              </div>
+            {{ end }}
           </div>
-        {{- end -}}
-      {{- end -}}
+        {{ end }}
+      {{ end }}
     </div>
   </div>
 </section>
