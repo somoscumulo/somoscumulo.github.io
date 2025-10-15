@@ -31,25 +31,26 @@ sections:
     content:
       title: "Nuestros servicios"
       items:
-        - icon: "cumuloilus-08"  # busca assets/media/icons/hero/cumuloilus-08.svg
+        - icon: "cumuloilus-08"
           name: "Producción de videos educativos"
           description: |
             Diseñamos clases en video que convierten el contenido en experiencias de aprendizaje.
+  
             De la ideación y el guion a la producción y edición, integramos recursos audiovisuales en múltiples formatos para comunicar con claridad e impacto.
         - icon: "cumuloilus-08"
           name: "Ilustración científica y facilitación visual"
           description: |
             Desarrollamos recursos visuales que complementan materiales en proyectos de formación e investigación.
+  
             Presentaciones para clases o eventos, pósters científicos y materiales de lectura, entre otros.
         - icon: "cumuloilus-08"
           name: "Acompañamiento en el diseño pedagógico"
           description: |
             Asesoramiento previo para diseñar la propuesta según el perfil estudiantil y los temas a desarrollar.
+  
             Co-diseño de rutas claras para que cada pieza cumpla un rol y el conjunto mantenga coherencia.
     design:
       columns: "3"
-      spacing:
-        padding: ["12px","0","6px","0"]
 
 
   # 3) Métricas / Stats (SIN título) — fondo celeste y letra blanca
