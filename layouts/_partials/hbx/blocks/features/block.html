@@ -1,68 +1,87 @@
-{{- /* Override robusto para "features"
-     - Acepta image como:
-       1) Ruta absoluta (/img/..., /media/...)
-       2) assets/media/<file> o assets/img/<file> (resources.Get)
-       3) Fallback: /img/<file>
+{{- /* Override robusto del bloque "features".
+     Soporta:
+     - $block como struct ( .content / .design / .id ) o como map (index ...)
+     - image por item (rutas absolutas /img/... o /media/..., o assets/media|img/<file>)
+     - description multilínea (RenderString respeta párrafos)
 */ -}}
 
 {{- $ctx := . -}}
+{{- /* Detectar si el contexto viene como dict {"page","block"} o directo */ -}}
 {{- $ctxType := printf "%T" $ctx -}}
 {{- $page := $.Page -}}
 {{- $block := $ctx -}}
-
 {{- if or (eq $ctxType "map[string]interface {}") (eq $ctxType "map[string]any") -}}
-  {{- with index $ctx "page" -}} {{- $page = . -}} {{- end -}}
-  {{- with index $ctx "block" -}} {{- $block = . -}} {{- end -}}
+  {{- with index $ctx "page"  }}{{ $page  = . }}{{ end -}}
+  {{- with index $ctx "block" }}{{ $block = . }}{{ end -}}
 {{- end -}}
 
-{{- $isMap := or (eq (printf "%T" $block) "map[string]interface {}") (eq (printf "%T" $block) "map[string]any") -}}
-{{- if not $isMap -}}
+{{- /* Helpers para map/struct */ -}}
+{{- $isMap     := or (eq (printf "%T" $block) "map[string]interface {}") (eq (printf "%T" $block) "map[string]any") -}}
+{{- $get   := func ( $m $k ) (cond (and (or (eq (printf "%T" $m) "map[string]interface {}") (eq (printf "%T" $m) "map[string]any")) (isset $m $k)) (index $m $k) nil) -}}
+{{- $field := func ( $obj $name ) (cond $isMap ( $get $obj $name ) (index $obj $name)) -}}
+
+{{- if not $block -}}
   <div class="container my-4 p-4 border border-red-300 text-red-600 rounded">
-    (features) El contexto recibido no es un bloque válido.
+    (features) Falta bloque.
   </div>
 {{- else -}}
-<section id="{{ with $block.id }}{{ . }}{{ end }}" class="section">
+
+{{- $id      := $field $block "id" -}}
+{{- $content := $field $block "content" -}}
+{{- $design  := $field $block "design"  -}}
+{{- /* content/design pueden venir nil si el parser cambió; evitamos nil-dereference */ -}}
+{{- $title := cond (ne $content nil) ($field $content "title") nil -}}
+{{- $items := cond (ne $content nil) ($field $content "items") nil -}}
+{{- $cols  := cond (and (ne $design nil) (ne ($field $design "columns") "") ) ($field $design "columns") "3" -}}
+
+<section id="{{ with $id }}{{ . }}{{ end }}" class="section">
   <div class="container">
 
-    {{ with $block.content.title }}
+    {{- with $title -}}
       <h2 class="section-heading">{{ . | $page.RenderString }}</h2>
-    {{ end }}
+    {{- end -}}
 
-    {{ $cols := or $block.design.columns "3" }}
     <div class="grid md:grid-cols-{{ $cols }} gap-8">
-      {{ $items := $block.content.items }}
-      {{ if not $items }}
+      {{- if not $items -}}
         <div class="text-sm opacity-70">(features) No hay items para mostrar.</div>
-      {{ else }}
-        {{ range $items }}
+      {{- else -}}
+        {{- range $items -}}
+          {{- $name        := $field . "name" -}}
+          {{- $desc        := $field . "description" -}}
+          {{- $img         := $field . "image" -}}
+          {{- $imgAlt      := or ($field . "image_alt") "" -}}
+          {{- $imgStyle    := or ($field . "image_style") "max-height:64px;margin:0 auto 8px;display:block;" -}}
+
           <div class="text-center">
-            {{ with .image }}
-              {{ $src := . }}
-              {{ if hasPrefix $src "/" }}
-                <img src="{{ $src }}" alt="{{ $.image_alt | default "" }}" style="{{ $.image_style | default "max-height:64px;margin:0 auto 8px;display:block;" }}">
-              {{ else }}
-                {{/* 1) assets/media/<file> */}}
-                {{ $asset := resources.Get (printf "media/%s" $src) }}
-                {{ if not $asset }}{{ $asset = resources.Get (printf "img/%s" $src) }}{{ end }}
-                {{ if $asset }}
-                  <img src="{{ $asset.RelPermalink }}" alt="{{ $.image_alt | default "" }}" style="{{ $.image_style | default "max-height:64px;margin:0 auto 8px;display:block;" }}">
-                {{ else }}
-                  {{/* 2) Fallback a /img/<file> (static/img) */}}
-                  <img src="{{ printf "/img/%s" $src }}" alt="{{ $.image_alt | default "" }}" style="{{ $.image_style | default "max-height:64px;margin:0 auto 8px;display:block;" }}">
-                {{ end }}
-              {{ end }}
-            {{ end }}
 
-            {{ with .name }}
+            {{- with $img -}}
+              {{- $src := . -}}
+              {{- if hasPrefix $src "/" -}}
+                <img src="{{ $src }}" alt="{{ $imgAlt }}" style="{{ $imgStyle }}">
+              {{- else -}}
+                {{- /* Intentar assets/media|img */ -}}
+                {{- $asset := resources.Get (printf "media/%s" $src) -}}
+                {{- if not $asset }}{{ $asset = resources.Get (printf "img/%s" $src) }}{{ end -}}
+                {{- if $asset -}}
+                  <img src="{{ $asset.RelPermalink }}" alt="{{ $imgAlt }}" style="{{ $imgStyle }}">
+                {{- else -}}
+                  {{- /* Fallback a static/img */ -}}
+                  <img src="{{ printf "/img/%s" $src }}" alt="{{ $imgAlt }}" style="{{ $imgStyle }}">
+                {{- end -}}
+              {{- end -}}
+            {{- end -}}
+
+            {{- with $name -}}
               <h3 class="text-lg font-semibold">{{ . | $page.RenderString }}</h3>
-            {{ end }}
+            {{- end -}}
 
-            {{ with .description }}
+            {{- with $desc -}}
               <div class="mt-2 prose mx-auto">{{ . | $page.RenderString }}</div>
-            {{ end }}
+            {{- end -}}
+
           </div>
-        {{ end }}
-      {{ end }}
+        {{- end -}}
+      {{- end -}}
     </div>
 
   </div>
