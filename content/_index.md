@@ -26,41 +26,43 @@ sections:
         color: "#FCF1B1"
 
   # 2) Servicios — (markdown para asegurar imagen visible + párrafos en renglones)
-  - block: markdown
+# 2) Servicios (features con imagen + párrafos)
+  - block: features
     id: servicios
     content:
       title: "Nuestros servicios"
-      text: |
-        <div class="grid md:grid-cols-3 gap-8">
-
-          <!-- Card 1 -->
-          <div class="text-center">
-            <img src="/media/cumuloilus-08.png" alt="Ilustración Cúmulo" style="max-height:64px;margin:0 auto 8px;display:block;">
-            <h3 class="text-lg font-semibold">Producción de videos educativos</h3>
-            <p>Diseñamos clases en video que convierten el contenido en experiencias de aprendizaje.</p>
-            <p>De la ideación y el guion a la producción y edición, integramos recursos audiovisuales en múltiples formatos para comunicar con claridad e impacto.</p>
-          </div>
-
-          <!-- Card 2 -->
-          <div class="text-center">
-            <img src="/media/cumuloilus-08.png" alt="Ilustración Cúmulo" style="max-height:64px;margin:0 auto 8px;display:block;">
-            <h3 class="text-lg font-semibold">Ilustración científica y facilitación visual</h3>
-            <p>Desarrollamos recursos visuales que complementan materiales en proyectos de formación e investigación.</p>
-            <p>Presentaciones para clases o eventos, pósters científicos y materiales de lectura, entre otros.</p>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="text-center">
-            <img src="/media/cumuloilus-08.png" alt="Ilustración Cúmulo" style="max-height:64px;margin:0 auto 8px;display:block;">
-            <h3 class="text-lg font-semibold">Acompañamiento en el diseño pedagógico</h3>
-            <p>Asesoramiento previo para diseñar la propuesta según el perfil estudiantil y los temas a desarrollar.</p>
-            <p>Co-diseño de rutas claras para que cada pieza cumpla un rol y el conjunto mantenga coherencia.</p>
-          </div>
-
-        </div>
+      items:
+        - image: "/media/cumuloilus-08.png"
+          image_alt: "Ilustración Cúmulo"
+          image_style: "max-height:64px;margin:0 auto 8px;display:block;"
+          name: "Producción de videos educativos"
+          description: |
+            Diseñamos clases en video que convierten el contenido en experiencias de aprendizaje.
+  
+            De la ideación y el guion a la producción y edición, integramos recursos audiovisuales en múltiples formatos para comunicar con claridad e impacto.
+  
+        - image: "/media/cumuloilus-08.png"
+          image_alt: "Ilustración Cúmulo"
+          image_style: "max-height:64px;margin:0 auto 8px;display:block;"
+          name: "Ilustración científica y facilitación visual"
+          description: |
+            Desarrollamos recursos visuales que complementan materiales en proyectos de formación e investigación.
+  
+            Presentaciones para clases o eventos, pósters científicos y materiales de lectura, entre otros.
+  
+        - image: "/media/cumuloilus-08.png"
+          image_alt: "Ilustración Cúmulo"
+          image_style: "max-height:64px;margin:0 auto 8px;display:block;"
+          name: "Acompañamiento en el diseño pedagógico"
+          description: |
+            Asesoramiento previo para diseñar la propuesta según el perfil estudiantil y los temas a desarrollar.
+  
+            Co-diseño de rutas claras para que cada pieza cumpla un rol y el conjunto mantenga coherencia.
     design:
+      columns: "3"
       spacing:
         padding: ["12px","0","6px","0"]
+
 
   # 3) Métricas / Stats (SIN título) — fondo celeste y letra blanca
   - block: stats
