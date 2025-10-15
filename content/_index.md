@@ -26,7 +26,7 @@ sections:
         color: "#FCF1B1"
 
   # 2) Servicios (features) — con imagen arriba de cada título
-   - block: features
+  - block: features
     id: servicios
     content:
       title: "Nuestros servicios"
