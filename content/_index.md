@@ -49,6 +49,7 @@ Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto mante
   - block: cta-image-paragraph
     id: servicios
     content:
+      title: "Nuestros servicios"
       items:
         - title: "<span style='color:#FFFFFF'>Producción de videos educativos</span>"
           text: "<span style='color:#FFFFFF'>Creamos clases en video que convierten el contenido en experiencias de aprendizaje. Desde la ideación y el guion hasta la producción y la edición, integramos recursos audiovisuales en múltiples formatos para comunicar con claridad e impacto."
