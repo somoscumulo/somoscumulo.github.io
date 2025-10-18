@@ -119,10 +119,10 @@ sections:
       text: |
         <div style="width:100%;">
           <div class="grid grid-cols-4 items-center justify-items-center gap-x-12 gap-y-0 py-3" style="width:100%;">
-            <img src="/media/logo1.jpg" alt="Logo 1" style="height:80px;width:auto;max-width:100%;object-fit:contain;display:block;">
-            <img src="/media/logo3.jpg" alt="Logo 3" style="height:80px;width:auto;max-width:100%;object-fit:contain;display:block;">
-            <img src="/media/logo2.jpg" alt="Logo 2" style="height:80px;width:auto;max-width:100%;object-fit:contain;display:block;">
-            <img src="/media/logo4.png" alt="Logo 4" style="height:80px;width:auto;max-width:100%;object-fit:contain;display:block;">
+            <img src="/logo1.jpg" alt="Logo 1" style="height:80px;width:auto;max-width:100%;object-fit:contain;display:block;">
+            <img src="/logo3.jpg" alt="Logo 3" style="height:80px;width:auto;max-width:100%;object-fit:contain;display:block;">
+            <img src="/logo2.jpg" alt="Logo 2" style="height:80px;width:auto;max-width:100%;object-fit:contain;display:block;">
+            <img src="/logo4.png" alt="Logo 4" style="height:80px;width:auto;max-width:100%;object-fit:contain;display:block;">
           </div>
         </div>
     design:
