@@ -82,7 +82,7 @@ sections:
       spacing:
         padding: ["6px","0","2px","0"]   # compacto
 
-  # 4.5) Quiénes somos (avatars linkean a /authors/<slug>/)
+  # 4.5) Quiénes somos (avatares DOBLE tamaño, nombres sin subrayado, link a /authors/<slug>/)
   - block: markdown
     id: quienes-somos
     content:
@@ -90,26 +90,26 @@ sections:
       text: |
         <div class="grid grid-cols-2 gap-8 items-start">
           <!-- Julián -->
-          <a href="/authors/julian/" class="text-center group" aria-label="Ir al perfil de Julián">
-            <div class="rounded-full overflow-hidden mx-auto shadow w-20 h-20 md:w-24 md:h-24 flex items-center justify-center">
+          <a href="/authors/julian/" class="text-center people-link" aria-label="Ir al perfil de Julián">
+            <div class="rounded-full overflow-hidden mx-auto shadow w-40 h-40 md:w-48 md:h-48 flex items-center justify-center">
               {{< author_avatar slug="julian" alt="Julián" >}}
             </div>
-            <div class="mt-2 font-medium group-hover:underline">Julián</div>
+            <div class="mt-2 font-medium">Julián</div>
           </a>
 
           <!-- Cielo -->
-          <a href="/authors/cielo/" class="text-center group" aria-label="Ir al perfil de Cielo">
-            <div class="rounded-full overflow-hidden mx-auto shadow w-20 h-20 md:w-24 md:h-24 flex items-center justify-center">
+          <a href="/authors/cielo/" class="text-center people-link" aria-label="Ir al perfil de Cielo">
+            <div class="rounded-full overflow-hidden mx-auto shadow w-40 h-40 md:w-48 md:h-48 flex items-center justify-center">
               {{< author_avatar slug="cielo" alt="Cielo" >}}
             </div>
-            <div class="mt-2 font-medium group-hover:underline">Cielo</div>
+            <div class="mt-2 font-medium">Cielo</div>
           </a>
         </div>
     design:
       spacing:
         padding: ["2px","0","2px","0"]
 
-  # 5) Organizaciones (shortcode ajustado para assets/media/logo*.jpg)
+  # 5) Organizaciones (shortcode ajustado, SIN barra de desplazamiento)
   - block: markdown
     id: aliados
     content:
@@ -151,13 +151,13 @@ sections:
         css_class: "shadow-sm"
         css_style: "background-color:#F4A26D;color:#3F393B;text-align:center; padding: 2.5rem; border-radius: 1rem;"
 
-  # 8) CSS puntual (aplica tamaños en servicios-destacados)
+  # 8) CSS puntual (tamaños servicios-destacados, avatares centrados, nombres sin subrayado)
   - block: markdown
     id: style-fixes
     content:
       text: |
         <style>
-          /* Fuerza tamaño de imágenes en servicios-destacados: ahora al DOBLE (~56%) */
+          /* Imágenes en servicios-destacados: DOBLE tamaño (~56%) */
           #servicios-destacados img {
             width: 56% !important;
             max-width: 56% !important;
@@ -166,15 +166,22 @@ sections:
             margin-right: auto !important;
             display: block !important;
           }
-          /* En móviles que no ocupen toda la pantalla, pero más grandes */
           @media (max-width: 640px) {
             #servicios-destacados img {
               width: 70% !important;
               max-width: 70% !important;
             }
           }
-          /* Centrado de avatares en círculo (por si el shortcode no lo fuerza) */
-          #quienes-somos .rounded-full img { object-fit: cover; object-position: center; width: 100%; height: 100%; }
+
+          /* Centrado y recorte correcto de avatares */
+          #quienes-somos .rounded-full img {
+            object-fit: cover; object-position: center; width: 100%; height: 100%;
+          }
+
+          /* Nombres sin subrayado + desactivar subrayado en <a> */
+          #quienes-somos a.people-link { text-decoration: none !important; }
+          #quienes-somos a.people-link:hover { text-decoration: none !important; }
+          #quienes-somos a.people-link div.font-medium { text-decoration: none !important; }
         </style>
     design:
       spacing:
