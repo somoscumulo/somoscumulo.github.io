@@ -82,13 +82,13 @@ sections:
       spacing:
         padding: ["6px","0","2px","0"]   # compacto
 
-  # 4.5) Quiénes somos (avatares DOBLE tamaño, nombres sin subrayado, link a /authors/<slug>/)
+  # 4.5) Quiénes somos (fondo amarillo + más margen; avatares grandes; links a /authors/<slug>/)
   - block: markdown
     id: quienes-somos
     content:
       title: "Quiénes somos"
       text: |
-        <div class="grid grid-cols-2 gap-8 items-start">
+        <div class="grid grid-cols-2 gap-10 items-start">
           <!-- Julián -->
           <a href="/authors/julian/" class="text-center people-link" aria-label="Ir al perfil de Julián">
             <div class="rounded-full overflow-hidden mx-auto shadow w-40 h-40 md:w-48 md:h-48 flex items-center justify-center">
@@ -106,19 +106,28 @@ sections:
           </a>
         </div>
     design:
+      background:
+        color: "#FCF1B1"
       spacing:
-        padding: ["2px","0","2px","0"]
+        padding: ["20px","0","20px","0"]   # más margen sup/inf
 
-  # 5) Organizaciones (shortcode ajustado, SIN barra de desplazamiento)
+  # 5) Organizaciones (Markdown a ancho completo, una sola fila, logos más grandes)
   - block: markdown
     id: aliados
     content:
       title: "Organizaciones que confían en Cúmulo"
       text: |
-        {{< logos_grid >}}
+        <div style="width:100%;">
+          <div class="grid grid-cols-4 items-center justify-items-center gap-x-12 gap-y-0 py-3" style="width:100%;">
+            <img src="/media/logo1.jpg" alt="Logo 1" style="height:80px;width:auto;max-width:100%;object-fit:contain;display:block;">
+            <img src="/media/logo3.jpg" alt="Logo 3" style="height:80px;width:auto;max-width:100%;object-fit:contain;display:block;">
+            <img src="/media/logo2.jpg" alt="Logo 2" style="height:80px;width:auto;max-width:100%;object-fit:contain;display:block;">
+            <img src="/media/logo4.png" alt="Logo 4" style="height:80px;width:auto;max-width:100%;object-fit:contain;display:block;">
+          </div>
+        </div>
     design:
       spacing:
-        padding: ["6px","0","8px","0"]
+        padding: ["8px","0","10px","0"]
 
   # 6) Testimonios (SIN título)
   - block: testimonials
