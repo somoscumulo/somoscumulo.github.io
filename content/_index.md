@@ -53,20 +53,20 @@ Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto mante
       items:
         - title: "<span style='color:#FFFFFF'>Producción de videos educativos</span>"
           text: "<span style='color:#FFFFFF'>Creamos clases en video que convierten el contenido en experiencias de aprendizaje. Desde la ideación y el guion hasta la producción y la edición, integramos recursos audiovisuales en múltiples formatos para comunicar con claridad e impacto."
-          image: "cumuloilus-08.png"    # archivo en assets/media/
+          image: "/img/stickers%20cumulo1-03.png"    # archivo en assets/media/
           image_alt: "Ilustración Cúmulo"
           image_style: "max-width:80%"
         - title: "<span style='color:#FFFFFF'>Ilustración científica y facilitación visual</span>"
           text: "<span style='color:#FFFFFF'>Desarrollamos recursos visuales que complementan materiales en proyectos de formación e investigación, para que cada imagen refuerce el contenido y mejore la experiencia de aprendizaje.
 Trabajamos en distintos formatos: presentaciones para clases o eventos, pósters científicos, materiales de lectura, entre otros."
-          image: "cumuloilus-08.png"    # archivo en assets/media/
+          image: "/img/stickers%20cumulo1-05.png"    # archivo en assets/media/
           image_alt: "Ilustración Cúmulo"
           image_style: "max-width:80%"
         - title: "<span style='color:#FFFFFF'>Acompañamiento y asesoramiento pedagógico</span>"
           text: "<span style='color:#FFFFFF'>Antes de producir contenidos, ofrecemos asesoramiento para diseñar la propuesta según el perfil de las y los estudiantes y los temas a desarrollar.
 Nos involucramos desde el inicio en la ideación y en la selección de formatos, recursos y modalidades del contenido a producir.
 Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto mantenga coherencia."
-          image: "cumuloilus-08.png"    # archivo en assets/media/
+          image: "/img/stickers%20cumulo1-01.png"    # archivo en assets/media/
           image_alt: "Ilustración Cúmulo"
           image_style: "max-width:80%"
     design:
