@@ -1,25 +1,34 @@
 <!-- layouts/shortcodes/logos_grid.html -->
 {{/* 
-  Carga logos desde assets/media/<archivo> con resources.Get.
-  Si no existe en assets, cae a /media/<archivo> (static).
-  Sin barra de desplazamiento: flex con wrap y centrado.
+  Muestra los logos en UNA sola fila (sin scroll) con Grid 4 columnas.
+  Orden: 1, 3, 2, 4.
+  Tamaños: logo1 ~10% más chico; logo4 ~30% más chico.
+  Busca en assets/media (resources.Get) y si no, cae a /media (static).
 */}}
 
 {{- $files := slice
   "logo1.jpg"
-  "logo2.jpg"
   "logo3.jpg"
+  "logo2.jpg"
   "logo4.png"
 -}}
 
 <div class="w-full">
-  <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 py-2">
-    {{- range $files -}}
-      {{- $res := resources.Get (printf "media/%s" .) -}}
+  <div class="grid grid-cols-4 items-center justify-items-center gap-x-10 gap-y-0 py-2"
+       style="width:100%;">
+    {{- range $i, $f := $files -}}
+      {{/* Altura base y ajustes por ítem */}}
+      {{- $h := 64 -}}
+      {{- if eq $i 0 }}{{ $h = 58 }}{{ end }}      {{/* logo1 ~ -10% */}}
+      {{- if eq $i 3 }}{{ $h = 45 }}{{ end }}      {{/* logo4 ~ -30% */}}
+
+      {{- $res := resources.Get (printf "media/%s" $f) -}}
       {{- if $res -}}
-        <img src="{{ $res.RelPermalink }}" alt="{{ . }}" style="height:64px;width:auto;display:block;">
+        <img src="{{ $res.RelPermalink }}" alt="{{ $f }}" 
+             style="height:{{ $h }}px;width:auto;max-width:100%;object-fit:contain;display:block;">
       {{- else -}}
-        <img src="{{ printf "/media/%s" . }}" alt="{{ . }}" style="height:64px;width:auto;display:block;">
+        <img src="{{ printf "/media/%s" $f }}" alt="{{ $f }}"
+             style="height:{{ $h }}px;width:auto;max-width:100%;object-fit:contain;display:block;">
       {{- end -}}
     {{- end -}}
   </div>
