@@ -157,7 +157,7 @@ sections:
     content:
       text: |
         <style>
-          /* Imágenes en servicios-destacados: DOBLE tamaño (~56%) */
+          /* Imágenes en servicios-destacados: tamaño al DOBLE (~56%) */
           #servicios-destacados img {
             width: 56% !important;
             max-width: 56% !important;
@@ -173,15 +173,14 @@ sections:
             }
           }
 
-          /* Centrado y recorte correcto de avatares */
+          /* Avatares centrados y bien recortados */
           #quienes-somos .rounded-full img {
             object-fit: cover; object-position: center; width: 100%; height: 100%;
           }
 
-          /* Nombres sin subrayado + desactivar subrayado en <a> */
+          /* Nombres sin subrayado */
           #quienes-somos a.people-link { text-decoration: none !important; }
           #quienes-somos a.people-link:hover { text-decoration: none !important; }
-          #quienes-somos a.people-link div.font-medium { text-decoration: none !important; }
         </style>
     design:
       spacing:
