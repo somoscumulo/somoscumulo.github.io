@@ -1,26 +1,26 @@
 <!-- layouts/shortcodes/logos_grid.html -->
 {{/* 
-  Carga logos desde assets/media/<archivo> usando resources.Get.
-  Si no existe en assets, intenta /media/<archivo> (static).
-  Editá la lista $files para agregar o quitar logos.
+  Carga logos desde assets/media/<archivo> con resources.Get.
+  Si no existe en assets, cae a /media/<archivo> (static).
+  Sin barra de desplazamiento: usamos flex con wrap y centrado.
 */}}
 
 {{- $files := slice
   "logo1.jpg"
   "logo2.jpg"
   "logo3.jpg"
-  "logo4.jpg"
+  "logo4.png"   /* el 4 es .png */
 -}}
 
-<div class="w-full overflow-x-auto" style="max-width:100%;">
-  <div class="flex items-center gap-8 flex-nowrap py-2" style="min-width:max-content;">
+<div class="w-full">
+  <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 py-2">
     {{- range $files -}}
       {{- $res := resources.Get (printf "media/%s" .) -}}
       {{- if $res -}}
-        <img src="{{ $res.RelPermalink }}" alt="{{ . }}" style="height:64px;width:auto;flex:0 0 auto;">
+        <img src="{{ $res.RelPermalink }}" alt="{{ . }}" style="height:64px;width:auto;display:block;">
       {{- else -}}
         <!-- Fallback a /media (static) si no está en assets -->
-        <img src="{{ printf "/media/%s" . }}" alt="{{ . }}" style="height:64px;width:auto;flex:0 0 auto;">
+        <img src="{{ printf "/media/%s" . }}" alt="{{ . }}" style="height:64px;width:auto;display:block;">
       {{- end -}}
     {{- end -}}
   </div>
