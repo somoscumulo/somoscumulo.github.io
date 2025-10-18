@@ -2,14 +2,14 @@
 {{/* 
   Carga logos desde assets/media/<archivo> con resources.Get.
   Si no existe en assets, cae a /media/<archivo> (static).
-  Sin barra de desplazamiento: usamos flex con wrap y centrado.
+  Sin barra de desplazamiento: flex con wrap y centrado.
 */}}
 
 {{- $files := slice
   "logo1.jpg"
   "logo2.jpg"
   "logo3.jpg"
-  "logo4.png"   /* el 4 es .png */
+  "logo4.png"
 -}}
 
 <div class="w-full">
@@ -19,7 +19,6 @@
       {{- if $res -}}
         <img src="{{ $res.RelPermalink }}" alt="{{ . }}" style="height:64px;width:auto;display:block;">
       {{- else -}}
-        <!-- Fallback a /media (static) si no está en assets -->
         <img src="{{ printf "/media/%s" . }}" alt="{{ . }}" style="height:64px;width:auto;display:block;">
       {{- end -}}
     {{- end -}}
