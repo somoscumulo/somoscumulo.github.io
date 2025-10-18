@@ -1,12 +1,27 @@
 <!-- layouts/shortcodes/logos_grid.html -->
-<div class="w-full" style="max-width:100%;">
-  <!-- tira horizontal sin wrap -->
+{{/* 
+  Carga logos desde assets/media/<archivo> usando resources.Get.
+  Si no existe en assets, intenta /media/<archivo> (static).
+  Editá la lista $files para agregar o quitar logos.
+*/}}
+
+{{- $files := slice
+  "logo1.jpg"
+  "logo2.jpg"
+  "logo3.jpg"
+  "logo4.jpg"
+-}}
+
+<div class="w-full overflow-x-auto" style="max-width:100%;">
   <div class="flex items-center gap-8 flex-nowrap py-2" style="min-width:max-content;">
-    <!-- Sugerencia: usa rutas locales /media/logos/... -->
-    <img src="/logo1.jpg" alt="Logo 1" style="height:64px;width:auto;flex:0 0 auto;">
-    <img src="/logo2.jpg" alt="Logo 2" style="height:64px;width:auto;flex:0 0 auto;">
-    <img src="/logo3.jpg" alt="Logo 3" style="height:64px;width:auto;flex:0 0 auto;">
-    <img src="/logo4.png" alt="Logo 4" style="height:64px;width:auto;flex:0 0 auto;">
-    <!-- duplicá líneas <img> para más logos -->
+    {{- range $files -}}
+      {{- $res := resources.Get (printf "media/%s" .) -}}
+      {{- if $res -}}
+        <img src="{{ $res.RelPermalink }}" alt="{{ . }}" style="height:64px;width:auto;flex:0 0 auto;">
+      {{- else -}}
+        <!-- Fallback a /media (static) si no está en assets -->
+        <img src="{{ printf "/media/%s" . }}" alt="{{ . }}" style="height:64px;width:auto;flex:0 0 auto;">
+      {{- end -}}
+    {{- end -}}
   </div>
 </div>
