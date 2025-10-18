@@ -42,7 +42,7 @@ sections:
       spacing:
         padding: ["12px","0","6px","0"]
 
-  # 3) Servicios destacados (cta-image-paragraph, fondo azul, imágenes chicas, texto blanco)
+  # 3) Servicios destacados (cta-image-paragraph, fondo azul, imágenes al DOBLE, texto blanco)
   - block: cta-image-paragraph
     id: servicios-destacados
     content:
@@ -52,17 +52,17 @@ sections:
           text: "<span style='color:#FFFFFF'>Creamos clases en video que convierten el contenido en experiencias de aprendizaje. Desde la ideación y el guion hasta la producción y la edición, integramos recursos audiovisuales en múltiples formatos para comunicar con claridad e impacto.</span>"
           image: "stickers-cumulo1-03.png"
           image_alt: "Ilustración Cúmulo"
-          image_style: "width:28%;max-width:28%;height:auto;"
+          image_style: "width:56%;max-width:56%;height:auto;"
         - title: "<span style='color:#FFFFFF'>Ilustración científica y facilitación visual</span>"
           text: "<span style='color:#FFFFFF'>Desarrollamos recursos visuales que complementan materiales en proyectos de formación e investigación, para que cada imagen refuerce el contenido y mejore la experiencia de aprendizaje.<br>Trabajamos en distintos formatos: presentaciones para clases o eventos, pósters científicos, materiales de lectura, entre otros.</span>"
           image: "stickers-cumulo1-05.png"
           image_alt: "Ilustración Cúmulo"
-          image_style: "width:28%;max-width:28%;height:auto;"
+          image_style: "width:56%;max-width:56%;height:auto;"
         - title: "<span style='color:#FFFFFF'>Acompañamiento y asesoramiento pedagógico</span>"
           text: "<span style='color:#FFFFFF'>Antes de producir contenidos, ofrecemos asesoramiento para diseñar la propuesta según el perfil de las y los estudiantes y los temas a desarrollar.<br>Nos involucramos desde el inicio en la ideación y en la selección de formatos, recursos y modalidades del contenido a producir.<br>Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto mantenga coherencia.</span>"
           image: "stickers-cumulo1-01.png"
           image_alt: "Ilustración Cúmulo"
-          image_style: "width:28%;max-width:28%;height:auto;"
+          image_style: "width:56%;max-width:56%;height:auto;"
     design:
       background:
         color: "#3E6FBA"
@@ -109,7 +109,7 @@ sections:
       spacing:
         padding: ["2px","0","2px","0"]
 
-  # 5) Organizaciones (shortcode existente)
+  # 5) Organizaciones (shortcode ajustado para assets/media/logo*.jpg)
   - block: markdown
     id: aliados
     content:
@@ -157,20 +157,20 @@ sections:
     content:
       text: |
         <style>
-          /* Fuerza tamaño de imágenes en servicios-destacados */
+          /* Fuerza tamaño de imágenes en servicios-destacados: ahora al DOBLE (~56%) */
           #servicios-destacados img {
-            width: 28% !important;
-            max-width: 28% !important;
+            width: 56% !important;
+            max-width: 56% !important;
             height: auto !important;
             margin-left: auto !important;
             margin-right: auto !important;
             display: block !important;
           }
-          /* En móviles hacerlas un poco más grandes para legibilidad */
+          /* En móviles que no ocupen toda la pantalla, pero más grandes */
           @media (max-width: 640px) {
             #servicios-destacados img {
-              width: 40% !important;
-              max-width: 40% !important;
+              width: 70% !important;
+              max-width: 70% !important;
             }
           }
           /* Centrado de avatares en círculo (por si el shortcode no lo fuerza) */
