@@ -14,7 +14,7 @@ superuser: true
 user_groups: ["colaboran"]
 
 # Role/position/tagline
-role: Locutora
+role: Diseñador gráfico
 
 # Short bio (displayed in user profile at end of posts)
 bio: Locutora profesional.
