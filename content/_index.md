@@ -38,7 +38,7 @@ sections:
           image_style: "width:56%;max-width:56%;height:auto;"
           button:
             text: "Ver más"
-            url: "/servicios/videos-educativos"
+            url: "/videos"
         - title: "<span style='color:#FFFFFF'>Ilustración científica y facilitación visual</span>"
           text: "<span style='color:#FFFFFF'>Desarrollamos recursos visuales que complementan materiales en proyectos de formación e investigación, para que cada imagen refuerce el contenido y mejore la experiencia de aprendizaje.<br>Trabajamos en distintos formatos: presentaciones para clases o eventos, pósters científicos, materiales de lectura, entre otros.</span>"
           image: "stickers-cumulo1-05.png"
@@ -46,7 +46,7 @@ sections:
           image_style: "width:56%;max-width:56%;height:auto;"
           button:
             text: "Ver más"
-            url: "/servicios/ilustracion-y-facilitacion-visual"
+            url: "/videos"
         - title: "<span style='color:#FFFFFF'>Acompañamiento y asesoramiento pedagógico</span>"
           text: "<span style='color:#FFFFFF'>Antes de producir contenidos, ofrecemos asesoramiento para diseñar la propuesta según el perfil de las y los estudiantes y los temas a desarrollar.<br>Nos involucramos desde el inicio en la ideación y en la selección de formatos, recursos y modalidades del contenido a producir.<br>Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto mantenga coherencia.</span>"
           image: "stickers-cumulo1-01.png"
@@ -54,7 +54,7 @@ sections:
           image_style: "width:56%;max-width:56%;height:auto;"
           button:
             text: "Ver más"
-            url: "/servicios/acompanamiento-pedagogico"
+            url: "/videos"
     design:
       background:
         color: "#3E6FBA"
