@@ -11,7 +11,7 @@ last_name: Buede
 
 # Is this the primary user of the site?
 superuser: true
-user_group: equipo
+user_groups: ["equipo"]
 
 # Role/position/tagline
 role: Director y productor audiovisual
