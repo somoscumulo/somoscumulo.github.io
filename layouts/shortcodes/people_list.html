@@ -1,57 +1,52 @@
-<!-- layouts/shortcodes/people_list.html -->
 {{/* 
-  Uso: {{< people_list group="equipo" columns=6 gapx="6rem" gapy="2.5rem" >}}
-  Requiere en cada author (content/authors/<slug>/_index.md):
-    user_groups: ["equipo"] o ["colaboran"], etc.
+  Shortcode: people_list
+  Uso: {{< people_list group="equipo" columns=4 gapx="8rem" gapy="3rem" >}}
+  Muestra avatars circulares con nombre (interlineado compacto) y rol (más chico y gris).
 */}}
 
-{{- $groupRaw := .Get "group"   | default "equipo" -}}
-{{- $group    := lower $groupRaw -}}
-{{- $columns  := .Get "columns" | default 6 -}}
-{{- $gapx     := .Get "gapx"    | default "6rem" -}}
-{{- $gapy     := .Get "gapy"    | default "2.5rem" -}}
+{{- $group  := .Get "group" | default "" -}}
+{{- $cols   := .Get "columns" | default 4 -}}
+{{- $gapx   := .Get "gapx" | default "6rem" -}}
+{{- $gapy   := .Get "gapy" | default "2.5rem" -}}
 
-{{/* Tomar la sección authors de forma robusta (branch bundles) */}}
-{{- $sec := site.GetPage "section" "authors" -}}
-{{- if not $sec -}}
-  {{- $sec = site.GetPage "/authors" -}}
-{{- end -}}
+{{- if not $group -}}
+  <div style="color:#b91c1c;">(people_list) Falta el parámetro <code>group</code>.</div>
+{{- else -}}
+  {{/* Tomamos las páginas de autores */}}
+  {{- $authors := where .Site.Pages "Section" "authors" -}}
 
-{{/* Colección combinada: branch (.Pages) + leaf (.RegularPages) + fallback global */}}
-{{- $candidates := slice -}}
-{{- if $sec -}}
-  {{- $candidates = $candidates | append $sec.Pages -}}
-  {{- $candidates = $candidates | append $sec.RegularPages -}}
-{{- end -}}
-{{- if eq (len $candidates) 0 -}}
-  {{- $candidates = where site.RegularPages "Section" "authors" -}}
-{{- end -}}
-
-<div style="display:grid;grid-template-columns:repeat({{ $columns }},minmax(0,1fr));column-gap:{{ $gapx }};row-gap:{{ $gapy }};justify-items:center;align-items:start;">
-  {{- range $p := $candidates -}}
-    {{- $groups := $p.Params.user_groups | default (slice) -}}
-    {{- $has := false -}}
-    {{- range $g := $groups -}}
-      {{- if eq (lower (printf "%v" $g)) $group -}}
-        {{- $has = true -}}
+  {{/* Filtramos por user_groups que contengan $group */}}
+  {{- $filtered := slice -}}
+  {{- range $p := $authors -}}
+    {{- with $p.Params.user_groups -}}
+      {{- if in . $group -}}
+        {{- $filtered = $filtered | append $p -}}
       {{- end -}}
-    {{- end -}}
-    {{- if $has -}}
-      {{- $slug := (path.Base (strings.TrimSuffix "/" $p.File.Dir)) -}}
-      {{- $avatar := $p.Resources.GetMatch "avatar*" -}}
-      {{- $avatarURL := "" -}}
-      {{- if $avatar -}}
-        {{- $avatarURL = $avatar.RelPermalink -}}
-      {{- else -}}
-        {{- $avatarURL = printf "/authors/%s/avatar.jpg" $slug -}}
-      {{- end -}}
-
-      <a href="{{ $p.RelPermalink }}" style="text-align:center;text-decoration:none;display:block;">
-        <div style="width:9.5rem;height:9.5rem;border-radius:9999px;overflow:hidden;margin:0 auto;box-shadow:0 1px 4px rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;">
-          <img src="{{ $avatarURL }}" alt="{{ $p.Title }}" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
-        </div>
-        <div style="margin-top:.5rem;font-weight:600;color:inherit;">{{ $p.Title }}</div>
-      </a>
     {{- end -}}
   {{- end -}}
-</div>
+
+  {{- if eq (len $filtered) 0 -}}
+    <div style="color:#6b7280;">(people_list) No hay perfiles en el grupo “{{ $group }}”.</div>
+  {{- else -}}
+    <div class="people-list" style="display:grid;grid-template-columns:repeat({{ $cols }},minmax(140px,1fr));gap:{{ $gapy }} {{ $gapx }};align-items:start;justify-items:center;">
+      {{- range $filtered -}}
+        {{- $avatar := .Resources.GetMatch "avatar*" -}}
+        {{- $slug := cond (ne .File nil) (path.Base (strings.TrimSuffix "/" .File.Dir)) (path.Base (strings.TrimSuffix "/" .RelPermalink)) -}}
+        {{- $fallback := printf "/authors/%s/avatar.jpg" $slug -}}
+        <a href="{{ .RelPermalink }}" class="person-card" style="text-decoration:none;color:inherit;text-align:center;max-width:14rem;">
+          <div style="width:8.5rem;height:8.5rem;border-radius:9999px;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,.08);margin:0 auto;">
+            <img 
+              src="{{ if $avatar }}{{ $avatar.RelPermalink }}{{ else }}{{ $fallback }}{{ end }}" 
+              alt="{{ .Title }}" 
+              loading="lazy"
+              style="width:100%;height:100%;object-fit:cover;object-position:center;">
+          </div>
+          <div style="margin-top:.4rem;font-weight:600;line-height:1.15;">{{ .Title }}</div>
+          {{ with .Params.role }}
+            <div style="margin-top:.15rem;font-size:.9rem;line-height:1.15;color:#6b7280;">{{ . }}</div>
+          {{ end }}
+        </a>
+      {{- end -}}
+    </div>
+  {{- end -}}
+{{- end -}}
