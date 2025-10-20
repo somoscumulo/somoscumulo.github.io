@@ -11,6 +11,7 @@ last_name: Ogando
 
 # Is this the primary user of the site?
 superuser: true
+user_group: equipo
 
 # Role/position/tagline
 role: Ilustradora creativa y docente
