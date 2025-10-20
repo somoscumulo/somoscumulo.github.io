@@ -11,7 +11,7 @@ last_name: Apellido
 
 # Is this the primary user of the site?
 superuser: true
-user_group: colaboran
+user_groups: ["colaboran"]
 
 # Role/position/tagline
 role: Locutora
