@@ -25,7 +25,7 @@ sections:
       background:
         color: "#FCF1B1"
 
-  # 2) Servicios (features) — sin imágenes
+  # 2) Servicios (features) — sin imágenes (texto compacto)
   - block: features
     id: servicios
     content:
@@ -42,7 +42,7 @@ sections:
       spacing:
         padding: ["12px","0","6px","0"]
 
-  # 3) Servicios destacados (cta-image-paragraph, fondo azul, imágenes al DOBLE, texto blanco)
+  # 3) Servicios destacados (texto blanco, IMÁGENES MÁS CHICAS, botones “Ver más”)
   - block: cta-image-paragraph
     id: servicios-destacados
     content:
@@ -52,17 +52,26 @@ sections:
           text: "<span style='color:#FFFFFF'>Creamos clases en video que convierten el contenido en experiencias de aprendizaje. Desde la ideación y el guion hasta la producción y la edición, integramos recursos audiovisuales en múltiples formatos para comunicar con claridad e impacto.</span>"
           image: "stickers-cumulo1-03.png"
           image_alt: "Ilustración Cúmulo"
-          image_style: "width:26%;max-width:26%;height:auto;"
+          image_style: "width:34%;max-width:34%;height:auto;"
+          button:
+            text: "Ver más"
+            url: "/servicios/videos-educativos"
         - title: "<span style='color:#FFFFFF'>Ilustración científica y facilitación visual</span>"
           text: "<span style='color:#FFFFFF'>Desarrollamos recursos visuales que complementan materiales en proyectos de formación e investigación, para que cada imagen refuerce el contenido y mejore la experiencia de aprendizaje.<br>Trabajamos en distintos formatos: presentaciones para clases o eventos, pósters científicos, materiales de lectura, entre otros.</span>"
           image: "stickers-cumulo1-05.png"
           image_alt: "Ilustración Cúmulo"
-          image_style: "width:26%;max-width:26%;height:auto;"
+          image_style: "width:34%;max-width:34%;height:auto;"
+          button:
+            text: "Ver más"
+            url: "/servicios/ilustracion-y-facilitacion-visual"
         - title: "<span style='color:#FFFFFF'>Acompañamiento y asesoramiento pedagógico</span>"
           text: "<span style='color:#FFFFFF'>Antes de producir contenidos, ofrecemos asesoramiento para diseñar la propuesta según el perfil de las y los estudiantes y los temas a desarrollar.<br>Nos involucramos desde el inicio en la ideación y en la selección de formatos, recursos y modalidades del contenido a producir.<br>Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto mantenga coherencia.</span>"
           image: "stickers-cumulo1-01.png"
           image_alt: "Ilustración Cúmulo"
-          image_style: "width:26%;max-width:26%;height:auto;"
+          image_style: "width:34%;max-width:34%;height:auto;"
+          button:
+            text: "Ver más"
+            url: "/servicios/acompanamiento-pedagogico"
     design:
       background:
         color: "#3E6FBA"
@@ -82,20 +91,20 @@ sections:
       spacing:
         padding: ["6px","0","2px","0"]   # compacto
 
-  # 4.5) Quiénes somos (grupo: equipo)
+  # 4.5) Quiénes somos (margen superior, centrado, fondo amarillo)
   - block: markdown
     id: quienes-somos
     content:
       title: "Quiénes somos"
       text: |
-        {{< people_list group="equipo" columns=2 gapx="6rem" gapy="2.5rem" >}}
+        {{< people_list group="equipo" columns=6 gapx="6rem" gapy="2.5rem" >}}
     design:
       background:
-        color: "#FCF1B1"   # amarillo de fondo
+        color: "#FCF1B1"
       spacing:
-        padding: ["20px","0","20px","0"]
+        padding: ["28px","0","20px","0"]   # +margen arriba
 
-  # 4.6) Colaboran (grupo: colaboran)
+  # 4.6) Colaboran (centrado, fondo amarillo igual que Quiénes somos)
   - block: markdown
     id: colaboran
     content:
@@ -103,8 +112,10 @@ sections:
       text: |
         {{< people_list group="colaboran" columns=8 gapx="6rem" gapy="2.5rem" >}}
     design:
+      background:
+        color: "#FCF1B1"
       spacing:
-        padding: ["10px","0","16px","0"]
+        padding: ["20px","0","24px","0"]
 
   # 5) Organizaciones (sirviendo desde assets/media, una sola fila)
   - block: markdown
@@ -149,14 +160,30 @@ sections:
         css_class: "shadow-sm"
         css_style: "background-color:#F4A26D;color:#3F393B;text-align:center; padding: 2.5rem; border-radius: 1rem;"
 
-  # 8) CSS puntual (centrado testimonio por si el tema ignora align)
+  # 8) CSS puntual (ajustes visuales extra)
   - block: markdown
     id: style-fixes
     content:
       text: |
         <style>
-          /* Asegurar que el testimonio quede centrado en todos los elementos */
+          /* Asegurar centrado del bloque de testimonios en todos los elementos */
           #testimonios, #testimonios * { text-align: center !important; }
+
+          /* Servicios destacados: reforzar tamaño de imagen más chico en casos donde el tema ignore image_style */
+          #servicios-destacados img {
+            width: 34% !important;
+            max-width: 34% !important;
+            height: auto !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            display: block !important;
+          }
+          @media (max-width: 640px) {
+            #servicios-destacados img {
+              width: 60% !important;
+              max-width: 60% !important;
+            }
+          }
         </style>
     design:
       spacing:
