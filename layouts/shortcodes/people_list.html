@@ -2,29 +2,41 @@
 {{/* 
   Uso: {{< people_list group="equipo" columns=6 gapx="6rem" gapy="2.5rem" >}}
   Requiere en cada author (content/authors/<slug>/_index.md):
-    user_groups: ["equipo"]  (o "colaboran", etc.)
+    user_groups: ["equipo"] o ["colaboran"], etc.
 */}}
 
-{{- $group   := .Get "group"   | default "equipo" -}}
-{{- $columns := .Get "columns" | default 6 -}}
-{{- $gapx    := .Get "gapx"    | default "6rem" -}}
-{{- $gapy    := .Get "gapy"    | default "2.5rem" -}}
+{{- $groupRaw := .Get "group"   | default "equipo" -}}
+{{- $group    := lower $groupRaw -}}
+{{- $columns  := .Get "columns" | default 6 -}}
+{{- $gapx     := .Get "gapx"    | default "6rem" -}}
+{{- $gapy     := .Get "gapy"    | default "2.5rem" -}}
 
-{{/* Obtener la sección authors de forma robusta */}}
+{{/* Tomar la sección authors de forma robusta (branch bundles) */}}
 {{- $sec := site.GetPage "section" "authors" -}}
 {{- if not $sec -}}
   {{- $sec = site.GetPage "/authors" -}}
 {{- end -}}
 
-{{- $pages := slice -}}
+{{/* Colección combinada: branch (.Pages) + leaf (.RegularPages) + fallback global */}}
+{{- $candidates := slice -}}
 {{- if $sec -}}
-  {{- $pages = $sec.Pages -}}  {{/* branch bundles (/_index.md) aparecen en .Pages */}}
+  {{- $candidates = $candidates | append $sec.Pages -}}
+  {{- $candidates = $candidates | append $sec.RegularPages -}}
+{{- end -}}
+{{- if eq (len $candidates) 0 -}}
+  {{- $candidates = where site.RegularPages "Section" "authors" -}}
 {{- end -}}
 
 <div style="display:grid;grid-template-columns:repeat({{ $columns }},minmax(0,1fr));column-gap:{{ $gapx }};row-gap:{{ $gapy }};justify-items:center;align-items:start;">
-  {{- range $p := $pages -}}
+  {{- range $p := $candidates -}}
     {{- $groups := $p.Params.user_groups | default (slice) -}}
-    {{- if in $groups $group -}}
+    {{- $has := false -}}
+    {{- range $g := $groups -}}
+      {{- if eq (lower (printf "%v" $g)) $group -}}
+        {{- $has = true -}}
+      {{- end -}}
+    {{- end -}}
+    {{- if $has -}}
       {{- $slug := (path.Base (strings.TrimSuffix "/" $p.File.Dir)) -}}
       {{- $avatar := $p.Resources.GetMatch "avatar*" -}}
       {{- $avatarURL := "" -}}
