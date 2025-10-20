@@ -82,54 +82,42 @@ sections:
       spacing:
         padding: ["6px","0","2px","0"]   # compacto
 
-  # 4.5) Quiénes somos (fondo amarillo + más margen; avatares grandes; links a /authors/<slug>/)
+  # 4.5) Quiénes somos (grupo: equipo)
   - block: markdown
     id: quienes-somos
     content:
       title: "Quiénes somos"
       text: |
-        <div class="grid grid-cols-2 gap-10 items-start">
-          <!-- Julián -->
-          <a href="/authors/julian/" class="text-center people-link" aria-label="Ir al perfil de Julián">
-            <div class="rounded-full overflow-hidden mx-auto shadow w-40 h-40 md:w-48 md:h-48 flex items-center justify-center">
-              {{< author_avatar slug="julian" alt="Julián" >}}
-            </div>
-            <div class="mt-2 font-medium">Julián</div>
-          </a>
-
-          <!-- Cielo -->
-          <a href="/authors/cielo/" class="text-center people-link" aria-label="Ir al perfil de Cielo">
-            <div class="rounded-full overflow-hidden mx-auto shadow w-40 h-40 md:w-48 md:h-48 flex items-center justify-center">
-              {{< author_avatar slug="cielo" alt="Cielo" >}}
-            </div>
-            <div class="mt-2 font-medium">Cielo</div>
-          </a>
-        </div>
+        {{< people_list group="equipo" columns=6 gapx="6rem" gapy="2.5rem" >}}
     design:
       background:
-        color: "#FCF1B1"
+        color: "#FCF1B1"   # amarillo de fondo
       spacing:
-        padding: ["20px","0","20px","0"]   # más margen sup/inf
+        padding: ["20px","0","20px","0"]
 
-  # 5) Organizaciones (Markdown a ancho completo, una sola fila, logos más grandes)
+  # 4.6) Colaboran (grupo: colaboran)
+  - block: markdown
+    id: colaboran
+    content:
+      title: "Colaboran"
+      text: |
+        {{< people_list group="colaboran" columns=8 gapx="6rem" gapy="2.5rem" >}}
+    design:
+      spacing:
+        padding: ["10px","0","16px","0"]
+
+  # 5) Organizaciones (sirviendo desde assets/media, una sola fila)
   - block: markdown
     id: aliados
     content:
       title: "Organizaciones que confían en Cúmulo"
       text: |
-        <div style="width:100%;">
-          <div class="grid grid-cols-4 items-center justify-items-center gap-x-12 gap-y-0 py-3" style="width:100%;">
-            <img src="/logo1.jpg" alt="Logo 1" style="height:80px;width:auto;max-width:100%;object-fit:contain;display:block;">
-            <img src="/logo3.jpg" alt="Logo 3" style="height:80px;width:auto;max-width:100%;object-fit:contain;display:block;">
-            <img src="/logo2.jpg" alt="Logo 2" style="height:80px;width:auto;max-width:100%;object-fit:contain;display:block;">
-            <img src="/logo4.png" alt="Logo 4" style="height:80px;width:auto;max-width:100%;object-fit:contain;display:block;">
-          </div>
-        </div>
+        {{< logos_row_assets >}}
     design:
       spacing:
         padding: ["8px","0","10px","0"]
 
-  # 6) Testimonios (SIN título)
+  # 6) Testimonios (centrado)
   - block: testimonials
     id: testimonios
     content:
@@ -142,6 +130,7 @@ sections:
             Nos encanta que propongan mejoras de manera constante y que se pongan manos a la obra para lograr un producto cada vez mejor.
             La **cercanía**, la **rapidez de respuesta** y la **dedicación** para asegurarse de que todo quede perfecto hacen que trabajar juntos sea siempre un gusto.
     design:
+      align: center
       spacing:
         padding: ["2px","0","6px","0"]
 
@@ -160,36 +149,14 @@ sections:
         css_class: "shadow-sm"
         css_style: "background-color:#F4A26D;color:#3F393B;text-align:center; padding: 2.5rem; border-radius: 1rem;"
 
-  # 8) CSS puntual (tamaños servicios-destacados, avatares centrados, nombres sin subrayado)
+  # 8) CSS puntual (centrado testimonio por si el tema ignora align)
   - block: markdown
     id: style-fixes
     content:
       text: |
         <style>
-          /* Imágenes en servicios-destacados: tamaño al DOBLE (~56%) */
-          #servicios-destacados img {
-            width: 56% !important;
-            max-width: 56% !important;
-            height: auto !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-            display: block !important;
-          }
-          @media (max-width: 640px) {
-            #servicios-destacados img {
-              width: 70% !important;
-              max-width: 70% !important;
-            }
-          }
-
-          /* Avatares centrados y bien recortados */
-          #quienes-somos .rounded-full img {
-            object-fit: cover; object-position: center; width: 100%; height: 100%;
-          }
-
-          /* Nombres sin subrayado */
-          #quienes-somos a.people-link { text-decoration: none !important; }
-          #quienes-somos a.people-link:hover { text-decoration: none !important; }
+          /* Asegurar que el testimonio quede centrado en todos los elementos */
+          #testimonios, #testimonios * { text-align: center !important; }
         </style>
     design:
       spacing:
