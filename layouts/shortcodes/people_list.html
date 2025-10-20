@@ -1,7 +1,8 @@
 <!-- layouts/shortcodes/people_list.html -->
 {{/* 
-  Muestra personas (autores) por grupo: {{< people_list group="equipo" columns=6 gapx="6rem" gapy="2.5rem" >}}
-  Requiere que cada autor tenga en su front matter: user_groups: ["equipo"] (o "colaboran", etc.)
+  Uso: {{< people_list group="equipo" columns=6 gapx="6rem" gapy="2.5rem" >}}
+  Requiere en cada author (content/authors/<slug>/_index.md):
+    user_groups: ["equipo"]  (o "colaboran", etc.)
 */}}
 
 {{- $group   := .Get "group"   | default "equipo" -}}
@@ -9,10 +10,19 @@
 {{- $gapx    := .Get "gapx"    | default "6rem" -}}
 {{- $gapy    := .Get "gapy"    | default "2.5rem" -}}
 
-{{- $authors := where .Site.RegularPages "Section" "authors" -}}
+{{/* Obtener la sección authors de forma robusta */}}
+{{- $sec := site.GetPage "section" "authors" -}}
+{{- if not $sec -}}
+  {{- $sec = site.GetPage "/authors" -}}
+{{- end -}}
 
-<div style="display:grid;grid-template-columns:repeat({{ $columns }},minmax(0,1fr));column-gap:{{ $gapx }};row-gap:{{ $gapy }};">
-  {{- range $p := $authors -}}
+{{- $pages := slice -}}
+{{- if $sec -}}
+  {{- $pages = $sec.Pages -}}  {{/* branch bundles (/_index.md) aparecen en .Pages */}}
+{{- end -}}
+
+<div style="display:grid;grid-template-columns:repeat({{ $columns }},minmax(0,1fr));column-gap:{{ $gapx }};row-gap:{{ $gapy }};justify-items:center;align-items:start;">
+  {{- range $p := $pages -}}
     {{- $groups := $p.Params.user_groups | default (slice) -}}
     {{- if in $groups $group -}}
       {{- $slug := (path.Base (strings.TrimSuffix "/" $p.File.Dir)) -}}
@@ -21,12 +31,11 @@
       {{- if $avatar -}}
         {{- $avatarURL = $avatar.RelPermalink -}}
       {{- else -}}
-        {{- /* Fallback a /authors/<slug>/avatar.jpg (static) */ -}}
         {{- $avatarURL = printf "/authors/%s/avatar.jpg" $slug -}}
       {{- end -}}
 
-      <a href="{{ $p.RelPermalink }}" style="text-align:center;text-decoration:none;">
-        <div style="width:9rem;height:9rem;border-radius:9999px;overflow:hidden;margin:0 auto;box-shadow:0 1px 4px rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;">
+      <a href="{{ $p.RelPermalink }}" style="text-align:center;text-decoration:none;display:block;">
+        <div style="width:9.5rem;height:9.5rem;border-radius:9999px;overflow:hidden;margin:0 auto;box-shadow:0 1px 4px rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;">
           <img src="{{ $avatarURL }}" alt="{{ $p.Title }}" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
         </div>
         <div style="margin-top:.5rem;font-weight:600;color:inherit;">{{ $p.Title }}</div>
