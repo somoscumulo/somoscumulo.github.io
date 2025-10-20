@@ -25,22 +25,6 @@ sections:
       background:
         color: "#FCF1B1"
 
-  # 2) Servicios (features) — sin imágenes (texto compacto)
-  - block: features
-    id: servicios
-    content:
-      title: "Nuestros servicios"
-      items:
-        - name: "Producción de videos educativos"
-          description: "Creamos clases en video que convierten el contenido en experiencias de aprendizaje. Desde la ideación y el guion hasta la producción y la edición, integramos recursos audiovisuales en múltiples formatos para comunicar con claridad e impacto."
-        - name: "Ilustración científica y facilitación visual"
-          description: "Desarrollamos recursos visuales que complementan materiales en proyectos de formación e investigación, para que cada imagen refuerce el contenido y mejore la experiencia de aprendizaje.\nTrabajamos en distintos formatos: presentaciones para clases o eventos, pósters científicos, materiales de lectura, entre otros."
-        - name: "Acompañamiento en el diseño pedagógico"
-          description: "Antes de producir contenidos, ofrecemos asesoramiento para diseñar la propuesta según el perfil de las y los estudiantes y los temas a desarrollar.\nNos involucramos desde el inicio en la ideación y en la selección de formatos, recursos y modalidades del contenido a producir.\nCo-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto mantenga coherencia."
-    design:
-      columns: "3"
-      spacing:
-        padding: ["12px","0","6px","0"]
 
   # 3) Servicios destacados (DOBLE de grandes, botones invertidos blanco/azul)
   - block: cta-image-paragraph
@@ -81,9 +65,9 @@ sections:
     id: metricas
     content:
       items:
-        - statistic: "170+"
+        - statistic: "+170"
           description: "clases en formato video"
-        - statistic: "40+"
+        - statistic: "+40"
           description: "docentes trabajaron con Cúmulo"
         - statistic: "10"
           description: "propuestas de formación acompañadas"
