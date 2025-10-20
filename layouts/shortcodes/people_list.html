@@ -1,0 +1,36 @@
+<!-- layouts/shortcodes/people_list.html -->
+{{/* 
+  Muestra personas (autores) por grupo: {{< people_list group="equipo" columns=6 gapx="6rem" gapy="2.5rem" >}}
+  Requiere que cada autor tenga en su front matter: user_groups: ["equipo"] (o "colaboran", etc.)
+*/}}
+
+{{- $group   := .Get "group"   | default "equipo" -}}
+{{- $columns := .Get "columns" | default 6 -}}
+{{- $gapx    := .Get "gapx"    | default "6rem" -}}
+{{- $gapy    := .Get "gapy"    | default "2.5rem" -}}
+
+{{- $authors := where .Site.RegularPages "Section" "authors" -}}
+
+<div style="display:grid;grid-template-columns:repeat({{ $columns }},minmax(0,1fr));column-gap:{{ $gapx }};row-gap:{{ $gapy }};">
+  {{- range $p := $authors -}}
+    {{- $groups := $p.Params.user_groups | default (slice) -}}
+    {{- if in $groups $group -}}
+      {{- $slug := (path.Base (strings.TrimSuffix "/" $p.File.Dir)) -}}
+      {{- $avatar := $p.Resources.GetMatch "avatar*" -}}
+      {{- $avatarURL := "" -}}
+      {{- if $avatar -}}
+        {{- $avatarURL = $avatar.RelPermalink -}}
+      {{- else -}}
+        {{- /* Fallback a /authors/<slug>/avatar.jpg (static) */ -}}
+        {{- $avatarURL = printf "/authors/%s/avatar.jpg" $slug -}}
+      {{- end -}}
+
+      <a href="{{ $p.RelPermalink }}" style="text-align:center;text-decoration:none;">
+        <div style="width:9rem;height:9rem;border-radius:9999px;overflow:hidden;margin:0 auto;box-shadow:0 1px 4px rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;">
+          <img src="{{ $avatarURL }}" alt="{{ $p.Title }}" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+        </div>
+        <div style="margin-top:.5rem;font-weight:600;color:inherit;">{{ $p.Title }}</div>
+      </a>
+    {{- end -}}
+  {{- end -}}
+</div>
