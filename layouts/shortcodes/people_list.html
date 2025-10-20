@@ -1,7 +1,7 @@
 {{/* 
   Shortcode: people_list
   Uso: {{< people_list group="equipo" columns=4 gapx="8rem" gapy="3rem" >}}
-  Muestra avatars circulares con nombre (interlineado compacto) y rol (más chico y gris).
+  Avatares en círculo, nombre con interlineado compacto y rol chico/gris.
 */}}
 
 {{- $group  := .Get "group" | default "" -}}
@@ -12,10 +12,8 @@
 {{- if not $group -}}
   <div style="color:#b91c1c;">(people_list) Falta el parámetro <code>group</code>.</div>
 {{- else -}}
-  {{/* Tomamos las páginas de autores */}}
   {{- $authors := where .Site.Pages "Section" "authors" -}}
 
-  {{/* Filtramos por user_groups que contengan $group */}}
   {{- $filtered := slice -}}
   {{- range $p := $authors -}}
     {{- with $p.Params.user_groups -}}
@@ -26,22 +24,39 @@
   {{- end -}}
 
   {{- if eq (len $filtered) 0 -}}
-    <div style="color:#6b7280;">(people_list) No hay perfiles en el grupo “{{ $group }}”.</div>
+    <div style="color:#6b7280;">(people_list) No hay perfiles en “{{ $group }}”.</div>
   {{- else -}}
     <div class="people-list" style="display:grid;grid-template-columns:repeat({{ $cols }},minmax(140px,1fr));gap:{{ $gapy }} {{ $gapx }};align-items:start;justify-items:center;">
       {{- range $filtered -}}
         {{- $avatar := .Resources.GetMatch "avatar*" -}}
         {{- $slug := cond (ne .File nil) (path.Base (strings.TrimSuffix "/" .File.Dir)) (path.Base (strings.TrimSuffix "/" .RelPermalink)) -}}
         {{- $fallback := printf "/authors/%s/avatar.jpg" $slug -}}
+
         <a href="{{ .RelPermalink }}" class="person-card" style="text-decoration:none;color:inherit;text-align:center;max-width:14rem;">
-          <div style="width:8.5rem;height:8.5rem;border-radius:9999px;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,.08);margin:0 auto;">
+          <!-- Contenedor del avatar: display:flex para centrar, line-height:0 para quitar el gap de línea -->
+          <div style="
+            width:8.5rem;height:8.5rem;
+            border-radius:9999px;overflow:hidden;
+            box-shadow:0 1px 6px rgba(0,0,0,.08);
+            margin:0 auto;
+            display:flex;align-items:center;justify-content:center;
+            line-height:0;
+          ">
             <img 
               src="{{ if $avatar }}{{ $avatar.RelPermalink }}{{ else }}{{ $fallback }}{{ end }}" 
               alt="{{ .Title }}" 
               loading="lazy"
-              style="width:100%;height:100%;object-fit:cover;object-position:center;">
+              style="
+                width:100%;height:100%;
+                object-fit:cover;object-position:center center;
+                display:block; /* elimina baseline gap */
+              ">
           </div>
-          <div style="margin-top:.4rem;font-weight:600;line-height:1.15;">{{ .Title }}</div>
+
+          <!-- Nombre con interlineado compacto -->
+          <div style="margin-top:.45rem;font-weight:600;line-height:1.15;">{{ .Title }}</div>
+
+          <!-- Rol más chico y más claro -->
           {{ with .Params.role }}
             <div style="margin-top:.15rem;font-size:.9rem;line-height:1.15;color:#6b7280;">{{ . }}</div>
           {{ end }}
