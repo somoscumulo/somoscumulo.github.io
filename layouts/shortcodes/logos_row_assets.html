@@ -1,27 +1,17 @@
 <!-- layouts/shortcodes/logos_row_assets.html -->
-{{/* 
-  Muestra una fila de logos cargándolos desde assets/media con resources.Get.
-  Si no existe en assets, cae a /media (static).
-  UNA sola fila, centrado, sin scrollbar. Ajustá $height si querés más grande.
-*/}}
+{{/* Fila de 4 logos. Carga desde assets/media con resources.Get; fallback a /media. */}}
 
-{{- $files := slice
-  "logo1.jpg"
-  "logo2.jpg"
-  "logo3.jpg"
-  "logo4.png"
--}}
-
-{{- $height := 80 -}}  {{/* altura px (ajustable) */}}
+{{- $files := slice "logo1.jpg" "logo2.jpg" "logo3.jpg" "logo4.png" -}}
+{{- $height := 88 -}}  {{/* 80 -> 88 (≈ +10%) */}}
 
 <div class="w-full">
   <div class="grid grid-cols-4 items-center justify-items-center gap-x-12 gap-y-0 py-3" style="width:100%;">
-    {{- range $files -}}
-      {{- $res := resources.Get (printf "media/%s" .) -}}
+    {{- range $f := $files -}}
+      {{- $res := resources.Get (printf "media/%s" $f) -}}
       {{- if $res -}}
-        <img src="{{ $res.RelPermalink }}" alt="{{ . }}" style="height:{{ $height }}px;width:auto;max-width:100%;object-fit:contain;display:block;">
+        <img src="{{ $res.RelPermalink }}" alt="{{ $f }}" style="height:{{ $height }}px;width:auto;max-width:100%;object-fit:contain;display:block;">
       {{- else -}}
-        <img src="{{ printf "/media/%s" . }}" alt="{{ . }}" style="height:{{ $height }}px;width:auto;max-width:100%;object-fit:contain;display:block;">
+        <img src="{{ printf "/media/%s" $f }}" alt="{{ $f }}" style="height:{{ $height }}px;width:auto;max-width:100%;object-fit:contain;display:block;">
       {{- end -}}
     {{- end -}}
   </div>
