@@ -1,6 +1,7 @@
 ---
 # Display name
 title: Julián Buede
+weight: 1
 
 # Name pronunciation (optional)
 name_pronunciation: Julián Buede
