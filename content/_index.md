@@ -74,43 +74,53 @@ sections:
       spacing:
         padding: ["6px","0","2px","0"]
 
-  # 4.5) Quiénes somos (centrado, mayor separación entre perfiles, fondo amarillo)
+  # 4.5) Quiénes somos — responsive 2 columnas en mobile (usa columns=2)
   - block: markdown
     id: quienes-somos
     content:
       title: "Quiénes somos"
       text: |
-        <div style="max-width:1100px;margin:0 auto;">
-          {{< people_list group="equipo" columns=4 gapx="8rem" gapy="3rem" >}}
+        <div class="people-wrap">
+          {{< people_list group="equipo" columns=2 gapx="6rem" gapy="2.5rem" >}}
         </div>
     design:
       background:
         color: "#FCF1B1"
       spacing:
-        padding: ["36px","0","28px","0"]   # más margen sup/inf
+        padding: ["28px","0","22px","0"]
 
-  # 4.6) Colaboran (centrado, mayor separación, mismo fondo)
+  # 4.6) Colaboran — responsive 2 columnas en mobile (usa columns=2)
   - block: markdown
     id: colaboran
     content:
       title: "Colaboran"
       text: |
-        <div style="max-width:1100px;margin:0 auto;">
-          {{< people_list group="colaboran" columns=4 gapx="8rem" gapy="3rem" >}}
+        <div class="people-wrap">
+          {{< people_list group="colaboran" columns=2 gapx="6rem" gapy="2.5rem" >}}
         </div>
     design:
       background:
         color: "#FCF1B1"
       spacing:
-        padding: ["28px","0","36px","0"]   # un pelín más abajo
+        padding: ["22px","0","30px","0"]
 
-  # 5) Organizaciones (logos +10%)
+  # 5) Organizaciones (logos desde assets/media, sin scroll)
   - block: markdown
     id: aliados
     content:
       title: "Organizaciones que confían en Cúmulo"
       text: |
-        {{< logos_row_assets >}}
+        <div class="logos-row">
+          {{- $names := slice "logo1.jpg" "logo3.jpg" "logo2.jpg" "logo4.png" -}}
+          {{- range $names -}}
+            {{- $res := resources.Get (printf "media/%s" .) -}}
+            {{- if $res -}}
+              <img src="{{ $res.RelPermalink }}" alt="{{ . }}" />
+            {{- else -}}
+              <img src="/media/{{ . }}" alt="{{ . }}" />
+            {{- end -}}
+          {{- end -}}
+        </div>
     design:
       spacing:
         padding: ["8px","0","10px","0"]
@@ -147,16 +157,63 @@ sections:
         css_class: "shadow-sm"
         css_style: "background-color:#F4A26D;color:#3F393B;text-align:center; padding: 2.5rem; border-radius: 1rem;"
 
-  # 8) CSS puntual (botones invertidos, refuerzo tamaños servicios, centrados)
+  # 8) CSS puntual (responsivo en people_list y tweaks de estilos)
   - block: markdown
     id: style-fixes
     content:
       text: |
         <style>
-          /* Testimonios centrado total */
+          /* Contenedor centrado para people_list */
+          .people-wrap {
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+          }
+
+          /* Si tu shortcode people_list NO maneja responsividad por sí mismo,
+             forzamos layout amigable con mobile: dos por fila. */
+          .people-wrap .people-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 2.5rem 6rem; /* gapy/gapx */
+            justify-items: center;
+            align-items: start;
+          }
+          @media (min-width: 900px) {
+            .people-wrap .people-grid {
+              grid-template-columns: repeat(4, minmax(0, 1fr)); /* 4 por fila en desktop */
+              gap: 3rem 8rem;
+            }
+          }
+
+          /* Avatares bien centrados dentro del círculo */
+          .people-wrap .avatar,
+          .people-wrap .avatar img {
+            border-radius: 9999px;
+            object-fit: cover;
+            object-position: center;
+            width: 10rem;
+            height: 10rem;
+            display: block;
+          }
+
+          /* Tipografía compacta en nombres y rol */
+          .people-wrap .name {
+            line-height: 1.2;
+            margin-top: .4rem;
+            font-weight: 600;
+            text-decoration: none !important;
+          }
+          .people-wrap .role {
+            margin-top: .1rem;
+            font-size: .9rem;
+            opacity: .8;
+          }
+
+          /* Testimonios centrados */
           #testimonios, #testimonios * { text-align: center !important; }
 
-          /* Servicios destacados: tamaño refuerzo */
+          /* Servicios destacados: tamaño refuerzo y botones invertidos */
           #servicios-destacados img {
             width: 56% !important;
             max-width: 56% !important;
@@ -166,12 +223,8 @@ sections:
             display: block !important;
           }
           @media (max-width: 640px) {
-            #servicios-destacados img {
-              width: 70% !important; max-width: 70% !important;
-            }
+            #servicios-destacados img { width: 70% !important; max-width: 70% !important; }
           }
-
-          /* Botones invertidos (blanco fondo / azul texto) en Servicios destacados */
           #servicios-destacados a.btn,
           #servicios-destacados a.btn-primary,
           #servicios-destacados .btn {
@@ -185,6 +238,32 @@ sections:
             background:#EAF0FB !important;
             color:#2c5490 !important;
             border-color:#FFFFFF !important;
+          }
+
+          /* Logos en una sola fila, sin scroll, +10% tamaño */
+          .logos-row {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 2.5rem 3rem;
+            align-items: center;
+            justify-items: center;
+          }
+          .logos-row img {
+            height: 88px; /* 80px +10% */
+            width: auto;
+            display: block;
+            object-fit: contain;
+            max-width: 100%;
+          }
+          @media (max-width: 768px) {
+            .logos-row {
+              grid-template-columns: repeat(2, minmax(0, 1fr)); /* dos por fila en mobile */
+              gap: 1.5rem 2rem;
+            }
+            .logos-row img { height: 72px; }
           }
         </style>
     design:
