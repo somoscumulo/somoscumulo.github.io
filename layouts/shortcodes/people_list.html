@@ -1,101 +1,97 @@
 {{/* layouts/shortcodes/people_list.html
-   Uso:
-   {{< people_list group="equipo" columns=4 gapx="6rem" gapy="2.5rem" >}}
-   Requisitos:
-   - Autores como bundles en content/authors/<slug>/_index.md
-   - avatar (p.ej. content/authors/<slug>/avatar.jpg o avatar.png)
-   - params:
-       name: "Nombre Apellido" (opcional si usás .Title)
-       role: "Rol de la persona"
-       user_group: ["equipo","colaboran"]  // para filtrar
+
+Uso:
+  {{< people_list group="equipo" columns=4 gapx="6rem" gapy="2.5rem" >}}
+
+Requisitos por autor (bundle):
+  content/authors/<slug>/_index.md
+  content/authors/<slug>/avatar.(jpg|png|webp)
+  Front matter por autor:
+    title: "Nombre Apellido"   # o name:
+    name: "Nombre Apellido"
+    role: "Rol / Especialidad"
+    user_group: ["equipo"]     # o ["colaboran"], también acepta "group"/"groups"
 */}}
 
-{{- $group   := .Get "group" | default "" -}}
+{{- $group   := .Get "group"   | default "" -}}
 {{- $columns := .Get "columns" | default 4 -}}
 {{- $gapx    := .Get "gapx"    | default "6rem" -}}
 {{- $gapy    := .Get "gapy"    | default "2.5rem" -}}
 
-{{- $authorsSection := site.GetPage "section" "authors" -}}
-{{- if not $authorsSection -}}
-  {{- /* fallback por si el tema usa otra sección */ -}}
-  {{- $authorsSection = site.GetPage "authors" -}}
-{{- end -}}
+{{/* Traer todas las páginas de la sección authors, sólo las "regulares" (no _index de la sección raíz) */}}
+{{- $all := where site.RegularPages "Section" "authors" -}}
 
-{{- $pages := slice -}}
-{{- if $authorsSection -}}
-  {{- range $authorsSection.Pages -}}
-    {{- $ok := true -}}
-    {{- if $group -}}
-      {{- $g := .Params.user_group -}}
-      {{- if $g -}}
-        {{- $t := printf "%T" $g -}}
-        {{- if eq $t "string" -}}
-          {{- $ok = eq (lower $g) (lower $group) -}}
-        {{- else -}}
-          {{- /* asumo array */ -}}
-          {{- $ok = in (apply $g "lower" "." ) (lower $group) -}}
-        {{- end -}}
-      {{- else -}}
-        {{- $ok = false -}}
+{{/* Filtrado por grupo (user_group | group | groups), aceptando string o lista */}}
+{{- $want := lower $group -}}
+{{- $filtered := slice -}}
+{{- range $all -}}
+  {{- $pg := . -}}
+  {{- $val := cond (isset $pg.Params "user_group") $pg.Params.user_group (cond (isset $pg.Params "group") $pg.Params.group (cond (isset $pg.Params "groups") $pg.Params.groups nil)) -}}
+  {{- $hit := false -}}
+  {{- if $want | and $val -}}
+    {{- $t := printf "%T" $val -}}
+    {{- if eq $t "string" -}}
+      {{- if eq (lower $val) $want }}{{ $hit = true }}{{ end -}}
+    {{- else -}}
+      {{- $lowered := apply (slice) "printf" "." -}}
+      {{- /* normalizamos a lista de strings en minúscula */ -}}
+      {{- $list := slice -}}
+      {{- range $val -}}
+        {{- $list = $list | append (lower (printf "%v" .)) -}}
       {{- end -}}
+      {{- if in $list $want }}{{ $hit = true }}{{ end -}}
     {{- end -}}
-    {{- if $ok -}}
-      {{- $pages = $pages | append . -}}
-    {{- end -}}
+  {{- else if not $want -}}
+    {{- /* si no se pidió grupo, incluir todos */ -}}
+    {{- $hit = true -}}
   {{- end -}}
+  {{- if $hit }}{{ $filtered = $filtered | append $pg }}{{ end -}}
 {{- end -}}
 
-{{- /* ordenar: primero por weight (si existe), luego por Title */ -}}
-{{- $pages = sort (sort $pages "Params.weight" "asc") "Title" "asc" -}}
+{{- /* Orden: primero por weight (si hay), luego por Title */ -}}
+{{- $filtered = sort (sort $filtered "Params.weight" "asc") "Title" "asc" -}}
 
-{{- /* Inyectar CSS una única vez por página */ -}}
-{{- if not (.Page.Scratch.Get "people_list_css") -}}
-  <style>
-    .people-grid{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr)); /* 2 en mobile */
-      gap: {{ $gapy }} {{ $gapx }};
-      justify-items:center;
-      align-items:start;
-    }
-    @media (min-width: 900px){
-      .people-grid{ grid-template-columns:repeat(var(--cols,4),minmax(0,1fr)); }
-    }
-    .people-item{ text-align:center; }
-    .people-avatar{
-      width: 12rem; height: 12rem; /* grande y responsivo */
-      border-radius:9999px; overflow:hidden;
-      box-shadow:0 2px 10px rgba(0,0,0,.08);
-      margin:0 auto;
-      display:flex; align-items:center; justify-content:center;
-    }
-    .people-avatar img{
-      width:100%; height:100%;
-      object-fit:cover; object-position:center;
-      display:block;
-    }
-    .people-name{
-      margin-top:.5rem; font-weight:700; line-height:1.2;
-      text-decoration:none !important;
-    }
-    .people-role{
-      margin-top:.2rem; font-size:.95rem; opacity:.8;
-    }
-    .people-link{ text-decoration:none !important; }
-    .people-link:hover .people-name{ text-decoration:none !important; opacity:.95; }
-  </style>
-  {{- .Page.Scratch.Set "people_list_css" true -}}
+{{/* CSS inline una sola vez por página */}}
+{{- if not (.Page.Scratch.Get "people_list_css_v2") -}}
+<style>
+  .people-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr)); /* 2 en mobile */
+    gap: {{ $gapy }} {{ $gapx }};
+    justify-items:center;
+    align-items:start;
+  }
+  @media (min-width: 900px){
+    .people-grid{ grid-template-columns:repeat(var(--cols,4),minmax(0,1fr)); }
+  }
+  .people-item{ text-align:center; }
+  .people-avatar{
+    width: 12rem; height: 12rem;
+    border-radius:9999px; overflow:hidden;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+    margin:0 auto;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .people-avatar img{
+    width:100%; height:100%;
+    object-fit:cover; object-position:center;
+    display:block;
+  }
+  .people-name{ margin-top:.45rem; font-weight:700; line-height:1.2; }
+  .people-role{ margin-top:.15rem; font-size:.95rem; opacity:.8; }
+  .people-link{ text-decoration:none !important; }
+</style>
+{{- .Page.Scratch.Set "people_list_css_v2" true -}}
 {{- end -}}
 
 <div class="people-grid" style="--cols: {{ $columns }};">
-  {{- if gt (len $pages) 0 -}}
-    {{- range $pages -}}
+  {{- if gt (len $filtered) 0 -}}
+    {{- range $filtered -}}
       {{- $title := .Params.name | default .Title -}}
       {{- $role  := .Params.role -}}
-      {{- /* avatar: preferir Page Resource (avatar.*) */ -}}
+      {{- /* Avatar: primero Page Resource, luego fallback en /assets/authors/... */ -}}
       {{- $avatar := .Resources.GetMatch "avatar*" -}}
       {{- if not $avatar -}}
-        {{- /* fallback: archivo estático /authors/<slug>/avatar.(jpg|png|webp) */ -}}
         {{- $slug := (path.Base (.File.Dir | strings.TrimSuffix "/")) -}}
         {{- $try := slice "jpg" "png" "webp" "jpeg" -}}
         {{- range $try -}}
@@ -104,7 +100,6 @@
             {{- if $cand }}{{ $avatar = $cand }}{{ end -}}
           {{- end -}}
         {{- end -}}
-        {{- /* último fallback: ruta absoluta en /content/authors no es pública; evitamos */ -}}
       {{- end -}}
 
       <div class="people-item">
@@ -113,7 +108,6 @@
             {{- if $avatar -}}
               <img src="{{ $avatar.RelPermalink }}" alt="{{ $title }}">
             {{- else -}}
-              {{- /* placeholder simple si no hay avatar */ -}}
               <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='480'%3E%3Crect width='100%25' height='100%25' fill='%23eee'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23999' font-size='24'%3E{{ $title }}%3C/text%3E%3C/svg%3E" alt="{{ $title }}">
             {{- end -}}
           </div>
