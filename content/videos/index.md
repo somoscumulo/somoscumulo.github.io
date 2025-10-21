@@ -26,10 +26,10 @@ Acompañamos todo el proceso: **ideación, guionado, rodaje y edición**, integr
 Grabamos la exposición de docentes (presencial o **autograbada con pautas**) y la editamos con **texto, gráficos e imágenes** que complementan las explicaciones.
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
-  <img src="/media/videopresentacion2.png" alt="Presentación animada — ejemplo 1" class="w-full h-auto rounded-xl shadow-md">
-  <img src="/media/videopresentacion3.png" alt="Presentación animada — ejemplo 2" class="w-full h-auto rounded-xl shadow-md">
-  <img src="/media/videopresentacion5.png" alt="Presentación animada — ejemplo 3" class="w-full h-auto rounded-xl shadow-md">
-  <img src="/media/videopresentacion1.png" alt="Presentación animada — ejemplo 4" class="w-full h-auto rounded-xl shadow-md">
+  <img src="/videopresentacion2.png" alt="Presentación animada — ejemplo 1" class="w-full h-auto rounded-xl shadow-md">
+  <img src="/videopresentacion3.png" alt="Presentación animada — ejemplo 2" class="w-full h-auto rounded-xl shadow-md">
+  <img src="/videopresentacion5.png" alt="Presentación animada — ejemplo 3" class="w-full h-auto rounded-xl shadow-md">
+  <img src="/videopresentacion1.png" alt="Presentación animada — ejemplo 4" class="w-full h-auto rounded-xl shadow-md">
 </div>
 
 ---
