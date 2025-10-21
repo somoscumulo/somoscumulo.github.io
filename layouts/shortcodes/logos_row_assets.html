@@ -1,18 +1,40 @@
-<!-- layouts/shortcodes/logos_row_assets.html -->
-{{/* Fila de 4 logos. Carga desde assets/media con resources.Get; fallback a /media. */}}
+{{/* layouts/shortcodes/logos_row_assets.html
+   Muestra 4 logos en una sola fila, centrados, un 10% más grandes.
+   Busca primero en assets/media/, si no existe cae a /media/.
+   Archivos esperados:
+     assets/media/logo1.jpg
+     assets/media/logo2.jpg
+     assets/media/logo3.jpg
+     assets/media/logo4.png
+*/}}
 
-{{- $files := slice "logo1.jpg" "logo2.jpg" "logo3.jpg" "logo4.png" -}}
-{{- $height := 88 -}}  {{/* 80 -> 88 (≈ +10%) */}}
+{{- $names := slice "logo1.jpg" "logo3.jpg" "logo2.jpg" "logo4.png" -}}
 
-<div class="w-full">
-  <div class="grid grid-cols-4 items-center justify-items-center gap-x-12 gap-y-0 py-3" style="width:100%;">
-    {{- range $f := $files -}}
-      {{- $res := resources.Get (printf "media/%s" $f) -}}
-      {{- if $res -}}
-        <img src="{{ $res.RelPermalink }}" alt="{{ $f }}" style="height:{{ $height }}px;width:auto;max-width:100%;object-fit:contain;display:block;">
-      {{- else -}}
-        <img src="{{ printf "/media/%s" $f }}" alt="{{ $f }}" style="height:{{ $height }}px;width:auto;max-width:100%;object-fit:contain;display:block;">
-      {{- end -}}
+<style>
+  .logos-row{
+    width:100%;
+    display:grid;
+    grid-template-columns:repeat(4, minmax(0,1fr));
+    gap: 3rem;
+    align-items:center; justify-items:center;
+  }
+  @media (max-width: 700px){
+    .logos-row{ grid-template-columns:repeat(2, minmax(0,1fr)); gap:1.5rem; }
+  }
+  .logos-row img{
+    height: 88px; /* 80px +10% */
+    width:auto; max-width:100%;
+    object-fit:contain; display:block;
+  }
+</style>
+
+<div class="logos-row">
+  {{- range $names -}}
+    {{- $res := resources.Get (printf "media/%s" .) -}}
+    {{- if $res -}}
+      <img src="{{ $res.RelPermalink }}" alt="{{ . }}">
+    {{- else -}}
+      <img src="{{ printf "/media/%s" . }}" alt="{{ . }}">
     {{- end -}}
-  </div>
+  {{- end -}}
 </div>
