@@ -105,21 +105,39 @@ sections:
         padding: ["22px","0","30px","0"]
 
   # 5) Organizaciones (logos desde assets/media, sin scroll)
+# 5) Organizaciones (logos sin scroll, una sola fila)
   - block: markdown
     id: aliados
     content:
       title: "Organizaciones que confían en Cúmulo"
       text: |
+        <style>
+          .logos-row{
+            width:100%;
+            max-width:1200px;
+            margin:0 auto;
+            display:grid;
+            grid-template-columns:repeat(4, minmax(0,1fr));
+            gap:2.5rem 3rem;
+            align-items:center;
+            justify-items:center;
+          }
+          .logos-row img{
+            height:88px; /* tamaño cómodo, ajustá si querés */
+            width:auto; max-width:100%;
+            object-fit:contain; display:block;
+          }
+          @media (max-width: 768px){
+            .logos-row{ grid-template-columns:repeat(2, minmax(0,1fr)); gap:1.5rem 2rem; }
+            .logos-row img{ height:72px; }
+          }
+        </style>
+  
         <div class="logos-row">
-          {{- $names := slice "logo1.jpg" "logo3.jpg" "logo2.jpg" "logo4.png" -}}
-          {{- range $names -}}
-            {{- $res := resources.Get (printf "media/%s" .) -}}
-            {{- if $res -}}
-              <img src="{{ $res.RelPermalink }}" alt="{{ . }}" />
-            {{- else -}}
-              <img src="/media/{{ . }}" alt="{{ . }}" />
-            {{- end -}}
-          {{- end -}}
+          <img src="/media/logo1.jpg" alt="Logo 1">
+          <img src="/media/logo3.jpg" alt="Logo 3">
+          <img src="/media/logo2.jpg" alt="Logo 2">
+          <img src="/media/logo4.png" alt="Logo 4">
         </div>
     design:
       spacing:
