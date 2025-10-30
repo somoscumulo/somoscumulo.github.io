@@ -30,4 +30,3 @@ highlight_name: true
 
 ---
 
-Soy ...
