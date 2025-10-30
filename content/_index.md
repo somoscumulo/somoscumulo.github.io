@@ -190,29 +190,36 @@ sections:
             }
           }
 
-          /* === Colaboran: una sola fila centrada en desktop === */
+          /* === Colaboran: una sola fila centrada en desktop, con ESPACIADO UNIFORME === */
           @media (min-width: 1024px) {
-            /* Usamos flex para centrar y forzar una sola línea, robusto ante cambios en el shortcode */
+            /* Contenedor: fila única centrada */
             #colaboran .people-wrap--colaboran :is(.people-grid, ul, .hb-people, .people-list) {
               display: flex !important;
               flex-wrap: nowrap !important;             /* una sola fila */
-              justify-content: center !important;        /* centrado horizontal */
+              justify-content: center !important;        /* centrado horizontal del conjunto */
               align-items: flex-start;
-              gap: 0 6rem;                               /* separación horizontal */
+              gap: 0 6rem;                               /* MISMO gap entre tarjetas */
               max-width: 1100px;                         /* mismo ancho que .people-wrap */
               margin: 0 auto;                            /* centra el contenedor */
               list-style: none;
             }
+
+            /* Tarjetas: ancho fijo para que el gap sea realmente uniforme */
             #colaboran .people-wrap--colaboran :is(.people-grid, ul, .hb-people, .people-list) > * {
-              flex: 0 0 auto;                            /* que no se estiren */
+              flex: 0 0 11.5rem;                         /* ancho fijo de tarjeta */
+              width: 11.5rem;
               text-align: center;
+              box-sizing: border-box;
             }
 
-            /* Avatares un poco más chicos para que entren todos si son muchos */
+            /* Avatares un poco más chicos y centrados dentro de cada tarjeta */
             #colaboran .people-wrap--colaboran .avatar,
             #colaboran .people-wrap--colaboran .avatar img {
               width: 8.5rem;
               height: 8.5rem;
+              margin-left: auto;
+              margin-right: auto;
+              display: block;
             }
           }
 
