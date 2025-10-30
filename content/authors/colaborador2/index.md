@@ -13,7 +13,7 @@ last_name: Gosso
 # Is this the primary user of the site?
 superuser: true
 user_groups: ["colaboran"]
-
+link: "https://check-0ut.myportfolio.com"
 # Role/position/tagline
 role: Diseñador gráfico
 
