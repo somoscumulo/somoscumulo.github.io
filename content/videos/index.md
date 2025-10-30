@@ -9,11 +9,11 @@ toc: true
 #   alt_text: "Producción de videos educativos — Cúmulo"
 ---
 
-        <div style="max-width:1100px;margin:0 auto;">
-          <div style="background:#FFFCEE;border:1px solid #F1E6B8;color:#3F393B;border-radius:10px;padding:.65rem 1rem;text-align:center;font-size:.95rem;">
-            <strong>Página web en proceso de producción</strong> — versión work in progress
-          </div>
-        </div>
+<div style="max-width:1100px;margin:0 auto;">
+  <div style="background:#FFFCEE;border:1px solid #F1E6B8;color:#3F393B;border-radius:10px;padding:.65rem 1rem;text-align:center;font-size:.95rem;">
+    <strong>Página web en proceso de producción</strong> — versión work in progress
+  </div>
+</div>
 
 ## Introducción
 
