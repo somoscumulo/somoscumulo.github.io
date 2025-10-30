@@ -26,10 +26,10 @@ Acompañamos todo el proceso: **idea, guionado, rodaje y edición**, integrando 
 Grabamos la exposición de docentes (presencial o **autograbada con pautas**) y la editamos con **texto, gráficos e imágenes** que complementan las explicaciones.
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
-  <img src="videopresentacion2.png" alt="Presentación animada — ejemplo 1" class="w-full h-auto rounded-xl shadow-md">
-  <img src="videopresentacion3.png" alt="Presentación animada — ejemplo 2" class="w-full h-auto rounded-xl shadow-md">
-  <img src="videopresentacion5.png" alt="Presentación animada — ejemplo 3" class="w-full h-auto rounded-xl shadow-md">
-  <img src="videopresentacion1.png" alt="Presentación animada — ejemplo 4" class="w-full h-auto rounded-xl shadow-md">
+  <img src="/media/videopresentacion2.png" alt="Presentación animada — ejemplo 1" class="w-full h-auto rounded-xl shadow-md" loading="lazy">
+  <img src="/media/videopresentacion3.png" alt="Presentación animada — ejemplo 2" class="w-full h-auto rounded-xl shadow-md" loading="lazy">
+  <img src="/media/videopresentacion5.png" alt="Presentación animada — ejemplo 3" class="w-full h-auto rounded-xl shadow-md" loading="lazy">
+  <img src="/media/videopresentacion1.png" alt="Presentación animada — ejemplo 4" class="w-full h-auto rounded-xl shadow-md" loading="lazy">
 </div>
 
 ---
@@ -43,7 +43,7 @@ A partir de la **presentación del contenido** o la **idea a comunicar**, **co-e
 *(Insertar clips/frames aquí)*  
 <!--
 {{< youtube VIDEO_ID >}}
-![Frames de animación](images/animado-frames.jpg)
+![Frames de animación](/media/animado-frames.jpg)
 -->
 
 ---
@@ -66,7 +66,7 @@ Conversaciones conducidas junto a profesionales y docentes, con **guion y estruc
 
 **Muestras**  
 *(Insertar capturas y/o clips aquí)*  
-<!-- ![Screencast de ejemplo](images/screencast-01.png) -->
+<!-- ![Screencast de ejemplo](/media/screencast-01.png) -->
 
 ---
 
