@@ -8,7 +8,7 @@ name_pronunciation: Paula Ingaramo
 # Full name (for SEO)
 first_name: Paula 
 last_name: Ingaramo
-
+link: "https://www.linkedin.com/in/paula-ingaramo/"
 # Is this the primary user of the site?
 superuser: true
 user_groups: ["colaboran"]
