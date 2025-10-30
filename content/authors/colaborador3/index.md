@@ -12,6 +12,7 @@ last_name: Mattos
 # Is this the primary user of the site?
 superuser: true
 user_groups: ["colaboran"]
+link: "https://www.linkedin.com/in/marcosumattos/"
 
 # Role/position/tagline
 role: Tecnología Educativa y Diseño Instruccional
