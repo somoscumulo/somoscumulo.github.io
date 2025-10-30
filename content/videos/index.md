@@ -1,6 +1,6 @@
 ---
 title: "Producción de videos educativos"
-summary: "Diseñamos clases en video que convierten el contenido en experiencias de aprendizaje. Ideación, guionado, rodaje y edición con foco pedagógico."
+summary: "Diseñamos clases en video que convierten el contenido en experiencias de aprendizaje. Idea, guionado, rodaje y edición con foco pedagógico."
 type: page
 toc: true
 # Si usás portada social, podés definirla aquí:
@@ -12,7 +12,7 @@ toc: true
 ## Introducción
 
 Diseñamos **clases en video** que convierten el contenido en **experiencias de aprendizaje**.  
-Acompañamos todo el proceso: **ideación, guionado, rodaje y edición**, integrando recursos visuales (placas, gráficos, animaciones, screencasts) para explicar con **claridad, ritmo y foco pedagógico**.
+Acompañamos todo el proceso: **idea, guionado, rodaje y edición**, integrando recursos visuales (placas, gráficos, animaciones, screencasts) para explicar con **claridad, ritmo y foco pedagógico**.
 
 > Nuestro objetivo: que docentes y equipos puedan **enseñar mejor** y que estudiantes **comprendan más fácil**.
 
