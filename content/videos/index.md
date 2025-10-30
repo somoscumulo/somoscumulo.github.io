@@ -9,6 +9,21 @@ toc: true
 #   alt_text: "Producción de videos educativos — Cúmulo"
 ---
 
+  # 0) Aviso WIP — cartel minimalista arriba de todo
+  - block: markdown
+    id: aviso-wip
+    content:
+      text: |
+        <div style="max-width:1100px;margin:0 auto;">
+          <div style="background:#FFFCEE;border:1px solid #F1E6B8;color:#3F393B;border-radius:10px;padding:.65rem 1rem;text-align:center;font-size:.95rem;">
+            <strong>Página web en proceso de producción</strong> — versión work in progress
+          </div>
+        </div>
+    design:
+      spacing:
+        padding: ["10px","0","6px","0"]
+
+
 ## Introducción
 
 Diseñamos **clases en video** que convierten el contenido en **experiencias de aprendizaje**.  
