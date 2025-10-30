@@ -12,7 +12,7 @@ last_name: Ogando
 # Is this the primary user of the site?
 superuser: true
 user_groups: ["equipo"]
-
+link: "https://www.linkedin.com/in/cielo-ogando/"
 # Role/position/tagline
 role: Ilustradora creativa y docente
 
