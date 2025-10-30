@@ -14,6 +14,6 @@ last_name: Nacional de Córdoba
 superuser: true
 user_groups: ["confian"]
 
-link: "https://www.unc.edu.ar/"
+link: "https://www.bna.com.ar/Institucional"
 
 ---
