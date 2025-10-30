@@ -68,7 +68,7 @@ sections:
       spacing:
         padding: ["6px","0","2px","0"]
 
-  # 4.5) Quiénes somos — responsive 2 columnas en mobile (usa columns=2)
+  # 4.5) Quiénes somos — responsive 2 columnas en mobile
   - block: markdown
     id: quienes-somos
     content:
@@ -83,13 +83,13 @@ sections:
       spacing:
         padding: ["28px","0","22px","0"]
 
-  # 4.6) Colaboran — responsive 2 columnas en mobile (usa columns=2)
+  # 4.6) Colaboran — **UNA SOLA FILA EN DESKTOP** (2 columnas en mobile)
   - block: markdown
     id: colaboran
     content:
       title: "Colaboran"
       text: |
-        <div class="people-wrap">
+        <div class="people-wrap people-wrap--colaboran">
           {{< people_list group="colaboran" columns=2 gapx="6rem" gapy="2.5rem" >}}
         </div>
     design:
@@ -98,8 +98,7 @@ sections:
       spacing:
         padding: ["22px","0","30px","0"]
 
-  # 5) Organizaciones (logos desde assets/media, sin scroll)
-# 5) Organizaciones (logos sin scroll, una sola fila)
+  # 5) Organizaciones (logos sin scroll, una sola fila)
   - block: markdown
     id: aliados
     content:
@@ -117,7 +116,7 @@ sections:
             justify-items:center;
           }
           .logos-row img{
-            height:88px; /* tamaño cómodo, ajustá si querés */
+            height:88px;
             width:auto; max-width:100%;
             object-fit:contain; display:block;
           }
@@ -126,7 +125,6 @@ sections:
             .logos-row img{ height:72px; }
           }
         </style>
-  
         <div class="logos-row">
           <img src="/media/logo1.jpg" alt="Logo 1">
           <img src="/media/logo3.jpg" alt="Logo 3">
@@ -169,7 +167,7 @@ sections:
         css_class: "shadow-sm"
         css_style: "background-color:#F4A26D;color:#3F393B;text-align:center; padding: 2.5rem; border-radius: 1rem;"
 
-  # 8) CSS puntual (responsivo en people_list y tweaks de estilos)
+  # 8) CSS puntual (people_list responsive + UNA FILA en Colaboran + estilos)
   - block: markdown
     id: style-fixes
     content:
@@ -182,8 +180,7 @@ sections:
             margin-right: auto;
           }
 
-          /* Si tu shortcode people_list NO maneja responsividad por sí mismo,
-             forzamos layout amigable con mobile: dos por fila. */
+          /* Layout base: dos por fila en mobile */
           .people-wrap .people-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -191,14 +188,35 @@ sections:
             justify-items: center;
             align-items: start;
           }
-          @media (min-width: 900px) {
-            .people-wrap .people-grid {
-              grid-template-columns: repeat(4, minmax(0, 1fr)); /* 4 por fila en desktop */
+
+          /* Desktop general (equipo): 4 por fila */
+          @media (min-width: 1024px) {
+            #quienes-somos .people-wrap .people-grid {
+              grid-template-columns: repeat(4, minmax(0, 1fr));
               gap: 3rem 8rem;
             }
           }
 
-          /* Avatares bien centrados dentro del círculo */
+          /* === UNA SOLA FILA EN DESKTOP para Colaboran === */
+          @media (min-width: 1024px) {
+            #colaboran .people-wrap--colaboran .people-grid {
+              /* anulamos columnas fijas y forzamos flujo en columnas */
+              grid-template-columns: none !important;
+              grid-auto-flow: column;
+              grid-auto-columns: max-content;
+              justify-content: center;
+              column-gap: 6rem; /* separación horizontal */
+              row-gap: 0;
+            }
+            /* Avatares un poco más chicos para que entren todos si son muchos */
+            #colaboran .people-wrap--colaboran .avatar,
+            #colaboran .people-wrap--colaboran .avatar img {
+              width: 8.5rem;
+              height: 8.5rem;
+            }
+          }
+
+          /* Avatares centrados y bien recortados */
           .people-wrap .avatar,
           .people-wrap .avatar img {
             border-radius: 9999px;
@@ -252,7 +270,7 @@ sections:
             border-color:#FFFFFF !important;
           }
 
-          /* Logos en una sola fila, sin scroll, +10% tamaño */
+          /* Logos row */
           .logos-row {
             width: 100%;
             max-width: 1200px;
@@ -264,17 +282,14 @@ sections:
             justify-items: center;
           }
           .logos-row img {
-            height: 88px; /* 80px +10% */
+            height: 88px;
             width: auto;
             display: block;
             object-fit: contain;
             max-width: 100%;
           }
           @media (max-width: 768px) {
-            .logos-row {
-              grid-template-columns: repeat(2, minmax(0, 1fr)); /* dos por fila en mobile */
-              gap: 1.5rem 2rem;
-            }
+            .logos-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 2rem; }
             .logos-row img { height: 72px; }
           }
         </style>
