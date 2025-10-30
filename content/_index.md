@@ -59,7 +59,7 @@ sections:
           image_alt: "Ilustración Cúmulo"
           image_style: "width:56%;max-width:56%;height:auto;"
         - title: "<span style='color:#FFFFFF'>Acompañamiento y asesoramiento pedagógico</span>"
-          text: "<span style='color:#FFFFFF'>Antes de producir contenidos, ofrecemos asesoramiento para diseñar la propuesta según el perfil de las y los estudiantes y los temas a desarrollar.<br>Nos involucramos desde el inicio en la ideación y en la selección de formatos, recursos y modalidades del contenido a producir.<br>Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto mantenga coherencia.</span>"
+          text: "<span style='color:#FFFFFF'>Antes de producir contenidos, ofrecemos asesoramiento para diseñar la propuesta según el perfil de las y los estudiantes y los temas a desarrollar.<br>Nos involucramos desde el inicio en la selección de formatos, recursos y modalidades del contenido a producir.<br>Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto mantenga coherencia.</span>"
           image: "stickers-cumulo1-01.png"
           image_alt: "Ilustración Cúmulo"
           image_style: "width:56%;max-width:56%;height:auto;"
