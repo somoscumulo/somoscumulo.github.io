@@ -22,7 +22,6 @@ bio: Locutora
 # Need to use another icon? Simply download the SVG icon to your `assets/media/icons/` folder.
 profiles:
   - icon: brands/linkedin
-    url: https://www.linkedin.com/in/aylen-sol-ingaramo-012551241/
   # Link to a PDF of your resume/CV - upload it to `static/uploads/resume.pdf`
 
 # Highlight the author in author lists? (true/false)
