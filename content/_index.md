@@ -8,6 +8,20 @@ image:
 
 sections:
 
+  # 0) Aviso WIP — cartel minimalista arriba de todo
+  - block: markdown
+    id: aviso-wip
+    content:
+      text: |
+        <div style="max-width:1100px;margin:0 auto;">
+          <div style="background:#FFFCEE;border:1px solid #F1E6B8;color:#3F393B;border-radius:10px;padding:.65rem 1rem;text-align:center;font-size:.95rem;">
+            <strong>Página web en proceso de producción</strong> — versión work in progress
+          </div>
+        </div>
+    design:
+      spacing:
+        padding: ["10px","0","6px","0"]
+
   # 1) CTA image + paragraph (fondo amarillo, logo reducido ~40%)
   - block: cta-image-paragraph
     id: solutions
@@ -98,7 +112,7 @@ sections:
       spacing:
         padding: ["22px","0","30px","0"]
 
-  # 5) Organizaciones (usa people_list con user_group "confian")
+  # 5) Organizaciones (usa people_list con user_group "confian" + fondo amarillo)
   - block: markdown
     id: confian
     content:
@@ -108,6 +122,8 @@ sections:
           {{< people_list group="confian" columns=4 gapx="6rem" gapy="2.5rem" >}}
         </div>
     design:
+      background:
+        color: "#FCF1B1"
       spacing:
         padding: ["8px","0","10px","0"]
 
@@ -128,7 +144,7 @@ sections:
       spacing:
         padding: ["2px","0","6px","0"]
 
-  # 7) CTA final — cta-card
+  # 7) CTA final — cta-card (mailto)
   - block: cta-card
     id: cta-final
     content:
@@ -137,7 +153,7 @@ sections:
         Contanos tu idea y te ayudamos a convertirla en un recorrido claro para tus estudiantes.
       button:
         text: "Conversemos"
-        url: "/contact"
+        url: "mailto:somoscumulo@gmail.com"
     design:
       card:
         css_class: "shadow-sm"
@@ -181,9 +197,10 @@ sections:
               grid-auto-flow: column;
               grid-auto-columns: max-content;
               justify-content: center;
-              column-gap: 6rem;
+              column-gap: 6rem; /* separación horizontal */
               row-gap: 0;
             }
+            /* Avatares un poco más chicos para que entren todos si son muchos */
             #colaboran .people-wrap--colaboran .avatar,
             #colaboran .people-wrap--colaboran .avatar img {
               width: 8.5rem;
