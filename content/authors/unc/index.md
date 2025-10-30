@@ -1,6 +1,6 @@
 ---
 # Display name
-title: UNC
+title: Universidad Nacional de Córdoba
 weight: 1
 
 # Name pronunciation (optional)
