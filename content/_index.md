@@ -190,17 +190,17 @@ sections:
             }
           }
 
-          /* === Colaboran: una sola fila centrada en desktop, con ESPACIADO UNIFORME y alineación perfecta === */
+          /* === Colaboran: una sola fila centrada en desktop, con ESPACIADO UNIFORME y alineación en Y === */
           @media (min-width: 1024px) {
             /* Contenedor: fila única centrada y alineada en el eje Y */
             #colaboran .people-wrap--colaboran :is(.people-grid, ul, .hb-people, .people-list) {
               display: flex !important;
               flex-wrap: nowrap !important;             /* una sola fila */
-              justify-content: center !important;        /* centrado horizontal del conjunto */
+              justify-content: center !important;        /* centrado horizontal */
               align-items: center !important;            /* alinea los círculos entre sí */
               gap: 0 6rem;                               /* MISMO gap entre tarjetas */
-              max-width: 1100px;                         /* mismo ancho que .people-wrap */
-              margin: 0 auto;                            /* centra el contenedor */
+              max-width: 1100px;
+              margin: 0 auto;
               list-style: none;
             }
 
@@ -210,40 +210,38 @@ sections:
               width: 11.5rem;
               text-align: center;
               box-sizing: border-box;
-              display: flex;                              /* layout consistente dentro */
+              display: flex;
               flex-direction: column;
               align-items: center;
               gap: .4rem;
             }
 
-            /* Avatares un poco más chicos para que entren todos si son muchos (desktop) */
+            /* Avatares más chicos en Colaboran (desktop) para que entren todos si son muchos */
             #colaboran .people-wrap--colaboran .avatar {
               width: 8.5rem;
               height: 8.5rem;
             }
           }
 
-          /* === Avatar: círculo perfecto, imagen centrada y sin “correrse” === */
+          /* === Avatar: círculo perfecto y IMAGEN COMPLETA centrada (sin recorte) ===
+             Aplica a equipo, colaboran y confían */
           .people-wrap .avatar {
-            border-radius: 9999px;
-            width: 10rem;
+            border-radius: 9999px;        /* círculo */
+            width: 10rem;                 /* tamaño general */
             height: 10rem;
-            overflow: hidden;           /* recorta en círculo */
-            display: block;
-            margin: 0 auto;             /* centra el contenedor */
-            position: relative;
-            aspect-ratio: 1 / 1;        /* cuadrado perfecto */
+            overflow: hidden;             /* limita al círculo */
+            display: flex;                /* centro el contenido con flex */
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            background: #fff;             /* fondo neutro para “bordes” cuando la imagen no es cuadrada */
           }
           .people-wrap .avatar img {
-            position: absolute;         /* centra la imagen dentro del círculo */
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            display: block;
             width: 100%;
             height: 100%;
-            object-fit: cover;          /* llena el círculo (cambia a 'contain' si no querés recorte) */
-            object-position: center;    /* centrada */
-            display: block;
+            object-fit: contain;          /* muestra la imagen completa dentro del círculo */
+            object-position: center;      /* centrada */
           }
 
           /* Tipografía compacta en nombres y rol */
