@@ -2,6 +2,8 @@
   Shortcode: people_list
   Uso: {{< people_list group="equipo" columns=4 gapx="8rem" gapy="3rem" >}}
   Avatares en círculo, nombre con interlineado compacto y rol chico/gris.
+  - Soporta URL personalizada por perfil con .Params.link y .Params.link_target_blank (bool).
+  - Responsive: 2 columnas en mobile; en desktop usa "columns".
 */}}
 
 {{- $group  := .Get "group" | default "" -}}
@@ -14,6 +16,7 @@
 {{- else -}}
   {{- $authors := where .Site.Pages "Section" "authors" -}}
 
+  {{/* Filtra por .Params.user_groups que contenga el group (sin perder tu lógica original) */}}
   {{- $filtered := slice -}}
   {{- range $p := $authors -}}
     {{- with $p.Params.user_groups -}}
@@ -26,41 +29,104 @@
   {{- if eq (len $filtered) 0 -}}
     <div style="color:#6b7280;">(people_list) No hay perfiles en “{{ $group }}”.</div>
   {{- else -}}
-    <div class="people-list" style="display:grid;grid-template-columns:repeat({{ $cols }},minmax(140px,1fr));gap:{{ $gapy }} {{ $gapx }};align-items:start;justify-items:center;">
+
+    {{/* ID único para scoping del CSS inline (evita colisiones) */}}
+    {{- $wrapID := printf "people-list-%s" (replace (lower $group) " " "-") -}}
+
+    <style>
+      /* Grid responsivo: en mobile (<=768px) 2 columnas; en desktop, las que definas en "columns" */
+      #{{ $wrapID }}.people-list {
+        display: grid;
+        grid-template-columns: repeat({{ $cols }}, minmax(140px, 1fr));
+        gap: {{ $gapy }} {{ $gapx }};
+        align-items: start;
+        justify-items: center;
+      }
+      @media (max-width: 768px) {
+        #{{ $wrapID }}.people-list {
+          grid-template-columns: repeat(2, minmax(140px, 1fr));
+          gap: 2rem 2.5rem; /* gaps un poco más compactos en mobile */
+        }
+      }
+
+      /* Avatar centrado dentro del círculo (mantiene tus estilos) */
+      #{{ $wrapID }} .avatar,
+      #{{ $wrapID }} .avatar img {
+        width: 8.5rem;
+        height: 8.5rem;
+        border-radius: 9999px;
+        overflow: hidden;
+        display: block;
+      }
+      #{{ $wrapID }} .avatar {
+        box-shadow: 0 1px 6px rgba(0,0,0,.08);
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 0;
+      }
+      #{{ $wrapID }} .avatar img {
+        object-fit: cover;
+        object-position: center center;
+      }
+
+      /* Tipografía: nombre compacto y rol chico/gris */
+      #{{ $wrapID }} .name {
+        margin-top: .45rem;
+        font-weight: 600;
+        line-height: 1.15;
+      }
+      #{{ $wrapID }} .role {
+        margin-top: .15rem;
+        font-size: .9rem;
+        line-height: 1.15;
+        color: #6b7280;
+      }
+
+      /* Card: neutraliza subrayado si es link */
+      #{{ $wrapID }} .person-card {
+        text-decoration: none;
+        color: inherit;
+        text-align: center;
+        max-width: 14rem;
+      }
+      #{{ $wrapID }} .person-card:hover { text-decoration: none; }
+    </style>
+
+    <div id="{{ $wrapID }}" class="people-list">
       {{- range $filtered -}}
+        {{/* Avatar: intenta Page Resource 'avatar*'; si no, fallback estático por slug */}}
         {{- $avatar := .Resources.GetMatch "avatar*" -}}
         {{- $slug := cond (ne .File nil) (path.Base (strings.TrimSuffix "/" .File.Dir)) (path.Base (strings.TrimSuffix "/" .RelPermalink)) -}}
-        {{- $fallback := printf "/authors/%s/avatar.jpg" $slug -}}
+        {{- $fallbackJpg := printf "/authors/%s/avatar.jpg" $slug -}}
+        {{- $fallbackPng := printf "/authors/%s/avatar.png" $slug -}}
+        {{- $imgSrc := cond $avatar $avatar.RelPermalink (cond (fileExists (printf "static%s" $fallbackJpg)) $fallbackJpg $fallbackPng) -}}
 
-        <a href="{{ .RelPermalink }}" class="person-card" style="text-decoration:none;color:inherit;text-align:center;max-width:14rem;">
-          <!-- Contenedor del avatar: display:flex para centrar, line-height:0 para quitar el gap de línea -->
-          <div style="
-            width:8.5rem;height:8.5rem;
-            border-radius:9999px;overflow:hidden;
-            box-shadow:0 1px 6px rgba(0,0,0,.08);
-            margin:0 auto;
-            display:flex;align-items:center;justify-content:center;
-            line-height:0;
-          ">
-            <img 
-              src="{{ if $avatar }}{{ $avatar.RelPermalink }}{{ else }}{{ $fallback }}{{ end }}" 
-              alt="{{ .Title }}" 
-              loading="lazy"
-              style="
-                width:100%;height:100%;
-                object-fit:cover;object-position:center center;
-                display:block; /* elimina baseline gap */
-              ">
+        {{/* Link override: .Params.link (si "", no linkea), .Params.link_target_blank (bool) */}}
+        {{- $hasLinkParam := (isset .Params "link") -}}
+        {{- $customLink := cond $hasLinkParam .Params.link "" -}}
+        {{- $href := cond (and $hasLinkParam (ne $customLink "")) $customLink .RelPermalink -}}
+        {{- $isBlank := (and (isset .Params "link_target_blank") .Params.link_target_blank) -}}
+
+        {{- if eq $customLink "" | and $hasLinkParam -}}
+          {{/* link definido pero vacío => render sin <a> (no clickeable) */}}
+          <div class="person-card" role="group" aria-label="{{ .Title }}">
+            <div class="avatar">
+              <img src="{{ $imgSrc }}" alt="{{ .Title }}" loading="lazy">
+            </div>
+            <div class="name">{{ .Title }}</div>
+            {{ with .Params.role }}<div class="role">{{ . }}</div>{{ end }}
           </div>
-
-          <!-- Nombre con interlineado compacto -->
-          <div style="margin-top:.45rem;font-weight:600;line-height:1.15;">{{ .Title }}</div>
-
-          <!-- Rol más chico y más claro -->
-          {{ with .Params.role }}
-            <div style="margin-top:.15rem;font-size:.9rem;line-height:1.15;color:#6b7280;">{{ . }}</div>
-          {{ end }}
-        </a>
+        {{- else -}}
+          <a href="{{ $href }}" class="person-card" {{ if $isBlank }}target="_blank" rel="noopener"{{ end }}>
+            <div class="avatar">
+              <img src="{{ $imgSrc }}" alt="{{ .Title }}" loading="lazy">
+            </div>
+            <div class="name">{{ .Title }}</div>
+            {{ with .Params.role }}<div class="role">{{ . }}</div>{{ end }}
+          </a>
+        {{- end -}}
       {{- end -}}
     </div>
   {{- end -}}
