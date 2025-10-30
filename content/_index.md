@@ -83,7 +83,7 @@ sections:
       spacing:
         padding: ["28px","0","22px","0"]
 
-  # 4.6) Colaboran — **UNA SOLA FILA EN DESKTOP** (2 columnas en mobile)
+  # 4.6) Colaboran — UNA SOLA FILA EN DESKTOP (2 columnas en mobile)
   - block: markdown
     id: colaboran
     content:
@@ -98,38 +98,14 @@ sections:
       spacing:
         padding: ["22px","0","30px","0"]
 
-  # 5) Organizaciones (logos sin scroll, una sola fila)
+  # 5) Organizaciones (usa people_list con user_group "confian")
   - block: markdown
-    id: aliados
+    id: confian
     content:
       title: "Organizaciones que confían en Cúmulo"
       text: |
-        <style>
-          .logos-row{
-            width:100%;
-            max-width:1200px;
-            margin:0 auto;
-            display:grid;
-            grid-template-columns:repeat(4, minmax(0,1fr));
-            gap:2.5rem 3rem;
-            align-items:center;
-            justify-items:center;
-          }
-          .logos-row img{
-            height:88px;
-            width:auto; max-width:100%;
-            object-fit:contain; display:block;
-          }
-          @media (max-width: 768px){
-            .logos-row{ grid-template-columns:repeat(2, minmax(0,1fr)); gap:1.5rem 2rem; }
-            .logos-row img{ height:72px; }
-          }
-        </style>
-        <div class="logos-row">
-          <img src="/media/logo1.jpg" alt="Logo 1">
-          <img src="/media/logo3.jpg" alt="Logo 3">
-          <img src="/media/logo2.jpg" alt="Logo 2">
-          <img src="/media/logo4.png" alt="Logo 4">
+        <div class="people-wrap">
+          {{< people_list group="confian" columns=4 gapx="6rem" gapy="2.5rem" >}}
         </div>
     design:
       spacing:
@@ -189,9 +165,10 @@ sections:
             align-items: start;
           }
 
-          /* Desktop general (equipo): 4 por fila */
+          /* Desktop general (equipo/confían): 4 por fila */
           @media (min-width: 1024px) {
-            #quienes-somos .people-wrap .people-grid {
+            #quienes-somos .people-wrap .people-grid,
+            #confian .people-wrap .people-grid {
               grid-template-columns: repeat(4, minmax(0, 1fr));
               gap: 3rem 8rem;
             }
@@ -200,15 +177,13 @@ sections:
           /* === UNA SOLA FILA EN DESKTOP para Colaboran === */
           @media (min-width: 1024px) {
             #colaboran .people-wrap--colaboran .people-grid {
-              /* anulamos columnas fijas y forzamos flujo en columnas */
               grid-template-columns: none !important;
               grid-auto-flow: column;
               grid-auto-columns: max-content;
               justify-content: center;
-              column-gap: 6rem; /* separación horizontal */
+              column-gap: 6rem;
               row-gap: 0;
             }
-            /* Avatares un poco más chicos para que entren todos si son muchos */
             #colaboran .people-wrap--colaboran .avatar,
             #colaboran .people-wrap--colaboran .avatar img {
               width: 8.5rem;
@@ -216,7 +191,7 @@ sections:
             }
           }
 
-          /* Avatares centrados y bien recortados */
+          /* Avatares centrados y recortados */
           .people-wrap .avatar,
           .people-wrap .avatar img {
             border-radius: 9999px;
@@ -268,29 +243,6 @@ sections:
             background:#EAF0FB !important;
             color:#2c5490 !important;
             border-color:#FFFFFF !important;
-          }
-
-          /* Logos row */
-          .logos-row {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 2.5rem 3rem;
-            align-items: center;
-            justify-items: center;
-          }
-          .logos-row img {
-            height: 88px;
-            width: auto;
-            display: block;
-            object-fit: contain;
-            max-width: 100%;
-          }
-          @media (max-width: 768px) {
-            .logos-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 2rem; }
-            .logos-row img { height: 72px; }
           }
         </style>
     design:
