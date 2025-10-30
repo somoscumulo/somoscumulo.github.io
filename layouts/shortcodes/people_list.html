@@ -1,22 +1,21 @@
 {{/* 
   Shortcode: people_list
   Uso: {{< people_list group="equipo" columns=4 gapx="8rem" gapy="3rem" >}}
-  Avatares en círculo, nombre con interlineado compacto y rol chico/gris.
-  - Soporta URL personalizada por perfil con .Params.link y .Params.link_target_blank (bool).
-  - Responsive: 2 columnas en mobile; en desktop usa "columns".
+  - URL personalizada por perfil con .Params.link (si es string vacío "", NO linkea).
+  - .Params.link_target_blank: bool para abrir en nueva pestaña.
+  - Grid responsivo: 2 cols en mobile; en desktop usa "columns".
 */}}
 
-{{- $group  := .Get "group" | default "" -}}
+{{- $group  := .Get "group"   | default "" -}}
 {{- $cols   := .Get "columns" | default 4 -}}
-{{- $gapx   := .Get "gapx" | default "6rem" -}}
-{{- $gapy   := .Get "gapy" | default "2.5rem" -}}
+{{- $gapx   := .Get "gapx"    | default "6rem" -}}
+{{- $gapy   := .Get "gapy"    | default "2.5rem" -}}
 
 {{- if not $group -}}
   <div style="color:#b91c1c;">(people_list) Falta el parámetro <code>group</code>.</div>
 {{- else -}}
   {{- $authors := where .Site.Pages "Section" "authors" -}}
 
-  {{/* Filtra por .Params.user_groups que contenga el group (sin perder tu lógica original) */}}
   {{- $filtered := slice -}}
   {{- range $p := $authors -}}
     {{- with $p.Params.user_groups -}}
@@ -30,99 +29,77 @@
     <div style="color:#6b7280;">(people_list) No hay perfiles en “{{ $group }}”.</div>
   {{- else -}}
 
-    {{/* ID único para scoping del CSS inline (evita colisiones) */}}
     {{- $wrapID := printf "people-list-%s" (replace (lower $group) " " "-") -}}
 
     <style>
-      /* Grid responsivo: en mobile (<=768px) 2 columnas; en desktop, las que definas en "columns" */
+      /* Grid responsivo */
       #{{ $wrapID }}.people-list {
-        display: grid;
-        grid-template-columns: repeat({{ $cols }}, minmax(140px, 1fr));
-        gap: {{ $gapy }} {{ $gapx }};
-        align-items: start;
-        justify-items: center;
+        display:grid;
+        grid-template-columns:repeat({{ $cols }}, minmax(140px,1fr));
+        gap:{{ $gapy }} {{ $gapx }};
+        align-items:start;
+        justify-items:center;
       }
-      @media (max-width: 768px) {
-        #{{ $wrapID }}.people-list {
-          grid-template-columns: repeat(2, minmax(140px, 1fr));
-          gap: 2rem 2.5rem; /* gaps un poco más compactos en mobile */
+      @media (max-width:768px){
+        #{{ $wrapID }}.people-list{
+          grid-template-columns:repeat(2, minmax(140px,1fr));
+          gap:2rem 2.5rem;
         }
       }
-
-      /* Avatar centrado dentro del círculo (mantiene tus estilos) */
+      /* Avatar */
       #{{ $wrapID }} .avatar,
-      #{{ $wrapID }} .avatar img {
-        width: 8.5rem;
-        height: 8.5rem;
-        border-radius: 9999px;
-        overflow: hidden;
-        display: block;
+      #{{ $wrapID }} .avatar img{
+        width:8.5rem;height:8.5rem;
+        border-radius:9999px;overflow:hidden;display:block;
       }
-      #{{ $wrapID }} .avatar {
-        box-shadow: 0 1px 6px rgba(0,0,0,.08);
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        line-height: 0;
+      #{{ $wrapID }} .avatar{
+        box-shadow:0 1px 6px rgba(0,0,0,.08);
+        margin:0 auto;display:flex;align-items:center;justify-content:center;line-height:0;
       }
-      #{{ $wrapID }} .avatar img {
-        object-fit: cover;
-        object-position: center center;
+      #{{ $wrapID }} .avatar img{
+        object-fit:cover;object-position:center center;
       }
-
-      /* Tipografía: nombre compacto y rol chico/gris */
-      #{{ $wrapID }} .name {
-        margin-top: .45rem;
-        font-weight: 600;
-        line-height: 1.15;
-      }
-      #{{ $wrapID }} .role {
-        margin-top: .15rem;
-        font-size: .9rem;
-        line-height: 1.15;
-        color: #6b7280;
-      }
-
-      /* Card: neutraliza subrayado si es link */
-      #{{ $wrapID }} .person-card {
-        text-decoration: none;
-        color: inherit;
-        text-align: center;
-        max-width: 14rem;
-      }
-      #{{ $wrapID }} .person-card:hover { text-decoration: none; }
+      /* Tipografía */
+      #{{ $wrapID }} .name{margin-top:.45rem;font-weight:600;line-height:1.15;}
+      #{{ $wrapID }} .role{margin-top:.15rem;font-size:.9rem;line-height:1.15;color:#6b7280;}
+      /* Card */
+      #{{ $wrapID }} .person-card{ text-decoration:none;color:inherit;text-align:center;max-width:14rem; }
+      #{{ $wrapID }} .person-card:hover{ text-decoration:none; }
     </style>
 
     <div id="{{ $wrapID }}" class="people-list">
       {{- range $filtered -}}
-        {{/* Avatar: intenta Page Resource 'avatar*'; si no, fallback estático por slug */}}
         {{- $avatar := .Resources.GetMatch "avatar*" -}}
         {{- $slug := cond (ne .File nil) (path.Base (strings.TrimSuffix "/" .File.Dir)) (path.Base (strings.TrimSuffix "/" .RelPermalink)) -}}
         {{- $fallbackJpg := printf "/authors/%s/avatar.jpg" $slug -}}
         {{- $fallbackPng := printf "/authors/%s/avatar.png" $slug -}}
         {{- $imgSrc := cond $avatar $avatar.RelPermalink (cond (fileExists (printf "static%s" $fallbackJpg)) $fallbackJpg $fallbackPng) -}}
 
-        {{/* Link override: .Params.link (si "", no linkea), .Params.link_target_blank (bool) */}}
-        {{- $hasLinkParam := (isset .Params "link") -}}
-        {{- $customLink := cond $hasLinkParam .Params.link "" -}}
-        {{- $href := cond (and $hasLinkParam (ne $customLink "")) $customLink .RelPermalink -}}
-        {{- $isBlank := (and (isset .Params "link_target_blank") .Params.link_target_blank) -}}
+        {{/* Link personalizado */}}
+        {{- $hasLink := isset .Params "link" -}}
+        {{- $linkVal := cond $hasLink .Params.link "" -}}
+        {{- $blank   := cond (isset .Params "link_target_blank") .Params.link_target_blank false -}}
 
-        {{- if eq $customLink "" | and $hasLinkParam -}}
-          {{/* link definido pero vacío => render sin <a> (no clickeable) */}}
+        {{- if and $hasLink (eq $linkVal "") -}}
+          <!-- link definido pero vacío => sin enlace -->
           <div class="person-card" role="group" aria-label="{{ .Title }}">
-            <div class="avatar">
-              <img src="{{ $imgSrc }}" alt="{{ .Title }}" loading="lazy">
-            </div>
+            <div class="avatar"><img src="{{ $imgSrc }}" alt="{{ .Title }}" loading="lazy"></div>
             <div class="name">{{ .Title }}</div>
             {{ with .Params.role }}<div class="role">{{ . }}</div>{{ end }}
           </div>
+
+        {{- else if and $hasLink (ne $linkVal "") -}}
+          <!-- usar link personalizado -->
+          <a href="{{ $linkVal }}" class="person-card" {{ if $blank }}target="_blank" rel="noopener"{{ end }}>
+            <div class="avatar"><img src="{{ $imgSrc }}" alt="{{ .Title }}" loading="lazy"></div>
+            <div class="name">{{ .Title }}</div>
+            {{ with .Params.role }}<div class="role">{{ . }}</div>{{ end }}
+          </a>
+
         {{- else -}}
-          <a href="{{ $href }}" class="person-card" {{ if $isBlank }}target="_blank" rel="noopener"{{ end }}>
-            <div class="avatar">
-              <img src="{{ $imgSrc }}" alt="{{ .Title }}" loading="lazy">
-            </div>
+          <!-- fallback: interna del autor -->
+          <a href="{{ .RelPermalink }}" class="person-card">
+            <div class="avatar"><img src="{{ $imgSrc }}" alt="{{ .Title }}" loading="lazy"></div>
             <div class="name">{{ .Title }}</div>
             {{ with .Params.role }}<div class="role">{{ . }}</div>{{ end }}
           </a>
