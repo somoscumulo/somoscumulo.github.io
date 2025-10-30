@@ -14,6 +14,7 @@ last_name: Buede
 superuser: true
 user_groups: ["equipo"]
 
+link: "https://www.linkedin.com/in/julianbuede/"
 # Role/position/tagline
 role: Director y productor audiovisual
 
