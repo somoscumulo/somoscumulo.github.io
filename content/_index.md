@@ -46,7 +46,7 @@ sections:
       title: "Nuestros servicios"
       items:
         - title: "<span style='color:#FFFFFF'>Producción de videos educativos</span>"
-          text: "<span style='color:#FFFFFF'>Creamos clases en video que convierten el contenido en experiencias de aprendizaje. Desde la ideación y el guion hasta la producción y la edición, integramos recursos audiovisuales en múltiples formatos para comunicar con claridad e impacto.</span>"
+          text: "<span style='color:#FFFFFF'>Creamos clases en video que convierten el contenido en experiencias de aprendizaje. Desde la idea y el guion hasta la producción y la edición, integramos recursos audiovisuales en múltiples formatos para comunicar con claridad e impacto.</span>"
           image: "stickers-cumulo1-03.png"
           image_alt: "Ilustración Cúmulo"
           image_style: "width:56%;max-width:56%;height:auto;"
