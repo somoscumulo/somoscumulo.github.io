@@ -190,16 +190,24 @@ sections:
             }
           }
 
-          /* === UNA SOLA FILA EN DESKTOP para Colaboran === */
+          /* === Colaboran: una sola fila centrada en desktop === */
           @media (min-width: 1024px) {
-            #colaboran .people-wrap--colaboran .people-grid {
-              grid-template-columns: none !important;
-              grid-auto-flow: column;
-              grid-auto-columns: max-content;
-              justify-content: center;
-              column-gap: 6rem; /* separación horizontal */
-              row-gap: 0;
+            /* Usamos flex para centrar y forzar una sola línea, robusto ante cambios en el shortcode */
+            #colaboran .people-wrap--colaboran :is(.people-grid, ul, .hb-people, .people-list) {
+              display: flex !important;
+              flex-wrap: nowrap !important;             /* una sola fila */
+              justify-content: center !important;        /* centrado horizontal */
+              align-items: flex-start;
+              gap: 0 6rem;                               /* separación horizontal */
+              max-width: 1100px;                         /* mismo ancho que .people-wrap */
+              margin: 0 auto;                            /* centra el contenedor */
+              list-style: none;
             }
+            #colaboran .people-wrap--colaboran :is(.people-grid, ul, .hb-people, .people-list) > * {
+              flex: 0 0 auto;                            /* que no se estiren */
+              text-align: center;
+            }
+
             /* Avatares un poco más chicos para que entren todos si son muchos */
             #colaboran .people-wrap--colaboran .avatar,
             #colaboran .people-wrap--colaboran .avatar img {
@@ -208,7 +216,7 @@ sections:
             }
           }
 
-          /* Avatares centrados y recortados */
+          /* Avatares centrados y recortados (general) */
           .people-wrap .avatar,
           .people-wrap .avatar img {
             border-radius: 9999px;
