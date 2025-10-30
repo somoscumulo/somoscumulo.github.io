@@ -75,7 +75,7 @@ sections:
       title: "Quiénes somos"
       text: |
         <div class="people-wrap">
-          {{< people_list group="equipo" columns=5 gapx="6rem" gapy="2.5rem" >}}
+          {{< people_list group="equipo" columns=2 gapx="6rem" gapy="2.5rem" >}}
         </div>
     design:
       background:
@@ -90,7 +90,7 @@ sections:
       title: "Colaboran"
       text: |
         <div class="people-wrap people-wrap--colaboran">
-          {{< people_list group="colaboran" columns=2 gapx="6rem" gapy="2.5rem" >}}
+          {{< people_list group="colaboran" columns=5 gapx="6rem" gapy="2.5rem" >}}
         </div>
     design:
       background:
