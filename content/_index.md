@@ -190,47 +190,59 @@ sections:
             }
           }
 
-          /* === Colaboran: una sola fila centrada en desktop, con ESPACIADO UNIFORME === */
+          /* === Colaboran: una sola fila centrada en desktop, con ESPACIADO UNIFORME y alineación perfecta === */
           @media (min-width: 1024px) {
-            /* Contenedor: fila única centrada */
+            /* Contenedor: fila única centrada y alineada en el eje Y */
             #colaboran .people-wrap--colaboran :is(.people-grid, ul, .hb-people, .people-list) {
               display: flex !important;
               flex-wrap: nowrap !important;             /* una sola fila */
               justify-content: center !important;        /* centrado horizontal del conjunto */
-              align-items: flex-start;
+              align-items: center !important;            /* alinea los círculos entre sí */
               gap: 0 6rem;                               /* MISMO gap entre tarjetas */
               max-width: 1100px;                         /* mismo ancho que .people-wrap */
               margin: 0 auto;                            /* centra el contenedor */
               list-style: none;
             }
 
-            /* Tarjetas: ancho fijo para que el gap sea realmente uniforme */
+            /* Tarjetas: ancho fijo para uniformidad real del gap */
             #colaboran .people-wrap--colaboran :is(.people-grid, ul, .hb-people, .people-list) > * {
               flex: 0 0 11.5rem;                         /* ancho fijo de tarjeta */
               width: 11.5rem;
               text-align: center;
               box-sizing: border-box;
+              display: flex;                              /* layout consistente dentro */
+              flex-direction: column;
+              align-items: center;
+              gap: .4rem;
             }
 
-            /* Avatares un poco más chicos y centrados dentro de cada tarjeta */
-            #colaboran .people-wrap--colaboran .avatar,
-            #colaboran .people-wrap--colaboran .avatar img {
+            /* Avatares un poco más chicos para que entren todos si son muchos (desktop) */
+            #colaboran .people-wrap--colaboran .avatar {
               width: 8.5rem;
               height: 8.5rem;
-              margin-left: auto;
-              margin-right: auto;
-              display: block;
             }
           }
 
-          /* Avatares centrados y recortados (general) */
-          .people-wrap .avatar,
-          .people-wrap .avatar img {
+          /* === Avatar: círculo perfecto, imagen centrada y sin “correrse” === */
+          .people-wrap .avatar {
             border-radius: 9999px;
-            object-fit: cover;
-            object-position: center;
             width: 10rem;
             height: 10rem;
+            overflow: hidden;           /* recorta en círculo */
+            display: block;
+            margin: 0 auto;             /* centra el contenedor */
+            position: relative;
+            aspect-ratio: 1 / 1;        /* cuadrado perfecto */
+          }
+          .people-wrap .avatar img {
+            position: absolute;         /* centra la imagen dentro del círculo */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;          /* llena el círculo (cambia a 'contain' si no querés recorte) */
+            object-position: center;    /* centrada */
             display: block;
           }
 
@@ -240,11 +252,13 @@ sections:
             margin-top: .4rem;
             font-weight: 600;
             text-decoration: none !important;
+            text-align: center;
           }
           .people-wrap .role {
             margin-top: .1rem;
             font-size: .9rem;
             opacity: .8;
+            text-align: center;
           }
 
           /* Testimonios centrados */
