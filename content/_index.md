@@ -94,7 +94,7 @@ sections:
           description: "clases en formato video"
         - statistic: "+40"
           description: "docentes trabajaron con Cúmulo"
-        - statistic: "10"
+        - statistic: "+10"
           description: "propuestas de formación acompañadas"
 
   # 4.5) Quiénes somos — responsive 2 columnas en mobile
