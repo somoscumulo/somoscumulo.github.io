@@ -32,21 +32,18 @@ sections:
           image: "cumulo.png"
           image_alt: "Logotipo Cúmulo"
           image_style: "max-width:42%"
-          button:
-            text: "Conversemos"
-            url: "/#cta-final"
     design:
       background:
         color: "#FCF1B1"
 
-  # 2) Video destacado
+  # 2) Video destacado (título igual a servicios)
   - block: markdown
     id: video-destacado
     content:
       text: |
-        <div style="max-width:1100px;margin:0 auto;padding:3rem 1rem;text-align:center;">
-          <h2 style="color:#FFFFFF;">Producción de videos educativos</h2>
-          <p style="color:#FFFFFF;max-width:800px;margin:0 auto 2rem auto;">
+        <div class="video-destacado-wrap">
+          <h3 class="video-destacado-title">Producción de videos educativos</h3>
+          <p class="video-destacado-text">
             Creamos clases en video que convierten el contenido en experiencias de aprendizaje.
             Desde la idea y el guion hasta la producción y la edición.
             Según el contenido a enseñar y las condiciones de producción, elegimos entre múltiples formatos
@@ -54,41 +51,33 @@ sections:
             de inteligencia artificial, entre otros.
           </p>
 
-          <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:1rem;">
-            <iframe 
-              src="https://www.youtube.com/embed/RqBUfsU4av4" 
+          <div class="video-embed">
+            <iframe
+              src="https://www.youtube.com/embed/RqBUfsU4av4"
               title="Producción de videos educativos - Cúmulo"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              style="position:absolute;top:0;left:0;width:100%;height:100%;">
+              allowfullscreen>
             </iframe>
-          </div>
-
-          <div style="margin-top:2rem;">
-            <a href="/videos" 
-               style="background:#FFFFFF;color:#3E6FBA;padding:.7rem 1.6rem;border-radius:.6rem;text-decoration:none;font-weight:600;">
-              Ver más
-            </a>
           </div>
         </div>
     design:
       background:
         color: "#3E6FBA"
 
-  # 3) Servicios
+  # 3) Servicios (sin botones)
   - block: cta-image-paragraph
     id: servicios-destacados
     content:
       title: "Nuestros servicios"
       items:
         - title: "<span style='color:#FFFFFF'>Facilitación visual e ilustración para divulgación y formación</span>"
-          text: "<span style='color:#FFFFFF'>Desarrollamos recursos visuales que complementan materiales en proyectos de formación e investigación...</span>"
+          text: "<span style='color:#FFFFFF'>Desarrollamos recursos visuales que complementan materiales en proyectos de formación e investigación, para que cada imagen refuerce el contenido y mejore la experiencia de aprendizaje.<br>Trabajamos en distintos formatos: presentaciones para clases o eventos, pósters científicos, materiales de lectura, entre otros.</span>"
           image: "stickers-cumulo1-05.png"
           image_alt: "Ilustración Cúmulo"
           image_style: "width:56%;max-width:56%;height:auto;"
         - title: "<span style='color:#FFFFFF'>Acompañamiento y asesoramiento pedagógico</span>"
-          text: "<span style='color:#FFFFFF'>Antes de producir contenidos, ofrecemos asesoramiento para diseñar la propuesta...</span>"
+          text: "<span style='color:#FFFFFF'>Antes de producir contenidos, ofrecemos asesoramiento para diseñar la propuesta según el perfil de las y los estudiantes y los temas a desarrollar.<br>Nos involucramos desde el inicio en la selección de formatos, recursos y modalidades del contenido a producir.<br>Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto mantenga coherencia.</span>"
           image: "stickers-cumulo1-01.png"
           image_alt: "Ilustración Cúmulo"
           image_style: "width:56%;max-width:56%;height:auto;"
@@ -107,6 +96,23 @@ sections:
           description: "docentes trabajaron con Cúmulo"
         - statistic: "10"
           description: "propuestas de formación acompañadas"
+
+  # 6) Testimonios (centrado)
+  - block: testimonials
+    id: testimonios
+    content:
+      items:
+        - name: "Estefanía Michlig"
+          role: "Fundación Empretec"
+          text: >
+            Lo que más valoramos es la **calidad** de los videos y el enorme **compromiso** con el que trabajan.
+            No se limitan a entregar lo que pedimos: buscan que todo quede **claro, atractivo y realmente útil** para el usuario.
+            Nos encanta que propongan mejoras de manera constante y que se pongan manos a la obra para lograr un producto cada vez mejor.
+            La **cercanía**, la **rapidez de respuesta** y la **dedicación** para asegurarse de que todo quede perfecto hacen que trabajar juntos sea siempre un gusto.
+    design:
+      align: center
+      spacing:
+        padding: ["2px","0","6px","0"]
 
   # CTA final
   - block: cta-card
@@ -162,8 +168,59 @@ sections:
           #solutions span {
             color:#3F393B !important;
           }
-
         }
+
+        /* Video destacado: tipografía equivalente a títulos de servicios */
+        .video-destacado-wrap{
+          max-width:1100px;
+          margin:0 auto;
+          padding:3rem 1rem;
+          text-align:center;
+        }
+        .video-destacado-title{
+          color:#FFFFFF;
+          margin:0 0 1rem 0;
+          font-weight:600;
+          line-height:1.2;
+          font-size:1.25rem; /* similar a h3/título de item */
+        }
+        .video-destacado-text{
+          color:#FFFFFF;
+          max-width:800px;
+          margin:0 auto 2rem auto;
+        }
+        .video-embed{
+          position:relative;
+          padding-bottom:56.25%;
+          height:0;
+          overflow:hidden;
+          border-radius:1rem;
+        }
+        .video-embed iframe{
+          position:absolute;
+          top:0; left:0;
+          width:100%;
+          height:100%;
+        }
+
+        /* Servicios destacados: ilustraciones más chicas */
+        #servicios-destacados img {
+          width: 48% !important;
+          max-width: 48% !important;
+          height: auto !important;
+          margin-left: auto !important;
+          margin-right: auto !important;
+          display: block !important;
+        }
+        @media (max-width: 640px) {
+          #servicios-destacados img {
+            width: 62% !important;
+            max-width: 62% !important;
+          }
+        }
+
+        /* Testimonios centrados */
+        #testimonios, #testimonios * { text-align: center !important; }
 
         </style>
     design:
