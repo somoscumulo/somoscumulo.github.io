@@ -36,13 +36,13 @@ sections:
       background:
         color: "#FCF1B1"
 
-  # 2) Video destacado (título igual a servicios)
+  # 2) Video destacado
   - block: markdown
     id: video-destacado
     content:
       text: |
         <div class="video-destacado-wrap">
-          <h3 class="video-destacado-title">Producción de videos educativos</h3>
+          <h2 class="video-destacado-title">Producción de videos educativos</h2>
           <p class="video-destacado-text">
             Creamos clases en video que convierten el contenido en experiencias de aprendizaje.
             Desde la idea y el guion hasta la producción y la edición.
@@ -65,7 +65,7 @@ sections:
       background:
         color: "#3E6FBA"
 
-  # 3) Servicios (sin botones)
+  # 3) Servicios
   - block: cta-image-paragraph
     id: servicios-destacados
     content:
@@ -75,12 +75,12 @@ sections:
           text: "<span style='color:#FFFFFF'>Desarrollamos recursos visuales que complementan materiales en proyectos de formación e investigación, para que cada imagen refuerce el contenido y mejore la experiencia de aprendizaje.<br>Trabajamos en distintos formatos: presentaciones para clases o eventos, pósters científicos, materiales de lectura, entre otros.</span>"
           image: "stickers-cumulo1-05.png"
           image_alt: "Ilustración Cúmulo"
-          image_style: "width:56%;max-width:56%;height:auto;"
+          image_style: "height:auto;"
         - title: "<span style='color:#FFFFFF'>Acompañamiento y asesoramiento pedagógico</span>"
           text: "<span style='color:#FFFFFF'>Antes de producir contenidos, ofrecemos asesoramiento para diseñar la propuesta según el perfil de las y los estudiantes y los temas a desarrollar.<br>Nos involucramos desde el inicio en la selección de formatos, recursos y modalidades del contenido a producir.<br>Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto mantenga coherencia.</span>"
           image: "stickers-cumulo1-01.png"
           image_alt: "Ilustración Cúmulo"
-          image_style: "width:56%;max-width:56%;height:auto;"
+          image_style: "height:auto;"
     design:
       background:
         color: "#3E6FBA"
@@ -97,7 +97,7 @@ sections:
         - statistic: "10"
           description: "propuestas de formación acompañadas"
 
-  # 6) Testimonios (centrado)
+  # 6) Testimonios
   - block: testimonials
     id: testimonios
     content:
@@ -150,16 +150,12 @@ sections:
           font-size:.95rem;
         }
 
-        /* === FIX MODO OSCURO === */
+        /* FIX modo oscuro */
         @media (prefers-color-scheme: dark) {
-
-          /* Forzar texto oscuro en banner */
           #aviso-wip .wip-inner,
           #aviso-wip .wip-inner strong {
             color:#3F393B !important;
           }
-
-          /* Forzar texto oscuro en hero amarillo */
           #solutions h1,
           #solutions h2,
           #solutions h3,
@@ -170,25 +166,29 @@ sections:
           }
         }
 
-        /* Video destacado: tipografía equivalente a títulos de servicios */
+        /* ===== VIDEO DESTACADO ===== */
+
         .video-destacado-wrap{
           max-width:1100px;
           margin:0 auto;
-          padding:3rem 1rem;
+          padding:3.5rem 1rem;
           text-align:center;
         }
+
         .video-destacado-title{
           color:#FFFFFF;
-          margin:0 0 1rem 0;
-          font-weight:600;
-          line-height:1.2;
-          font-size:1.25rem; /* similar a h3/título de item */
+          font-size:2rem;      /* AGRANDADO */
+          font-weight:700;
+          margin-bottom:1.2rem;
         }
+
         .video-destacado-text{
           color:#FFFFFF;
-          max-width:800px;
-          margin:0 auto 2rem auto;
+          max-width:820px;
+          margin:0 auto 2.5rem auto;
+          font-size:1.05rem;
         }
+
         .video-embed{
           position:relative;
           padding-bottom:56.25%;
@@ -196,6 +196,7 @@ sections:
           overflow:hidden;
           border-radius:1rem;
         }
+
         .video-embed iframe{
           position:absolute;
           top:0; left:0;
@@ -203,19 +204,20 @@ sections:
           height:100%;
         }
 
-        /* Servicios destacados: ilustraciones más chicas */
+        /* ===== SERVICIOS - IMÁGENES +30% ===== */
+
         #servicios-destacados img {
-          width: 48% !important;
-          max-width: 48% !important;
+          width: 62% !important;   /* 48% + 30% aprox */
+          max-width: 62% !important;
           height: auto !important;
-          margin-left: auto !important;
-          margin-right: auto !important;
+          margin: 0 auto !important;
           display: block !important;
         }
+
         @media (max-width: 640px) {
           #servicios-destacados img {
-            width: 62% !important;
-            max-width: 62% !important;
+            width: 78% !important;
+            max-width: 78% !important;
           }
         }
 
