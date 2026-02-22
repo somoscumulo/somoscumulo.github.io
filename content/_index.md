@@ -48,13 +48,15 @@ sections:
           <h2 style="color:#FFFFFF;">Producción de videos educativos</h2>
           <p style="color:#FFFFFF;max-width:800px;margin:0 auto 2rem auto;">
             Creamos clases en video que convierten el contenido en experiencias de aprendizaje.
-            Desde la idea y el guion hasta la producción y la edición, integramos recursos audiovisuales
-            en múltiples formatos para comunicar con claridad e impacto.
+            Desde la idea y el guion hasta la producción y la edición.
+            Según el contenido a enseñar y las condiciones de producción, elegimos entre múltiples formatos
+            para comunicar con claridad e impacto: entrevistas, presentaciones animadas, clases con avatares
+            de inteligencia artificial, entre otros.
           </p>
 
           <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:1rem;">
             <iframe 
-              src="https://youtu.be/RqBUfsU4av4" 
+              src="https://www.youtube.com/embed/RqBUfsU4av4" 
               title="Producción de videos educativos - Cúmulo"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
