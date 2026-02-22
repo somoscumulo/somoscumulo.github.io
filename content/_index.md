@@ -97,6 +97,51 @@ sections:
         - statistic: "10"
           description: "propuestas de formación acompañadas"
 
+  # 4.5) Quiénes somos — responsive 2 columnas en mobile
+  - block: markdown
+    id: quienes-somos
+    content:
+      title: "Quiénes somos"
+      text: |
+        <div class="people-wrap">
+          {{< people_list group="equipo" columns=2 gapx="6rem" gapy="2.5rem" >}}
+        </div>
+    design:
+      background:
+        color: "#FCF1B1"
+      spacing:
+        padding: ["28px","0","22px","0"]
+
+  # 4.6) Colaboran — UNA SOLA FILA EN DESKTOP (2 columnas en mobile)
+  - block: markdown
+    id: colaboran
+    content:
+      title: "Colaboran"
+      text: |
+        <div class="people-wrap people-wrap--colaboran">
+          {{< people_list group="colaboran" columns=5 gapx="6rem" gapy="2.5rem" >}}
+        </div>
+    design:
+      background:
+        color: "#FCF1B1"
+      spacing:
+        padding: ["22px","0","30px","0"]
+
+  # 5) Organizaciones (usa people_list con user_group "confian" + fondo amarillo)
+  - block: markdown
+    id: confian
+    content:
+      title: "Organizaciones que confían en Cúmulo"
+      text: |
+        <div class="people-wrap">
+          {{< people_list group="confian" columns=4 gapx="6rem" gapy="2.5rem" >}}
+        </div>
+    design:
+      background:
+        color: "#FCF1B1"
+      spacing:
+        padding: ["8px","0","10px","0"]
+
   # 6) Testimonios
   - block: testimonials
     id: testimonios
@@ -167,28 +212,24 @@ sections:
         }
 
         /* ===== VIDEO DESTACADO ===== */
-
         .video-destacado-wrap{
           max-width:1100px;
           margin:0 auto;
           padding:3.5rem 1rem;
           text-align:center;
         }
-
         .video-destacado-title{
           color:#FFFFFF;
-          font-size:2rem;      /* AGRANDADO */
+          font-size:2rem;
           font-weight:700;
           margin-bottom:1.2rem;
         }
-
         .video-destacado-text{
           color:#FFFFFF;
           max-width:820px;
           margin:0 auto 2.5rem auto;
           font-size:1.05rem;
         }
-
         .video-embed{
           position:relative;
           padding-bottom:56.25%;
@@ -196,7 +237,6 @@ sections:
           overflow:hidden;
           border-radius:1rem;
         }
-
         .video-embed iframe{
           position:absolute;
           top:0; left:0;
@@ -204,16 +244,103 @@ sections:
           height:100%;
         }
 
-        /* ===== SERVICIOS - IMÁGENES +30% ===== */
+        /* ===== PEOPLE LIST: centrado + responsive + colaboran en una fila ===== */
+        .people-wrap {
+          max-width: 1100px;
+          margin-left: auto;
+          margin-right: auto;
+        }
 
+        /* Base: 2 columnas mobile */
+        .people-wrap .people-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 2.5rem 6rem;
+          justify-items: center;
+          align-items: start;
+        }
+
+        /* Desktop general (equipo/confían): 4 por fila */
+        @media (min-width: 1024px) {
+          #quienes-somos .people-wrap .people-grid,
+          #confian .people-wrap .people-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 3rem 8rem;
+          }
+        }
+
+        /* Colaboran: una sola fila en desktop */
+        @media (min-width: 1024px) {
+          #colaboran .people-wrap--colaboran :is(.people-grid, ul, .hb-people, .people-list) {
+            display: flex !important;
+            flex-wrap: nowrap !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 0 6rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            list-style: none;
+          }
+
+          #colaboran .people-wrap--colaboran :is(.people-grid, ul, .hb-people, .people-list) > * {
+            flex: 0 0 11.5rem;
+            width: 11.5rem;
+            text-align: center;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: .4rem;
+          }
+
+          #colaboran .people-wrap--colaboran .avatar {
+            width: 8.5rem;
+            height: 8.5rem;
+          }
+        }
+
+        /* Avatares: círculo y mostrar imagen completa */
+        .people-wrap .avatar {
+          border-radius: 9999px;
+          width: 10rem;
+          height: 10rem;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto;
+          background: #fff;
+        }
+        .people-wrap .avatar img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          object-position: center;
+        }
+
+        .people-wrap .name {
+          line-height: 1.2;
+          margin-top: .4rem;
+          font-weight: 600;
+          text-decoration: none !important;
+          text-align: center;
+        }
+        .people-wrap .role {
+          margin-top: .1rem;
+          font-size: .9rem;
+          opacity: .8;
+          text-align: center;
+        }
+
+        /* ===== SERVICIOS - IMÁGENES +30% ===== */
         #servicios-destacados img {
-          width: 62% !important;   /* 48% + 30% aprox */
+          width: 62% !important;
           max-width: 62% !important;
           height: auto !important;
           margin: 0 auto !important;
           display: block !important;
         }
-
         @media (max-width: 640px) {
           #servicios-destacados img {
             width: 78% !important;
