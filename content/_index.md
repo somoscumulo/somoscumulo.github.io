@@ -8,13 +8,13 @@ image:
 
 sections:
 
-  # 0) Aviso WIP — cartel minimalista arriba de todo
+  # 0) Aviso WIP
   - block: markdown
     id: aviso-wip
     content:
       text: |
-        <div style="max-width:1100px;margin:0 auto;">
-          <div style="background:#FFFCEE;border:1px solid #F1E6B8;color:#3F393B;border-radius:10px;padding:.65rem 1rem;text-align:center;font-size:.95rem;">
+        <div class="wip-banner">
+          <div class="wip-inner">
             <strong>Página web en proceso de producción</strong> — versión work in progress
           </div>
         </div>
@@ -22,7 +22,7 @@ sections:
       spacing:
         padding: ["10px","0","6px","0"]
 
-  # 1) CTA image + paragraph (fondo amarillo, logo reducido ~40%)
+  # 1) Hero institucional
   - block: cta-image-paragraph
     id: solutions
     content:
@@ -39,27 +39,54 @@ sections:
       background:
         color: "#FCF1B1"
 
-  # 3) Servicios destacados (DOBLE de grandes, botones invertidos blanco/azul)
+  # 2) Video destacado
+  - block: markdown
+    id: video-destacado
+    content:
+      text: |
+        <div style="max-width:1100px;margin:0 auto;padding:3rem 1rem;text-align:center;">
+          <h2 style="color:#FFFFFF;">Producción de videos educativos</h2>
+          <p style="color:#FFFFFF;max-width:800px;margin:0 auto 2rem auto;">
+            Creamos clases en video que convierten el contenido en experiencias de aprendizaje.
+            Desde la idea y el guion hasta la producción y la edición, integramos recursos audiovisuales
+            en múltiples formatos para comunicar con claridad e impacto.
+          </p>
+
+          <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:1rem;">
+            <iframe 
+              src="https://www.youtube.com/embed/-P2pp6QCjX8" 
+              title="Producción de videos educativos - Cúmulo"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              style="position:absolute;top:0;left:0;width:100%;height:100%;">
+            </iframe>
+          </div>
+
+          <div style="margin-top:2rem;">
+            <a href="/videos" 
+               style="background:#FFFFFF;color:#3E6FBA;padding:.7rem 1.6rem;border-radius:.6rem;text-decoration:none;font-weight:600;">
+              Ver más
+            </a>
+          </div>
+        </div>
+    design:
+      background:
+        color: "#3E6FBA"
+
+  # 3) Servicios
   - block: cta-image-paragraph
     id: servicios-destacados
     content:
       title: "Nuestros servicios"
       items:
-        - title: "<span style='color:#FFFFFF'>Producción de videos educativos</span>"
-          text: "<span style='color:#FFFFFF'>Creamos clases en video que convierten el contenido en experiencias de aprendizaje. Desde la idea y el guion hasta la producción y la edición, integramos recursos audiovisuales en múltiples formatos para comunicar con claridad e impacto.</span>"
-          image: "stickers-cumulo1-03.png"
-          image_alt: "Ilustración Cúmulo"
-          image_style: "width:56%;max-width:56%;height:auto;"
-          button:
-            text: "Ver más"
-            url: "/videos"
         - title: "<span style='color:#FFFFFF'>Facilitación visual e ilustración para divulgación y formación</span>"
-          text: "<span style='color:#FFFFFF'>Desarrollamos recursos visuales que complementan materiales en proyectos de formación e investigación, para que cada imagen refuerce el contenido y mejore la experiencia de aprendizaje.<br>Trabajamos en distintos formatos: presentaciones para clases o eventos, pósters científicos, materiales de lectura, entre otros.</span>"
+          text: "<span style='color:#FFFFFF'>Desarrollamos recursos visuales que complementan materiales en proyectos de formación e investigación...</span>"
           image: "stickers-cumulo1-05.png"
           image_alt: "Ilustración Cúmulo"
           image_style: "width:56%;max-width:56%;height:auto;"
         - title: "<span style='color:#FFFFFF'>Acompañamiento y asesoramiento pedagógico</span>"
-          text: "<span style='color:#FFFFFF'>Antes de producir contenidos, ofrecemos asesoramiento para diseñar la propuesta según el perfil de las y los estudiantes y los temas a desarrollar.<br>Nos involucramos desde el inicio en la selección de formatos, recursos y modalidades del contenido a producir.<br>Co-diseñamos rutas claras para que cada pieza cumpla un rol y el conjunto mantenga coherencia.</span>"
+          text: "<span style='color:#FFFFFF'>Antes de producir contenidos, ofrecemos asesoramiento para diseñar la propuesta...</span>"
           image: "stickers-cumulo1-01.png"
           image_alt: "Ilustración Cúmulo"
           image_style: "width:56%;max-width:56%;height:auto;"
@@ -67,7 +94,7 @@ sections:
       background:
         color: "#3E6FBA"
 
-  # 4) Métricas / Stats (SIN título)
+  # 4) Métricas
   - block: stats
     id: metricas
     content:
@@ -78,73 +105,8 @@ sections:
           description: "docentes trabajaron con Cúmulo"
         - statistic: "10"
           description: "propuestas de formación acompañadas"
-    design:
-      spacing:
-        padding: ["6px","0","2px","0"]
 
-  # 4.5) Quiénes somos — responsive 2 columnas en mobile
-  - block: markdown
-    id: quienes-somos
-    content:
-      title: "Quiénes somos"
-      text: |
-        <div class="people-wrap">
-          {{< people_list group="equipo" columns=2 gapx="6rem" gapy="2.5rem" >}}
-        </div>
-    design:
-      background:
-        color: "#FCF1B1"
-      spacing:
-        padding: ["28px","0","22px","0"]
-
-  # 4.6) Colaboran — UNA SOLA FILA EN DESKTOP (2 columnas en mobile)
-  - block: markdown
-    id: colaboran
-    content:
-      title: "Colaboran"
-      text: |
-        <div class="people-wrap people-wrap--colaboran">
-          {{< people_list group="colaboran" columns=5 gapx="6rem" gapy="2.5rem" >}}
-        </div>
-    design:
-      background:
-        color: "#FCF1B1"
-      spacing:
-        padding: ["22px","0","30px","0"]
-
-  # 5) Organizaciones (usa people_list con user_group "confian" + fondo amarillo)
-  - block: markdown
-    id: confian
-    content:
-      title: "Organizaciones que confían en Cúmulo"
-      text: |
-        <div class="people-wrap">
-          {{< people_list group="confian" columns=4 gapx="6rem" gapy="2.5rem" >}}
-        </div>
-    design:
-      background:
-        color: "#FCF1B1"
-      spacing:
-        padding: ["8px","0","10px","0"]
-
-  # 6) Testimonios (centrado)
-  - block: testimonials
-    id: testimonios
-    content:
-      items:
-        - name: "Estefanía Michlig"
-          role: "Fundación Empretec"
-          text: >
-            Lo que más valoramos es la **calidad** de los videos y el enorme **compromiso** con el que trabajan.
-            No se limitan a entregar lo que pedimos: buscan que todo quede **claro, atractivo y realmente útil** para el usuario.
-            Nos encanta que propongan mejoras de manera constante y que se pongan manos a la obra para lograr un producto cada vez mejor.
-            La **cercanía**, la **rapidez de respuesta** y la **dedicación** para asegurarse de que todo quede perfecto hacen que trabajar juntos sea siempre un gusto.
-    design:
-      align: center
-      spacing:
-        padding: ["2px","0","6px","0"]
-
-  # 7) CTA final — cta-card (mailto)
+  # CTA final
   - block: cta-card
     id: cta-final
     content:
@@ -156,140 +118,54 @@ sections:
         url: "mailto:somoscumulo@gmail.com"
     design:
       card:
-        css_class: "shadow-sm"
-        css_style: "background-color:#F4A26D;color:#3F393B;text-align:center; padding: 2.5rem; border-radius: 1rem;"
+        css_style: "background-color:#F4A26D;color:#3F393B;text-align:center;padding:2.5rem;border-radius:1rem;"
 
-  # 8) CSS puntual (people_list responsive + UNA FILA en Colaboran + estilos)
+  # Estilos
   - block: markdown
     id: style-fixes
     content:
       text: |
         <style>
-          /* Contenedor centrado para people_list */
-          .people-wrap {
-            max-width: 1100px;
-            margin-left: auto;
-            margin-right: auto;
+
+        /* WIP */
+        .wip-banner {
+          max-width:1100px;
+          margin:0 auto;
+        }
+        .wip-inner {
+          background:#FFFCEE;
+          border:1px solid #F1E6B8;
+          color:#3F393B;
+          border-radius:10px;
+          padding:.65rem 1rem;
+          text-align:center;
+          font-size:.95rem;
+        }
+
+        /* === FIX MODO OSCURO === */
+        @media (prefers-color-scheme: dark) {
+
+          /* Forzar texto oscuro en banner */
+          #aviso-wip .wip-inner,
+          #aviso-wip .wip-inner strong {
+            color:#3F393B !important;
           }
 
-          /* Layout base: dos por fila en mobile */
-          .people-wrap .people-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 2.5rem 6rem; /* gapy/gapx */
-            justify-items: center;
-            align-items: start;
+          /* Forzar texto oscuro en hero amarillo */
+          #solutions h1,
+          #solutions h2,
+          #solutions h3,
+          #solutions p,
+          #solutions strong,
+          #solutions span {
+            color:#3F393B !important;
           }
 
-          /* Desktop general (equipo/confían): 4 por fila */
-          @media (min-width: 1024px) {
-            #quienes-somos .people-wrap .people-grid,
-            #confian .people-wrap .people-grid {
-              grid-template-columns: repeat(4, minmax(0, 1fr));
-              gap: 3rem 8rem;
-            }
-          }
+        }
 
-          /* === Colaboran: una sola fila centrada en desktop, con ESPACIADO UNIFORME y alineación en Y === */
-          @media (min-width: 1024px) {
-            /* Contenedor: fila única centrada y alineada en el eje Y */
-            #colaboran .people-wrap--colaboran :is(.people-grid, ul, .hb-people, .people-list) {
-              display: flex !important;
-              flex-wrap: nowrap !important;             /* una sola fila */
-              justify-content: center !important;        /* centrado horizontal */
-              align-items: center !important;            /* alinea los círculos entre sí */
-              gap: 0 6rem;                               /* MISMO gap entre tarjetas */
-              max-width: 1100px;
-              margin: 0 auto;
-              list-style: none;
-            }
-
-            /* Tarjetas: ancho fijo para uniformidad real del gap */
-            #colaboran .people-wrap--colaboran :is(.people-grid, ul, .hb-people, .people-list) > * {
-              flex: 0 0 11.5rem;                         /* ancho fijo de tarjeta */
-              width: 11.5rem;
-              text-align: center;
-              box-sizing: border-box;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              gap: .4rem;
-            }
-
-            /* Avatares más chicos en Colaboran (desktop) para que entren todos si son muchos */
-            #colaboran .people-wrap--colaboran .avatar {
-              width: 8.5rem;
-              height: 8.5rem;
-            }
-          }
-
-          /* === Avatar: círculo perfecto y IMAGEN COMPLETA centrada (sin recorte) ===
-             Aplica a equipo, colaboran y confían */
-          .people-wrap .avatar {
-            border-radius: 9999px;        /* círculo */
-            width: 10rem;                 /* tamaño general */
-            height: 10rem;
-            overflow: hidden;             /* limita al círculo */
-            display: flex;                /* centro el contenido con flex */
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-            background: #fff;             /* fondo neutro para “bordes” cuando la imagen no es cuadrada */
-          }
-          .people-wrap .avatar img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;          /* muestra la imagen completa dentro del círculo */
-            object-position: center;      /* centrada */
-          }
-
-          /* Tipografía compacta en nombres y rol */
-          .people-wrap .name {
-            line-height: 1.2;
-            margin-top: .4rem;
-            font-weight: 600;
-            text-decoration: none !important;
-            text-align: center;
-          }
-          .people-wrap .role {
-            margin-top: .1rem;
-            font-size: .9rem;
-            opacity: .8;
-            text-align: center;
-          }
-
-          /* Testimonios centrados */
-          #testimonios, #testimonios * { text-align: center !important; }
-
-          /* Servicios destacados: tamaño refuerzo y botones invertidos */
-          #servicios-destacados img {
-            width: 56% !important;
-            max-width: 56% !important;
-            height: auto !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-            display: block !important;
-          }
-          @media (max-width: 640px) {
-            #servicios-destacados img { width: 70% !important; max-width: 70% !important; }
-          }
-          #servicios-destacados a.btn,
-          #servicios-destacados a.btn-primary,
-          #servicios-destacados .btn {
-            background:#FFFFFF !important;
-            color:#3E6FBA !important;
-            border:2px solid #FFFFFF !important;
-          }
-          #servicios-destacados a.btn:hover,
-          #servicios-destacados a.btn-primary:hover,
-          #servicios-destacados .btn:hover {
-            background:#EAF0FB !important;
-            color:#2c5490 !important;
-            border-color:#FFFFFF !important;
-          }
         </style>
     design:
       spacing:
         padding: ["0","0","0","0"]
+
 ---
