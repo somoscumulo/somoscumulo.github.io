@@ -179,7 +179,7 @@ sections:
     content:
       text: |
         <style>
-
+        
         /* WIP */
         .wip-banner {
           max-width:1100px;
@@ -194,13 +194,15 @@ sections:
           text-align:center;
           font-size:.95rem;
         }
-
+        
         /* FIX modo oscuro */
         @media (prefers-color-scheme: dark) {
+        
           #aviso-wip .wip-inner,
           #aviso-wip .wip-inner strong {
             color:#3F393B !important;
           }
+        
           #solutions h1,
           #solutions h2,
           #solutions h3,
@@ -209,8 +211,29 @@ sections:
           #solutions span {
             color:#3F393B !important;
           }
+        
+          /* ===== NUEVO: TITULOS SECCIONES PEOPLE ===== */
+          #quienes-somos h1,
+          #quienes-somos h2,
+          #quienes-somos h3,
+          #colaboran h1,
+          #colaboran h2,
+          #colaboran h3,
+          #confian h1,
+          #confian h2,
+          #confian h3 {
+            color:#3F393B !important;
+          }
+        
+          /* ===== NUEVO: NOMBRES PERSONAS ===== */
+          #quienes-somos .name,
+          #colaboran .name,
+          #confian .name {
+            color:#3F393B !important;
+          }
+        
         }
-
+        
         /* ===== VIDEO DESTACADO ===== */
         .video-destacado-wrap{
           max-width:1100px;
@@ -243,15 +266,14 @@ sections:
           width:100%;
           height:100%;
         }
-
-        /* ===== PEOPLE LIST: centrado + responsive + colaboran en una fila ===== */
+        
+        /* ===== PEOPLE LIST ===== */
         .people-wrap {
           max-width: 1100px;
           margin-left: auto;
           margin-right: auto;
         }
-
-        /* Base: 2 columnas mobile */
+        
         .people-wrap .people-grid {
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -259,8 +281,7 @@ sections:
           justify-items: center;
           align-items: start;
         }
-
-        /* Desktop general (equipo/confían): 4 por fila */
+        
         @media (min-width: 1024px) {
           #quienes-somos .people-wrap .people-grid,
           #confian .people-wrap .people-grid {
@@ -268,8 +289,7 @@ sections:
             gap: 3rem 8rem;
           }
         }
-
-        /* Colaboran: una sola fila en desktop */
+        
         @media (min-width: 1024px) {
           #colaboran .people-wrap--colaboran :is(.people-grid, ul, .hb-people, .people-list) {
             display: flex !important;
@@ -281,7 +301,7 @@ sections:
             margin: 0 auto;
             list-style: none;
           }
-
+        
           #colaboran .people-wrap--colaboran :is(.people-grid, ul, .hb-people, .people-list) > * {
             flex: 0 0 11.5rem;
             width: 11.5rem;
@@ -292,14 +312,13 @@ sections:
             align-items: center;
             gap: .4rem;
           }
-
+        
           #colaboran .people-wrap--colaboran .avatar {
             width: 8.5rem;
             height: 8.5rem;
           }
         }
-
-        /* Avatares: círculo y mostrar imagen completa */
+        
         .people-wrap .avatar {
           border-radius: 9999px;
           width: 10rem;
@@ -318,7 +337,7 @@ sections:
           object-fit: contain;
           object-position: center;
         }
-
+        
         .people-wrap .name {
           line-height: 1.2;
           margin-top: .4rem;
@@ -332,8 +351,8 @@ sections:
           opacity: .8;
           text-align: center;
         }
-
-        /* ===== SERVICIOS - IMÁGENES +30% ===== */
+        
+        /* ===== SERVICIOS ===== */
         #servicios-destacados img {
           width: 62% !important;
           max-width: 62% !important;
@@ -347,11 +366,12 @@ sections:
             max-width: 78% !important;
           }
         }
-
-        /* Testimonios centrados */
+        
+        /* Testimonios */
         #testimonios, #testimonios * { text-align: center !important; }
-
+        
         </style>
+
     design:
       spacing:
         padding: ["0","0","0","0"]
