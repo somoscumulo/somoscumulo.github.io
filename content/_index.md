@@ -211,6 +211,37 @@ sections:
           #solutions span {
             color:#3F393B !important;
           }
+
+          /* Títulos de secciones con fondo claro */
+          #quienes-somos .section-heading,
+          #quienes-somos .section-heading *,
+          #quienes-somos .section-title,
+          #quienes-somos .section-title *,
+          #quienes-somos .home-section-title,
+          #quienes-somos .home-section-title *,
+          #quienes-somos h1,
+          #quienes-somos h2,
+          #quienes-somos h3,
+          #colaboran .section-heading,
+          #colaboran .section-heading *,
+          #colaboran .section-title,
+          #colaboran .section-title *,
+          #colaboran .home-section-title,
+          #colaboran .home-section-title *,
+          #colaboran h1,
+          #colaboran h2,
+          #colaboran h3,
+          #confian .section-heading,
+          #confian .section-heading *,
+          #confian .section-title,
+          #confian .section-title *,
+          #confian .home-section-title,
+          #confian .home-section-title *,
+          #confian h1,
+          #confian h2,
+          #confian h3 {
+            color: #3F393B !important;
+          }
     
           #quienes-somos,
           #colaboran,
