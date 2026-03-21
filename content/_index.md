@@ -211,6 +211,13 @@ sections:
           #solutions span {
             color:#3F393B !important;
           }
+    
+          #quienes-somos,
+          #colaboran,
+          #confian {
+            --bs-body-color: #3F393B !important;
+            color:#3F393B !important;
+          }
         
          /* ===== TITULOS SECCIONES PEOPLE (FIX REAL) ===== */
           #quienes-somos .section-heading,
