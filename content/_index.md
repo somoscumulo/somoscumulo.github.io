@@ -212,13 +212,19 @@ sections:
             color:#3F393B !important;
           }
         
-          /* ===== NUEVO: TITULOS SECCIONES PEOPLE ===== */
+         /* ===== TITULOS SECCIONES PEOPLE (FIX REAL) ===== */
+          #quienes-somos .section-heading,
+          #quienes-somos .section-title,
           #quienes-somos h1,
           #quienes-somos h2,
           #quienes-somos h3,
+          #colaboran .section-heading,
+          #colaboran .section-title,
           #colaboran h1,
           #colaboran h2,
           #colaboran h3,
+          #confian .section-heading,
+          #confian .section-title,
           #confian h1,
           #confian h2,
           #confian h3 {
