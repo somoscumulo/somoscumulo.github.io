@@ -179,7 +179,9 @@ sections:
     content:
       text: |
         <style>
-        
+
+
+
         /* WIP */
         .wip-banner {
           max-width:1100px;
@@ -194,10 +196,7 @@ sections:
           text-align:center;
           font-size:.95rem;
         }
-        
-        /* FIX modo oscuro */
         @media (prefers-color-scheme: dark) {
-        
           #aviso-wip .wip-inner,
           #aviso-wip .wip-inner strong {
             color:#3F393B !important;
@@ -211,72 +210,57 @@ sections:
           #solutions span {
             color:#3F393B !important;
           }
-
-          /* Títulos de secciones con fondo claro */
+        
+          /* Títulos de las secciones people */
           #quienes-somos .section-heading,
           #quienes-somos .section-heading *,
           #quienes-somos .section-title,
           #quienes-somos .section-title *,
-          #quienes-somos .home-section-title,
-          #quienes-somos .home-section-title *,
-          #quienes-somos h1,
-          #quienes-somos h2,
-          #quienes-somos h3,
+          #quienes-somos .article-title,
+          #quienes-somos .article-title *,
+          #quienes-somos .universal-wrapper h1,
+          #quienes-somos .universal-wrapper h2,
+          #quienes-somos .universal-wrapper h3,
+          #quienes-somos > h1,
+          #quienes-somos > h2,
+          #quienes-somos > h3,
+        
           #colaboran .section-heading,
           #colaboran .section-heading *,
           #colaboran .section-title,
           #colaboran .section-title *,
-          #colaboran .home-section-title,
-          #colaboran .home-section-title *,
-          #colaboran h1,
-          #colaboran h2,
-          #colaboran h3,
+          #colaboran .article-title,
+          #colaboran .article-title *,
+          #colaboran .universal-wrapper h1,
+          #colaboran .universal-wrapper h2,
+          #colaboran .universal-wrapper h3,
+          #colaboran > h1,
+          #colaboran > h2,
+          #colaboran > h3,
+        
           #confian .section-heading,
           #confian .section-heading *,
           #confian .section-title,
           #confian .section-title *,
-          #confian .home-section-title,
-          #confian .home-section-title *,
-          #confian h1,
-          #confian h2,
-          #confian h3 {
-            color: #3F393B !important;
-          }
-    
-          #quienes-somos,
-          #colaboran,
-          #confian {
-            --bs-body-color: #3F393B !important;
+          #confian .article-title,
+          #confian .article-title *,
+          #confian .universal-wrapper h1,
+          #confian .universal-wrapper h2,
+          #confian .universal-wrapper h3,
+          #confian > h1,
+          #confian > h2,
+          #confian > h3 {
             color:#3F393B !important;
           }
         
-         /* ===== TITULOS SECCIONES PEOPLE (FIX REAL) ===== */
-          #quienes-somos .section-heading,
-          #quienes-somos .section-title,
-          #quienes-somos h1,
-          #quienes-somos h2,
-          #quienes-somos h3,
-          #colaboran .section-heading,
-          #colaboran .section-title,
-          #colaboran h1,
-          #colaboran h2,
-          #colaboran h3,
-          #confian .section-heading,
-          #confian .section-title,
-          #confian h1,
-          #confian h2,
-          #confian h3 {
-            color:#3F393B !important;
-          }
-        
-          /* ===== NUEVO: NOMBRES PERSONAS ===== */
+          /* Nombres de perfiles */
           #quienes-somos .name,
           #colaboran .name,
           #confian .name {
             color:#3F393B !important;
           }
-        
         }
+
         
         /* ===== VIDEO DESTACADO ===== */
         .video-destacado-wrap{
